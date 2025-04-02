@@ -26,7 +26,7 @@ NhaTroKetNoi là một ứng dụng web được thiết kế để kết nối 
 ## Cài Đặt và Chạy Dự Án
 1. Clone repository:
 ```
-git clone https://github.com/huydien23/NhaTroKetNoi.git
+git clone https://github.com/huydien23/nhatroketnoi.git
 ```
 
 2. Mở dự án:
@@ -60,5 +60,5 @@ cd NhaTroKetNoi
 Dự án này được cấp phép theo Giấy phép MIT - xem file LICENSE để biết chi tiết.
 
 ## Liên Hệ
-- Liên kết dự án: [https://github.com/huydien23/NhaTroKetNoi]
+- Liên kết dự án: [https://github.com/huydien23/nhatroketnoi.git]
 - Email: nhdiendnc.dev@gmail.com
