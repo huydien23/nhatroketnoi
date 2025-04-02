@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danh sách phòng trọ - Nhà Trọ Kết Nối</title>
+    <link rel="shortcut icon" href="/NhaTroKetNoi/assets/image/favicon.svg" type="image/x-icon">
+    <link rel="stylesheet" href="/NhaTroKetNoi/assets/css/layouts/main.css">
+    <link rel="stylesheet" href="/NhaTroKetNoi/assets/css/pages/phong.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <a href="/NhaTroKetNoi/index.html">
+                <img src="/nhatroketnoi/assets/image/logo.svg" alt="logo">
+            </a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="/NhaTroKetNoi/index.html">Trang chủ</a></li>
+            <li><a href="#">Danh sách phòng</a></li>
+            <li><a href="../tintuc.html">Tin tức</a></li>
+            <li><a href="../thongtin.html">Về chúng tôi</a></li>
+            <li><a href="../dangky/dangky.html" class="login-btn">Đăng nhập</a></li>
+        </ul>
+        <div class="burger">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </nav>
+
+    <div class="rooms-container">
+        <section class="search-section">
+            <form class="search-form">
+                <input type="text" placeholder="Nhập địa điểm...">
+                <select>
+                    <option value="">Chọn giá</option>
+                    <option value="1-2">1-2 triệu</option>
+                    <option value="2-3">2-3 triệu</option>
+                    <option value="3-4">3-4 triệu</option>
+                    <option value="4+">Trên 4 triệu</option>
+                </select>
+                <select>
+                    <option value="">Chọn diện tích</option>
+                    <option value="15-20">15-20m²</option>
+                    <option value="20-25">20-25m²</option>
+                    <option value="25-30">25-30m²</option>
+                    <option value="30+">Trên 30m²</option>
+                </select>
+                <button type="submit">Tìm kiếm</button>
+            </form>
+        </section>
+
+        <div class="rooms-grid">
+            <div class="room-card">
+                <img src="/NhaTroKetNoi/assets/image/nhatro2.jpg" alt="Phòng trọ 1">
+                <div class="room-info">
+                    <h3>Phòng trọ đẹp, gần trung tâm</h3>
+                    <p class="price">2.5 triệu/tháng</p>
+                    <p class="location"><i class="fas fa-map-marker-alt"></i> Ninh Kiều - Cần Thơ</p>
+                    <div class="room-features">
+                        <span class="feature"><i class="fas fa-ruler-combined"></i> 25m²</span>
+                        <span class="feature"><i class="fas fa-bed"></i> 1 giường</span>
+                        <span class="feature"><i class="fas fa-bath"></i> 1 WC</span>
+                    </div>
+                    <a href="/NhaTroKetNoi/pages/phong/danhsach/motaphong.html" class="view-detail">Xem chi tiết</a>
+                </div>
+            </div>
+            <div class="room-card">
+                <img src="/NhaTroKetNoi/assets/image/nhatro2.jpg" alt="Phòng trọ 2">
+                <div class="room-info">
+                    <h3>Phòng trọ mới</h3>
+                    <p class="price">3 triệu/tháng</p>
+                    <p class="location"><i class="fas fa-map-marker-alt"></i> Ninh Kiều - Cần Thơ</p>
+                    <div class="room-features">
+                        <span class="feature"><i class="fas fa-ruler-combined"></i> 30m²</span>
+                        <span class="feature"><i class="fas fa-bed"></i> 1 giường</span>
+                        <span class="feature"><i class="fas fa-bath"></i> 1 WC</span>
+                    </div>
+                    <a href="/NhaTroKetNoi/pages/phong/danhsach/motaphong.html" class="view-detail">Xem chi tiết</a>
+                </div>
+            </div>
+            <div class="room-card">
+                <img src="/NhaTroKetNoi/assets/image/nhatro2.jpg" alt="Phòng trọ 3">
+                <div class="room-info">
+                    <h3>Phòng trọ giá rẻ, an ninh</h3>
+                    <p class="price">1.8 triệu/tháng</p>
+                    <p class="location"><i class="fas fa-map-marker-alt"></i> Ninh Kiều - Cần Thơ</p>
+                    <div class="room-features">
+                        <span class="feature"><i class="fas fa-ruler-combined"></i> 20m²</span>
+                        <span class="feature"><i class="fas fa-bed"></i> 1 giường</span>
+                        <span class="feature"><i class="fas fa-bath"></i> 1 WC</span>
+                    </div>
+                    <a href="/NhaTroKetNoi/pages/phong/danhsach/motaphong.html" class="view-detail">Xem chi tiết</a>
+                </div>
+            </div>
+            <div class="room-card">
+                <img src="/NhaTroKetNoi/assets/image/nhatro2.jpg" alt="Phòng trọ 3">
+                <div class="room-info">
+                    <h3>Phòng trọ giá rẻ, an ninh</h3>
+                    <p class="price">2 triệu/tháng</p>
+                    <p class="location"><i class="fas fa-map-marker-alt"></i> Ninh Kiều - Cần Thơ</p>
+                    <div class="room-features">
+                        <span class="feature"><i class="fas fa-ruler-combined"></i> 20m²</span>
+                        <span class="feature"><i class="fas fa-bed"></i> 1 giường</span>
+                        <span class="feature"><i class="fas fa-bath"></i> 1 WC</span>
+                    </div>
+                    <a href="/NhaTroKetNoi/pages/phong/danhsach/motaphong.html" class="view-detail">Xem chi tiết</a>
+                </div>
+            </div>
+            <div class="room-card">
+                <img src="/NhaTroKetNoi/assets/image/nhatro2.jpg" alt="Phòng trọ 3">
+                <div class="room-info">
+                    <h3>Phòng trọ giá rẻ, an ninh</h3>
+                    <p class="price">2 triệu/tháng</p>
+                    <p class="location"><i class="fas fa-map-marker-alt"></i> Ninh Kiều - Cần Thơ</p>
+                    <div class="room-features">
+                        <span class="feature"><i class="fas fa-ruler-combined"></i> 20m²</span>
+                        <span class="feature"><i class="fas fa-bed"></i> 1 giường</span>
+                        <span class="feature"><i class="fas fa-bath"></i> 1 WC</span>
+                    </div>
+                    <a href="/NhaTroKetNoi/pages/phong/danhsach/motaphong.html" class="view-detail">Xem chi tiết</a>
+                </div>
+            </div>
+            <div class="room-card">
+                <img src="/NhaTroKetNoi/assets/image/nhatro2.jpg" alt="Phòng trọ 3">
+                <div class="room-info">
+                    <h3>Phòng trọ giá rẻ, an ninh</h3>
+                    <p class="price">2 triệu/tháng</p>
+                    <p class="location"><i class="fas fa-map-marker-alt"></i> Ninh Kiều - Cần Thơ</p>
+                    <div class="room-features">
+                        <span class="feature"><i class="fas fa-ruler-combined"></i> 20m²</span>
+                        <span class="feature"><i class="fas fa-bed"></i> 1 giường</span>
+                        <span class="feature"><i class="fas fa-bath"></i> 1 WC</span>
+                    </div>
+                    <a href="/NhaTroKetNoi/pages/phong/danhsach/motaphong.html" class="view-detail">Xem chi tiết</a>
+                </div>
+            </div>
+            <div class="room-card">
+                <img src="/NhaTroKetNoi/assets/image/nhatro2.jpg" alt="Phòng trọ 3">
+                <div class="room-info">
+                    <h3>Phòng trọ giá rẻ, an ninh</h3>
+                    <p class="price">2 triệu/tháng</p>
+                    <p class="location"><i class="fas fa-map-marker-alt"></i> Ninh Kiều - Cần Thơ</p>
+                    <div class="room-features">
+                        <span class="feature"><i class="fas fa-ruler-combined"></i> 20m²</span>
+                        <span class="feature"><i class="fas fa-bed"></i> 1 giường</span>
+                        <span class="feature"><i class="fas fa-bath"></i> 1 WC</span>
+                    </div>
+                    <a href="/NhaTroKetNoi/pages/phong/danhsach/motaphong.html" class="view-detail">Xem chi tiết</a>
+                </div>
+            </div>
+            <div class="room-card">
+                <img src="/NhaTroKetNoi/assets/image/nhatro2.jpg" alt="Phòng trọ 3">
+                <div class="room-info">
+                    <h3>Phòng trọ giá rẻ, an ninh</h3>
+                    <p class="price">2 triệu/tháng</p>
+                    <p class="location"><i class="fas fa-map-marker-alt"></i> Ninh Kiều - Cần Thơ</p>
+                    <div class="room-features">
+                        <span class="feature"><i class="fas fa-ruler-combined"></i> 20m²</span>
+                        <span class="feature"><i class="fas fa-bed"></i> 1 giường</span>
+                        <span class="feature"><i class="fas fa-bath"></i> 1 WC</span>
+                    </div>
+                    <a href="/NhaTroKetNoi/pages/phong/danhsach/motaphong.html" class="view-detail">Xem chi tiết</a>
+                </div>
+            </div>
+            <div class="room-card">
+                <img src="/NhaTroKetNoi/assets/image/nhatro2.jpg" alt="Phòng trọ 3">
+                <div class="room-info">
+                    <h3>Phòng trọ giá rẻ, an ninh</h3>
+                    <p class="price">2 triệu/tháng</p>
+                    <p class="location"><i class="fas fa-map-marker-alt"></i> Ninh Kiều - Cần Thơ</p>
+                    <div class="room-features">
+                        <span class="feature"><i class="fas fa-ruler-combined"></i> 20m²</span>
+                        <span class="feature"><i class="fas fa-bed"></i> 1 giường</span>
+                        <span class="feature"><i class="fas fa-bath"></i> 1 WC</span>
+                    </div>
+                    <a href="/NhaTroKetNoi/pages/phong/danhsach/motaphong.html" class="view-detail">Xem chi tiết</a>
+                </div>
+            </div>
+            <div class="room-card">
+                <img src="/NhaTroKetNoi/assets/image/nhatro2.jpg" alt="Phòng trọ 3">
+                <div class="room-info">
+                    <h3>Phòng trọ giá rẻ, an ninh</h3>
+                    <p class="price">2 triệu/tháng</p>
+                    <p class="location"><i class="fas fa-map-marker-alt"></i> Ninh Kiều - Cần Thơ</p>
+                    <div class="room-features">
+                        <span class="feature"><i class="fas fa-ruler-combined"></i> 20m²</span>
+                        <span class="feature"><i class="fas fa-bed"></i> 1 giường</span>
+                        <span class="feature"><i class="fas fa-bath"></i> 1 WC</span>
+                    </div>
+                    <a href="/NhaTroKetNoi/pages/phong/danhsach/motaphong.html" class="view-detail">Xem chi tiết</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="pagination">
+            <button class="active">1</button>
+            <button>2</button>
+            <button>3</button>
+            <button>4</button>
+            <button>5</button>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Về Nhà Trọ Kết Nối</h3>
+                <p>Website Nhà Trọ Kết Nối là một nơi để kết kết nối tất cả nhà trọ lại với nhau. Để giúp khách hàng có thể tìm
+                    trọ một
+                    cách nhanh nhất và dễ dàng.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Liên Kết Nhanh</h3>
+                <ul>
+                    <li><a href="/NhaTroKetNoi/index.html">Trang chủ</a></li>
+                    <li><a href="#">Danh sách phòng</a></li>
+                    <li><a href="../tintuc.html">Tin tức</a></li>
+                    <li><a href="../tintuc.html">Về chúng tôi</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Liên Hệ</h3>
+                <p><i class="fas fa-phone"></i> 0123.456.789</p>
+                <p><i class="fas fa-envelope"></i> huydien23@nhatroketnoi.com</p>
+                <p><i class="fas fa-map-marker-alt"></i> Toàn nhà khu I Đại học Nam Cần Thơ</p>
+            </div>
+        
+            <div class="footer-section">
+                <h3>Đối Tác</h3>
+                <div class="partners-grid">
+                    <a href="https://nctu.edu.vn/" target="_blank" class="partner-item">
+                        <i class="fas fa-university"></i>
+                        <span>Trường Đại học Nam Cần Thơ</span>
+                    </a>
+                    <a href="https://batdongsan.com.vn/" target="_blank" class="partner-item">
+                        <i class="fas fa-building"></i>
+                        <span>Batdongsan.com.vn</span>
+                    </a>
+                    <a href="https://www.chotot.com/" target="_blank" class="partner-item">
+                        <i class="fas fa-home"></i>
+                        <span>Chotot.com</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Nhà Trọ Kết Nối.</p>
+        </div>
+    </footer>
+
+    <script src="/NhaTroKetNoi/assets/js/main.js"></script>
+</body>
+</html> 
