@@ -61,7 +61,7 @@ forms.forEach(form => {
         });
 
         if (isValid) {
-            // Ở đây bạn thường sẽ gửi dữ liệu form đến máy chủ
+
             alert('Form submitted successfully!');
             form.reset();
         } else {
@@ -116,8 +116,8 @@ style.textContent = `
 `;
 document.head.appendChild(style);
 
-// Chatbot functionality
-document.addEventListener('DOMContentLoaded', function() {
+// Chức năng chatbot
+document.addEventListener('DOMContentLoaded', function () {
     const chatbotContainer = document.querySelector('.chatbot-container');
     const chatbotToggle = document.querySelector('.chatbot-toggle');
     const closeChatbot = document.querySelector('.close-chatbot');
@@ -126,32 +126,34 @@ document.addEventListener('DOMContentLoaded', function() {
     const messagesContainer = document.querySelector('.chatbot-messages');
     let isProcessing = false;
 
-    // Toggle chatbot
+    // Chuyển đổi chatbot
     chatbotToggle.addEventListener('click', () => {
-        chatbotContainer.classList.add('active');
-        messageInput.focus(); // Focus input when opening chat
+        chatbotContainer.classList.toggle('active');
+        if (chatbotContainer.classList.contains('active')) {
+            messageInput.focus(); // Focus input when opening chat
+        }
     });
 
     closeChatbot.addEventListener('click', () => {
         chatbotContainer.classList.remove('active');
     });
 
-    // Handle sending messages
+    // Gửi tin nhắn
     async function sendMessage() {
         const message = messageInput.value.trim();
         if (message && !isProcessing) {
             isProcessing = true;
             sendButton.disabled = true;
-            
-            // Add user message
+
+            // Thêm tin nhắn người dùng vào chat
             addMessage(message, 'user');
             messageInput.value = '';
 
-            // Show typing indicator
+            // Thêm chỉ báo đang gõ
             const typingIndicator = addTypingIndicator();
 
             try {
-                // Get AI response
+                // Gọi API để lấy phản hồi từ AI
                 const response = await getAIResponse(message);
                 typingIndicator.remove();
                 addMessage(response, 'bot');
@@ -162,22 +164,35 @@ document.addEventListener('DOMContentLoaded', function() {
             } finally {
                 isProcessing = false;
                 sendButton.disabled = false;
-                messageInput.focus(); // Focus input after sending
+                messageInput.focus();
             }
         }
     }
 
-    // Add message to chat
+    // Lấy phản hồi từ AI (giả lập hoặc gọi API thực tế)
+    async function getAIResponse(message) {
+        // Giả lập thời gian phản hồi
+        await new Promise(resolve => setTimeout(resolve, 1000));
+        const responses = [
+            "Cảm ơn bạn đã hỏi!",
+            "Tôi không chắc về điều đó.",
+            "Có vẻ như bạn đang gặp khó khăn.",
+            "Bạn có thể cho tôi biết thêm chi tiết không?",
+            "Tôi sẽ cố gắng giúp bạn."
+        ];
+        return responses[Math.floor(Math.random() * responses.length)];
+    }
+
+    // Thêm tin nhắn vào giao diện
     function addMessage(text, sender) {
         const messageDiv = document.createElement('div');
-        messageDiv.classList.add('message');
-        messageDiv.classList.add(sender === 'user' ? 'user-message' : 'bot-message');
+        messageDiv.classList.add('message', sender === 'user' ? 'user-message' : 'bot-message');
         messageDiv.textContent = text;
         messagesContainer.appendChild(messageDiv);
         messagesContainer.scrollTop = messagesContainer.scrollHeight;
     }
 
-    // Add typing indicator
+    // Thêm chỉ báo đang gõ
     function addTypingIndicator() {
         const typingDiv = document.createElement('div');
         typingDiv.classList.add('message', 'bot-message', 'typing-indicator');
@@ -187,7 +202,7 @@ document.addEventListener('DOMContentLoaded', function() {
         return typingDiv;
     }
 
-    // Event listeners for sending messages
+    // Xử lý sự kiện gửi tin nhắn
     sendButton.addEventListener('click', sendMessage);
     messageInput.addEventListener('keypress', (e) => {
         if (e.key === 'Enter' && !isProcessing) {
@@ -195,10 +210,10 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Prevent form submission on enter
+    // Ngăn chặn gửi form khi nhấn Enter
     messageInput.addEventListener('keydown', (e) => {
         if (e.key === 'Enter') {
             e.preventDefault();
         }
     });
-}); 
+});
