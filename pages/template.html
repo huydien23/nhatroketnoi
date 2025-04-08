@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nhà Trọ Kết Nối - Tiêu đề trang</title>
+    <link rel="shortcut icon" href="../assets/image/favicon.svg" type="image/x-icon">
+    <link rel="stylesheet" href="../assets/css/layouts/main.css">
+    <link rel="stylesheet" href="../assets/css/user-dropdown.css">
+    <!-- Thêm CSS riêng cho trang -->
+    <script src="../assets/js/auth.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="logo">
+                <a href="../index.html">
+                    <img src="../assets/image/logo.svg" alt="logo">
+                </a> 
+            </div>
+            <ul class="nav-links">
+                <li><a href="../index.html">Trang chủ</a></li>
+                <li><a href="../pages/phong/phong.html">Danh sách phòng</a></li>
+                <li><a href="../pages/tintuc.html">Tin tức</a></li>
+                <li><a href="../pages/thongtin.html">Về chúng tôi</a></li>
+                <li><a href="../pages/dangky/dangky.html" class="login-btn" id="loginBtn">Đăng nhập</a></li>
+                <li class="user-profile-container" style="margin-right: 0; padding-right: 0;">
+                    <div class="user-profile" style="display: none; position: relative;">
+                        <div class="user-avatar">
+                            <img id="userAvatar" src="../assets/image/user/user1.jpg" alt="User Avatar">
+                            <span id="userShortName"></span>
+                            <i class="fas fa-caret-down"></i>
+                        </div>
+                        <div class="dropdown-menu">
+                            <div class="dropdown-item user-info-header">
+                                <img src="../assets/image/user/user1.jpg" alt="User Avatar">
+                                <div>
+                                    <span id="userFullname"></span>
+                                    <small id="userEmail"></small>
+                                </div>
+                            </div>
+                            <a href="../pages/user/profile.html" class="dropdown-item">
+                                <i class="fas fa-user"></i> Tài khoản của tôi
+                            </a>
+                            <a href="../pages/user/posts.html" class="dropdown-item">
+                                <i class="fas fa-list"></i> Bài đăng của tôi
+                            </a>
+                            <a href="../pages/user/saved.html" class="dropdown-item">
+                                <i class="fas fa-bookmark"></i> Phòng đã lưu
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a href="#" class="dropdown-item" onclick="logout()">
+                                <i class="fas fa-sign-out-alt"></i> Đăng xuất
+                            </a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <div class="burger">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main content -->
+    <main>
+        <section class="page-content">
+            <div class="container">
+                <h1>Tiêu đề trang</h1>
+                <!-- Nội dung trang -->
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Về Nhà Trọ Kết Nối</h3>
+                    <p>Website Nhà Trọ Kết Nối là một nơi để kết kết nối tất cả nhà trọ lại với nhau. Để giúp khách hàng có thể tìm trọ một
+                    cách nhanh nhất và dễ dàng.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Liên Kết Nhanh</h3>
+                    <ul>
+                        <li><a href="../index.html">Trang chủ</a></li>
+                        <li><a href="../pages/phong/phong.html">Danh sách phòng</a></li>
+                        <li><a href="../pages/tintuc.html">Tin tức</a></li>
+                        <li><a href="../pages/thongtin.html">Về chúng tôi</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Liên Hệ</h3>
+                    <p><i class="fas fa-phone"></i> 0123.456.789</p>
+                    <p><i class="fas fa-envelope"></i> huydien23@nhatroketnoi.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Toàn nhà khu I Đại học Nam Cần Thơ</p>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Đối Tác</h3>
+                    <div class="partners-grid">
+                        <a href="https://nctu.edu.vn/" target="_blank" class="partner-item">
+                            <i class="fas fa-university"></i>
+                            <span>Trường Đại học Nam Cần Thơ</span>
+                        </a>
+                        <a href="https://batdongsan.com.vn/" target="_blank" class="partner-item">
+                            <i class="fas fa-building"></i>
+                            <span>Batdongsan.com.vn</span>
+                        </a>
+                        <a href="https://www.chotot.com/" target="_blank" class="partner-item">
+                            <i class="fas fa-home"></i>
+                            <span>Chotot.com</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Nhà Trọ Kết Nối.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Nút cuộn lên đầu trang -->
+    <button id="scrollTopBtn" class="scroll-top-btn">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/auth.js"></script>
+</body>
+</html> 

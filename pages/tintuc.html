@@ -6,27 +6,62 @@
     <title>Tin tức - Nhà Trọ Kết Nối</title>
     <link rel="shortcut icon" href="../assets/image/favicon.svg" type="image/x-icon">
     <link rel="stylesheet" href="../assets/css/layouts/main.css">
+    <link rel="stylesheet" href="../assets/css/user-dropdown.css">
     <link rel="stylesheet" href="../assets/css/pages/tintuc.css">
+    <script src="../assets/js/auth.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
     <nav class="navbar">
-        <div class="logo">
-            <a href="/index.html">
-                <img src="/assets/image/logo.svg" alt="logo">
-            </a>
-        </div>
-        <ul class="nav-links">
-            <li><a href="/index.html">Trang chủ</a></li>
-            <li><a href="./phong/phong.html">Danh sách phòng</a></li>
-            <li><a href="./tintuc.html">Tin tức</a></li>
-            <li><a href="./thongtin.html">Về chúng tôi</a></li>
-            <li><a href="./dangky/dangky.html" class="login-btn">Đăng nhập</a></li>
-        </ul>
-        <div class="burger">
-            <div></div>
-            <div></div>
-            <div></div>
+        <div class="navbar-container">
+            <div class="logo">
+                <a href="../index.html">
+                    <img src="../assets/image/logo.svg" alt="logo">
+                </a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="../index.html">Trang chủ</a></li>
+                <li><a href="./phong/phong.html">Danh sách phòng</a></li>
+                <li><a href="./tintuc.html">Tin tức</a></li>
+                <li><a href="./thongtin.html">Về chúng tôi</a></li>
+                <li><a href="./dangky/dangky.html" class="login-btn" id="loginBtn">Đăng nhập</a></li>
+                <li class="user-profile-container" style="margin-right: 0; padding-right: 0;">
+                    <div class="user-profile" style="display: none; position: relative;">
+                        <div class="user-avatar">
+                            <img id="userAvatar" src="../assets/image/user/user2.jpg" alt="User Avatar">
+                            <span id="userShortName"></span>
+                            <i class="fas fa-caret-down"></i>
+                        </div>
+                        <div class="dropdown-menu">
+                            <div class="dropdown-item user-info-header">
+                                <img src="../assets/image/user/user2.jpg" alt="User Avatar">
+                                <div>
+                                    <span id="userFullname"></span>
+                                    <small id="userEmail"></small>
+                                </div>
+                            </div>
+                            <a href="../pages/user/profile.html" class="dropdown-item">
+                                <i class="fas fa-user"></i> Tài khoản của tôi
+                            </a>
+                            <a href="../pages/user/posts.html" class="dropdown-item">
+                                <i class="fas fa-list"></i> Bài đăng của tôi
+                            </a>
+                            <a href="../pages/user/saved.html" class="dropdown-item">
+                                <i class="fas fa-bookmark"></i> Phòng đã lưu
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a href="#" class="dropdown-item" onclick="logout()">
+                                <i class="fas fa-sign-out-alt"></i> Đăng xuất
+                            </a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <div class="burger">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
         </div>
     </nav>
 
@@ -46,7 +81,7 @@
 
         <div class="news-grid">
             <article class="news-card">
-                <img src="/assets/image/xuhuong.jpg" alt="Tin tức 1">
+                <img src="../assets/image/xuhuong.jpg" alt="Tin tức 1">
                 <div class="news-content">
                     <span class="news-date">15/03/2024</span>
                     <h3>Xu hướng thị trường phòng trọ 2024</h3>
@@ -56,7 +91,7 @@
             </article>
 
             <article class="news-card">
-                <img src="/assets/image/xuhuong.jpg" alt="Tin tức 2">
+                <img src="../assets/image/xuhuong.jpg" alt="Tin tức 2">
                 <div class="news-content">
                     <span class="news-date">12/03/2024</span>
                     <h3>Mẹo tiết kiệm chi phí khi thuê phòng trọ</h3>
@@ -66,7 +101,7 @@
             </article>
 
             <article class="news-card">
-                <img src="/assets/image/xuhuong.jpg" alt="Tin tức 3">
+                <img src="../assets/image/xuhuong.jpg" alt="Tin tức 3">
                 <div class="news-content">
                     <span class="news-date">10/03/2024</span>
                     <h3>Quyền lợi người thuê phòng trọ</h3>
@@ -76,25 +111,7 @@
             </article>
 
             <article class="news-card">
-                <img src="/assets/image/xuhuong.jpg" alt="Tin tức 4">
-                <div class="news-content">
-                    <span class="news-date">08/03/2024</span>
-                    <h3>Cuộc sống sinh viên xa nhà</h3>
-                    <p>Chia sẻ kinh nghiệm và những câu chuyện thú vị về cuộc sống sinh viên khi thuê phòng trọ...</p>
-                    <a href="#" class="read-more">Đọc thêm</a>
-                </div>
-            </article>
-            <article class="news-card">
-                <img src="/assets/image/xuhuong.jpg" alt="Tin tức 4">
-                <div class="news-content">
-                    <span class="news-date">08/03/2024</span>
-                    <h3>Cuộc sống sinh viên xa nhà</h3>
-                    <p>Chia sẻ kinh nghiệm và những câu chuyện thú vị về cuộc sống sinh viên khi thuê phòng trọ...</p>
-                    <a href="#" class="read-more">Đọc thêm</a>
-                </div>
-            </article>
-            <article class="news-card">
-                <img src="/assets/image/xuhuong.jpg" alt="Tin tức 4">
+                <img src="../assets/image/xuhuong.jpg" alt="Tin tức 4">
                 <div class="news-content">
                     <span class="news-date">08/03/2024</span>
                     <h3>Cuộc sống sinh viên xa nhà</h3>
@@ -114,52 +131,153 @@
     </div>
 
     <footer>
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>Về Nhà Trọ Kết Nối</h3>
-                <p>Website Nhà Trọ Kết Nối là một nơi để kết kết nối tất cả nhà trọ lại với nhau. Để giúp khách hàng có thể tìm
-                    trọ một
-                    cách nhanh nhất và dễ dàng.</p>
-            </div>
-            <div class="footer-section">
-                <h3>Liên Kết Nhanh</h3>
-                <ul>
-                    <li><a href="/index.html">Trang chủ</a></li>
-                    <li><a href="./phong/phong.html">Danh sách phòng</a></li>
-                    <li><a href="#">Tin tức</a></li>
-                    <li><a href="./thongtin.html">Về chúng tôi</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h3>Liên Hệ</h3>
-                <p><i class="fas fa-phone"></i> 0123.456.789</p>
-                <p><i class="fas fa-envelope"></i> huydien23@nhatroketnoi.com</p>
-                <p><i class="fas fa-map-marker-alt"></i> Toàn nhà khu I Đại học Nam Cần Thơ</p>
-            </div>
-        
-            <div class="footer-section">
-                <h3>Đối Tác</h3>
-                <div class="partners-grid">
-                    <a href="https://nctu.edu.vn/" target="_blank" class="partner-item">
-                        <i class="fas fa-university"></i>
-                        <span>Trường Đại học Nam Cần Thơ</span>
-                    </a>
-                    <a href="https://batdongsan.com.vn/" target="_blank" class="partner-item">
-                        <i class="fas fa-building"></i>
-                        <span>Batdongsan.com.vn</span>
-                    </a>
-                    <a href="https://www.chotot.com/" target="_blank" class="partner-item">
-                        <i class="fas fa-home"></i>
-                        <span>Chotot.com</span>
-                    </a>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Về Nhà Trọ Kết Nối</h3>
+                    <p>Website Nhà Trọ Kết Nối là một nơi để kết kết nối tất cả nhà trọ lại với nhau. Để giúp khách hàng có thể tìm
+                        trọ một
+                        cách nhanh nhất và dễ dàng.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Liên Kết Nhanh</h3>
+                    <ul>
+                        <li><a href="../index.html">Trang chủ</a></li>
+                        <li><a href="./phong/phong.html">Danh sách phòng</a></li>
+                        <li><a href="./tintuc.html">Tin tức</a></li>
+                        <li><a href="./thongtin.html">Về chúng tôi</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Liên Hệ</h3>
+                    <p><i class="fas fa-phone"></i> 0123.456.789</p>
+                    <p><i class="fas fa-envelope"></i> huydien23@nhatroketnoi.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Toàn nhà khu I Đại học Nam Cần Thơ</p>
+                </div>
+            
+                <div class="footer-section">
+                    <h3>Đối Tác</h3>
+                    <div class="partners-grid">
+                        <a href="https://nctu.edu.vn/" target="_blank" class="partner-item">
+                            <i class="fas fa-university"></i>
+                            <span>Trường Đại học Nam Cần Thơ</span>
+                        </a>
+                        <a href="https://batdongsan.com.vn/" target="_blank" class="partner-item">
+                            <i class="fas fa-building"></i>
+                            <span>Batdongsan.com.vn</span>
+                        </a>
+                        <a href="https://www.chotot.com/" target="_blank" class="partner-item">
+                            <i class="fas fa-home"></i>
+                            <span>Chotot.com</span>
+                        </a>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2024 Nhà Trọ Kết Nối.</p>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Nhà Trọ Kết Nối.</p>
+            </div>
         </div>
     </footer>
 
-    <script src="/assets/js/main.js"></script>
+    <!-- Nút cuộn lên đầu trang -->
+    <button id="scrollTopBtn" class="scroll-top-btn">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="../assets/js/main.js"></script>
+    <!-- Script xử lý đăng nhập -->
+    <script>
+        // Kiểm tra và hiển thị thông tin người dùng đã đăng nhập
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+            const userProfile = document.querySelector('.user-profile');
+            const loginBtn = document.getElementById('loginBtn');
+            
+            if (currentUser) {
+                // Ẩn nút đăng nhập
+                if (loginBtn) {
+                    loginBtn.style.display = 'none';
+                }
+                
+                // Hiển thị thông tin người dùng
+                if (userProfile) {
+                    userProfile.style.display = 'flex';
+                    
+                    // Hiển thị tên người dùng rút gọn
+                    const fullName = currentUser.fullname;
+                    const shortName = getShortName(fullName);
+                    document.getElementById('userShortName').textContent = shortName;
+                    
+                    // Hiển thị thông tin đầy đủ trong dropdown
+                    document.getElementById('userFullname').textContent = fullName;
+                    document.getElementById('userEmail').textContent = currentUser.email || '';
+                    
+                    // Xử lý dropdown khi click
+                    const userAvatar = document.querySelector('.user-avatar');
+                    if (userAvatar) {
+                        userAvatar.addEventListener('click', function(event) {
+                            event.stopPropagation(); // Ngăn sự kiện click lan ra document
+                            userProfile.classList.toggle('active');
+                        });
+                        
+                        // Đóng dropdown khi click bên ngoài
+                        document.addEventListener('click', function(event) {
+                            if (!userProfile.contains(event.target)) {
+                                userProfile.classList.remove('active');
+                            }
+                        });
+                    }
+                }
+            } else {
+                // Hiển thị nút đăng nhập
+                if (loginBtn) {
+                    loginBtn.style.display = 'block';
+                }
+                // Ẩn thông tin người dùng
+                if (userProfile) {
+                    userProfile.style.display = 'none';
+                }
+            }
+            
+            // Nút cuộn lên đầu trang
+            const scrollTopBtn = document.getElementById('scrollTopBtn');
+            window.addEventListener('scroll', function() {
+                if (window.pageYOffset > 300) {
+                    scrollTopBtn.classList.add('visible');
+                } else {
+                    scrollTopBtn.classList.remove('visible');
+                }
+            });
+            
+            scrollTopBtn.addEventListener('click', function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Hàm lấy tên ngắn gọn từ họ tên đầy đủ
+        function getShortName(fullName) {
+            if (!fullName) return '';
+            
+            // Tách tên thành các phần
+            const nameParts = fullName.trim().split(' ');
+            
+            // Nếu chỉ có một từ, trả về từ đó
+            if (nameParts.length === 1) {
+                return nameParts[0];
+            }
+            
+            // Lấy tên (phần cuối cùng)
+            return nameParts[nameParts.length - 1];
+        }
+        
+        // Hàm đăng xuất
+        function logout() {
+            localStorage.removeItem('currentUser');
+            window.location.href = '../pages/dangky/dangnhap.html';
+        }
+    </script>
 </body>
 </html> 

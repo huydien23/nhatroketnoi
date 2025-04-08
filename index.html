@@ -7,26 +7,60 @@
     <link rel="shortcut icon" href="assets/image/favicon.svg" type="image/x-icon">
     <link rel="stylesheet" href="assets/css/layouts/main.css">
     <link rel="stylesheet" href="assets/css/pages/index.css">
+    <link rel="stylesheet" href="assets/css/pages/auth.css">
+    <link rel="stylesheet" href="assets/css/user-dropdown.css">
+    <script src="assets/js/auth.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
     <nav class="navbar">
-        <div class="logo">
-            <a href="index.html">
-                <img src="assets/image/logo.svg" alt="logo">
-            </a> 
-        </div>
-        <ul class="nav-links">
-            <li><a href="#">Trang chủ</a></li>
-            <li><a href="./pages/phong/phong.html">Danh sách phòng</a></li>
-            <li><a href="./pages/tintuc.html">Tin tức</a></li>
-            <li><a href="./pages/thongtin.html">Về chúng tôi</a></li>
-            <li><a href="./pages/dangky/dangky.html" class="login-btn">Đăng nhập</a></li>
-        </ul>
-        <div class="burger">
-            <div></div>
-            <div></div>
-            <div></div>
+        <div class="navbar-container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="assets/image/logo.svg" alt="logo">
+                </a> 
+            </div>
+            <ul class="nav-links">
+                <li><a href="#">Trang chủ</a></li>
+                <li><a href="./pages/phong/phong.html">Danh sách phòng</a></li>
+                <li><a href="./pages/tintuc.html">Tin tức</a></li>
+                <li><a href="./pages/thongtin.html">Về chúng tôi</a></li>
+                <li><a href="./pages/dangky/dangky.html" class="login-btn" id="loginBtn">Đăng nhập</a></li>
+                <li class="user-profile" style="display: none;">
+                    <div class="user-avatar">
+                        <img id="userAvatar" src="assets/image/user/user2.jpg" alt="User Avatar">
+                        <span id="userShortName"></span>
+                        <i class="fas fa-caret-down"></i>
+                    </div>
+                    <div class="dropdown-menu">
+                        <div class="dropdown-item user-info-header">
+                            <img src="assets/image/user/user2.jpg" alt="User Avatar">
+                            <div>
+                                <span id="userFullname"></span>
+                                <small id="userEmail"></small>
+                            </div>
+                        </div>
+                        <a href="./pages/user/profile.html" class="dropdown-item">
+                            <i class="fas fa-user"></i> Tài khoản của tôi
+                        </a>
+                        <a href="./pages/user/posts.html" class="dropdown-item">
+                            <i class="fas fa-list"></i> Bài đăng của tôi
+                        </a>
+                        <a href="./pages/user/saved.html" class="dropdown-item">
+                            <i class="fas fa-bookmark"></i> Phòng đã lưu
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item" onclick="logout()">
+                            <i class="fas fa-sign-out-alt"></i> Đăng xuất
+                        </a>
+                    </div>
+                </li>
+            </ul>
+            <div class="burger">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
         </div>
     </nav>
 
@@ -67,147 +101,153 @@
     </section> -->
 
     <section class="featured-rooms">
-        <h2>Phòng Trọ Nổi Bật</h2>
-        <div class="room-grid">
-            <div class="room-card">
-                <img src="./assets/image/nhatro1.jpg" alt="Phòng trọ 1">
-                <div class="room-info">
-                    <h3>Phòng trọ đẹp, gần trung tâm</h3>
-                    <p class="price">2.5 triệu/tháng</p>
-                    <p class="location"><i class="fas fa-map-marker-alt"></i> Ninh Kiều - Cần Thơ</p>
-                    <a href="pages/phong/mota.html" class="view-detail">Xem chi tiết</a>
+        <div class="container">
+            <h2>Phòng Trọ Nổi Bật</h2>
+            <div class="room-grid">
+                <div class="room-card">
+                    <img src="./assets/image/nhatro1.jpg" alt="Phòng trọ 1">
+                    <div class="room-info">
+                        <h3>Phòng trọ đẹp, gần trung tâm</h3>
+                        <p class="price">2.5 triệu/tháng</p>
+                        <p class="location"><i class="fas fa-map-marker-alt"></i> Ninh Kiều - Cần Thơ</p>
+                        <a href="pages/phong/mota.html" class="view-detail">Xem chi tiết</a>
+                    </div>
                 </div>
-            </div>
-            <div class="room-card">
-                <img src="./assets/image/nhatro1.jpg" alt="Phòng trọ 2">
-                <div class="room-info">
-                    <h3>Phòng trọ mới, đầy đủ tiện nghi</h3>
-                    <p class="price">3 triệu/tháng</p>
-                    <p class="location"><i class="fas fa-map-marker-alt"></i> Ninh Kiều - Cần Thơ</p>
-                    <a href="pages/phong/mota.html" class="view-detail">Xem chi tiết</a>
+                <div class="room-card">
+                    <img src="./assets/image/nhatro1.jpg" alt="Phòng trọ 2">
+                    <div class="room-info">
+                        <h3>Phòng trọ mới</h3>
+                        <p class="price">3 triệu/tháng</p>
+                        <p class="location"><i class="fas fa-map-marker-alt"></i> Ninh Kiều - Cần Thơ</p>
+                        <a href="pages/phong/mota.html" class="view-detail">Xem chi tiết</a>
+                    </div>
                 </div>
-            </div>
-            <div class="room-card">
-                <img src="./assets/image/nhatro1.jpg" alt="Phòng trọ 3">
-                <div class="room-info">
-                    <h3>Phòng trọ giá rẻ, an ninh</h3>
-                    <p class="price">1.8 triệu/tháng</p>
-                    <p class="location"><i class="fas fa-map-marker-alt"></i> Ninh Kiều - Cần Thơ</p>
-                    <a href="pages/phong/mota.html" class="view-detail">Xem chi tiết</a>
+                <div class="room-card">
+                    <img src="./assets/image/nhatro1.jpg" alt="Phòng trọ 3">
+                    <div class="room-info">
+                        <h3>Phòng trọ giá rẻ, an ninh</h3>
+                        <p class="price">1.8 triệu/tháng</p>
+                        <p class="location"><i class="fas fa-map-marker-alt"></i> Ninh Kiều - Cần Thơ</p>
+                        <a href="pages/phong/mota.html" class="view-detail">Xem chi tiết</a>
+                    </div>
                 </div>
-            </div>
-            <div class="room-card">
-                <img src="./assets/image/nhatro1.jpg" alt="Phòng trọ 3">
-                <div class="room-info">
-                    <h3>Phòng trọ giá rẻ, an ninh</h3>
-                    <p class="price">1.8 triệu/tháng</p>
-                    <p class="location"><i class="fas fa-map-marker-alt"></i> Ninh Kiều - Cần Thơ</p>
-                    <a href="pages/phong/mota.html" class="view-detail">Xem chi tiết</a>
+                <div class="room-card">
+                    <img src="./assets/image/nhatro1.jpg" alt="Phòng trọ 4">
+                    <div class="room-info">
+                        <h3>Phòng trọ giá rẻ, an ninh</h3>
+                        <p class="price">1.8 triệu/tháng</p>
+                        <p class="location"><i class="fas fa-map-marker-alt"></i> Ninh Kiều - Cần Thơ</p>
+                        <a href="pages/phong/mota.html" class="view-detail">Xem chi tiết</a>
+                    </div>
                 </div>
-            </div>
-            <div class="room-card">
-                <img src="./assets/image/nhatro1.jpg" alt="Phòng trọ 3">
-                <div class="room-info">
-                    <h3>Phòng trọ giá rẻ, an ninh</h3>
-                    <p class="price">1.8 triệu/tháng</p>
-                    <p class="location"><i class="fas fa-map-marker-alt"></i> Ninh Kiều - Cần Thơ</p>
-                    <a href="pages/phong/mota.html" class="view-detail">Xem chi tiết</a>
+                <div class="room-card">
+                    <img src="./assets/image/nhatro1.jpg" alt="Phòng trọ 5">
+                    <div class="room-info">
+                        <h3>Phòng trọ giá rẻ, an ninh</h3>
+                        <p class="price">1.8 triệu/tháng</p>
+                        <p class="location"><i class="fas fa-map-marker-alt"></i> Ninh Kiều - Cần Thơ</p>
+                        <a href="pages/phong/mota.html" class="view-detail">Xem chi tiết</a>
+                    </div>
                 </div>
-            </div>
-            <div class="room-card">
-                <img src="./assets/image/nhatro1.jpg" alt="Phòng trọ 3">
-                <div class="room-info">
-                    <h3>Phòng trọ giá rẻ, an ninh</h3>
-                    <p class="price">1.8 triệu/tháng</p>
-                    <p class="location"><i class="fas fa-map-marker-alt"></i> Ninh Kiều - Cần Thơ</p>
-                    <a href="pages/phong/mota.html" class="view-detail">Xem chi tiết</a>
+                <div class="room-card">
+                    <img src="./assets/image/nhatro1.jpg" alt="Phòng trọ 6">
+                    <div class="room-info">
+                        <h3>Phòng trọ giá rẻ, an ninh</h3>
+                        <p class="price">1.8 triệu/tháng</p>
+                        <p class="location"><i class="fas fa-map-marker-alt"></i> Ninh Kiều - Cần Thơ</p>
+                        <a href="pages/phong/mota.html" class="view-detail">Xem chi tiết</a>
+                    </div>
                 </div>
-            </div>
-            <div class="room-card">
-                <img src="./assets/image/nhatro1.jpg" alt="Phòng trọ 3">
-                <div class="room-info">
-                    <h3>Phòng trọ giá rẻ, an ninh</h3>
-                    <p class="price">1.8 triệu/tháng</p>
-                    <p class="location"><i class="fas fa-map-marker-alt"></i> Ninh Kiều - Cần Thơ</p>
-                    <a href="pages/phong/mota.html" class="view-detail">Xem chi tiết</a>
+                <div class="room-card">
+                    <img src="./assets/image/nhatro1.jpg" alt="Phòng trọ 7">
+                    <div class="room-info">
+                        <h3>Phòng trọ giá rẻ, an ninh</h3>
+                        <p class="price">1.8 triệu/tháng</p>
+                        <p class="location"><i class="fas fa-map-marker-alt"></i> Ninh Kiều - Cần Thơ</p>
+                        <a href="pages/phong/mota.html" class="view-detail">Xem chi tiết</a>
+                    </div>
                 </div>
-            </div>
-            <div class="room-card">
-                <img src="./assets/image/nhatro1.jpg" alt="Phòng trọ 3">
-                <div class="room-info">
-                    <h3>Phòng trọ giá rẻ, an ninh</h3>
-                    <p class="price">1.8 triệu/tháng</p>
-                    <p class="location"><i class="fas fa-map-marker-alt"></i> Ninh Kiều - Cần Thơ</p>
-                    <a href="pages/phong/mota.html" class="view-detail">Xem chi tiết</a>
+                <div class="room-card">
+                    <img src="./assets/image/nhatro1.jpg" alt="Phòng trọ 8">
+                    <div class="room-info">
+                        <h3>Phòng trọ giá rẻ, an ninh</h3>
+                        <p class="price">1.8 triệu/tháng</p>
+                        <p class="location"><i class="fas fa-map-marker-alt"></i> Ninh Kiều - Cần Thơ</p>
+                        <a href="pages/phong/mota.html" class="view-detail">Xem chi tiết</a>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <section class="features">
-        <h2>Tại Sao Chọn Chúng Tôi</h2>
-        <div class="features-grid">
-            <div class="feature">
-                <i class="fas fa-search"></i>
-                <h3>Tìm Kiếm Dễ Dàng</h3>
-                <p>Tìm phòng trọ phù hợp với nhu cầu của bạn</p>
-            </div>
-            <div class="feature">
-                <i class="fas fa-shield-alt"></i>
-                <h3>Uy Tín</h3>
-                <p>Đảm bảo thông tin chính xác từ chủ nhà</p>
-            </div>
-            <div class="feature">
-                <i class="fas fa-handshake"></i>
-                <h3>Kết Nối Nhanh</h3>
-                <p>Liên hệ trực tiếp với chủ nhà</p>
+        <div class="container">
+            <h2>Tại Sao Chọn Chúng Tôi</h2>
+            <div class="features-grid">
+                <div class="feature">
+                    <i class="fas fa-search"></i>
+                    <h3>Tìm Kiếm Dễ Dàng</h3>
+                    <p>Tìm phòng trọ phù hợp với nhu cầu của bạn</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Uy Tín</h3>
+                    <p>Đảm bảo thông tin chính xác từ chủ nhà</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-handshake"></i>
+                    <h3>Kết Nối Nhanh</h3>
+                    <p>Liên hệ trực tiếp với chủ nhà</p>
+                </div>
             </div>
         </div>
     </section>
 
     <footer>
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>Về Nhà Trọ Kết Nối</h3>
-                <p>Website Nhà Trọ Kết Nối là một nơi để kết kết nối tất cả nhà trọ lại với nhau. Để giúp khách hàng có thể tìm trọ một
-                cách nhanh nhất và dễ dàng.</p>
-            </div>
-            <div class="footer-section">
-                <h3>Liên Kết Nhanh</h3>
-                <ul>
-                    <li><a href="#">Trang chủ</a></li>
-                    <li><a href="./pages/phong/phong.html">Danh sách phòng</a></li>
-                    <li><a href="./pages/tintuc.html">Tin tức</a></li>
-                    <li><a href="./pages/thongtin.html">Về chúng tôi</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h3>Liên Hệ</h3>
-                <p><i class="fas fa-phone"></i> 0123.456.789</p>
-                <p><i class="fas fa-envelope"></i> huydien23@nhatroketnoi.com</p>
-                <p><i class="fas fa-map-marker-alt"></i> Toàn nhà khu I Đại học Nam Cần Thơ</p>
-            </div>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Về Nhà Trọ Kết Nối</h3>
+                    <p>Website Nhà Trọ Kết Nối là một nơi để kết kết nối tất cả nhà trọ lại với nhau. Để giúp khách hàng có thể tìm trọ một
+                    cách nhanh nhất và dễ dàng.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Liên Kết Nhanh</h3>
+                    <ul>
+                        <li><a href="#">Trang chủ</a></li>
+                        <li><a href="./pages/phong/phong.html">Danh sách phòng</a></li>
+                        <li><a href="./pages/tintuc.html">Tin tức</a></li>
+                        <li><a href="./pages/thongtin.html">Về chúng tôi</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Liên Hệ</h3>
+                    <p><i class="fas fa-phone"></i> 0123.456.789</p>
+                    <p><i class="fas fa-envelope"></i> huydien23@nhatroketnoi.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Toàn nhà khu I Đại học Nam Cần Thơ</p>
+                </div>
 
-            <div class="footer-section">
-                <h3>Đối Tác</h3>
-                <div class="partners-grid">
-                    <a href="https://nctu.edu.vn/" target="_blank" class="partner-item">
-                        <i class="fas fa-university"></i>
-                        <span>Trường Đại học Nam Cần Thơ</span>
-                    </a>
-                    <a href="https://batdongsan.com.vn/" target="_blank" class="partner-item">
-                        <i class="fas fa-building"></i>
-                        <span>Batdongsan.com.vn</span>
-                    </a>
-                    <a href="https://www.chotot.com/" target="_blank" class="partner-item">
-                        <i class="fas fa-home"></i>
-                        <span>Chotot.com</span>
-                    </a>
+                <div class="footer-section">
+                    <h3>Đối Tác</h3>
+                    <div class="partners-grid">
+                        <a href="https://nctu.edu.vn/" target="_blank" class="partner-item">
+                            <i class="fas fa-university"></i>
+                            <span>Trường Đại học Nam Cần Thơ</span>
+                        </a>
+                        <a href="https://batdongsan.com.vn/" target="_blank" class="partner-item">
+                            <i class="fas fa-building"></i>
+                            <span>Batdongsan.com.vn</span>
+                        </a>
+                        <a href="https://www.chotot.com/" target="_blank" class="partner-item">
+                            <i class="fas fa-home"></i>
+                            <span>Chotot.com</span>
+                        </a>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2024 Nhà Trọ Kết Nối.</p>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Nhà Trọ Kết Nối.</p>
+            </div>
         </div>
     </footer>
 
@@ -231,9 +271,6 @@
     <button class="chatbot-toggle">
         <i class="fas fa-comments"></i>
     </button>
-    <!-- <button id="scroll-to-top" class="scroll-top-btn">
-        <i class="fas fa-arrow-up"></i>
-    </button> -->
     <script src="assets/js/ai-chat.js"></script>
     <script src="assets/js/main.js"></script>
 </body>

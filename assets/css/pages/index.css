@@ -25,13 +25,13 @@
 }
 
 .hero .container {
-    width: 90%;
-    max-width: 1200px;
+    width: 100%;
+    max-width: 1440px;
     margin: 0 auto;
 }
 
 .hero-content {
-    max-width: 800px;
+    max-width: 900px;
     margin: 0 auto;
 }
 
@@ -49,7 +49,7 @@
 
 .search-box {
     display: flex;
-    max-width: 1200px;
+    max-width: 800px;
     margin: 0 auto;
     background: white;
     border-radius: 15px;
@@ -105,8 +105,8 @@
 }
 
 .features {
-    padding: 80px 0;
-    background-color: var(--white);
+    padding: 5rem 0 7rem;
+    background-color: var(--light-background);
 }
 
 .feature-cards {
@@ -176,7 +176,7 @@
 }
 
 .featured-rooms {
-    padding: 5rem 5%;
+    padding: 7rem 0 5rem;
 }
 
 .featured-rooms h2 {
@@ -189,7 +189,7 @@
 .room-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 2rem;
+    gap: 2.5rem;
 }
 
 .room-card {
@@ -245,47 +245,50 @@
 }
 
 /* Add responsive */
-@media (max-width: 1200px) {
+@media (max-width: 1440px) {
     .room-grid {
         grid-template-columns: repeat(3, 1fr);
     }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1100px) {
     .room-grid {
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
     .room-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(1, 1fr);
     }
 }
 
-.features {
-    background-color: #f9f9f9;
-    padding: 5rem 5%;
-    text-align: center;
-}
-
 .features h2 {
-    font-size: 2rem;
-    margin-bottom: 3rem;
-    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #333;
+    padding-bottom: 15px;
 }
 
 .features-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
+    margin-top: 2rem;
 }
 
 .feature {
-    padding: 2rem;
+    padding: 2.5rem;
     background: white;
     border-radius: 10px;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.feature:hover {
+    transform: translateY(-10px);
 }
 
 .feature i {
@@ -495,4 +498,14 @@
 
 .scroll-top-btn:hover {
     transform: scale(1.1);
+}
+
+/* Thêm margin cho các section chính */
+section {
+    margin: 2rem 0;
+}
+
+/* Điều chỉnh khoảng cách giữa các section */
+.featured-rooms + .features {
+    margin-top: 3rem;
 }

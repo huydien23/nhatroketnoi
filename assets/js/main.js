@@ -30,7 +30,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Hiệu ứng chuyển động
+// Hiệu ứng chuyển động cho các phòng trọ
 const roomCards = document.querySelectorAll('.room-card');
 roomCards.forEach(card => {
     card.addEventListener('mouseenter', () => {
@@ -38,35 +38,6 @@ roomCards.forEach(card => {
     });
     card.addEventListener('mouseleave', () => {
         card.style.transform = 'translateY(0)';
-    });
-});
-
-// Kiểm tra định dạng form
-const forms = document.querySelectorAll('form');
-forms.forEach(form => {
-    form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        
-        // Kiểm tra định dạng form
-        const inputs = form.querySelectorAll('input[required]');
-        let isValid = true;
-
-        inputs.forEach(input => {
-            if (!input.value.trim()) {
-                isValid = false;
-                input.classList.add('error');
-            } else {
-                input.classList.remove('error');
-            }
-        });
-
-        if (isValid) {
-
-            alert('Form submitted successfully!');
-            form.reset();
-        } else {
-            alert('Please fill in all required fields.');
-        }
     });
 });
 
@@ -91,7 +62,7 @@ scrollBtn.addEventListener('click', () => {
     });
 });
 
-// Thêm một số CSS cho nút cuộn lên trên
+// Thêm CSS cho nút cuộn lên trên
 const style = document.createElement('style');
 style.textContent = `
     .scroll-top {
@@ -115,105 +86,88 @@ style.textContent = `
     }
 `;
 document.head.appendChild(style);
-
-// Chức năng chatbot
-document.addEventListener('DOMContentLoaded', function () {
-    const chatbotContainer = document.querySelector('.chatbot-container');
-    const chatbotToggle = document.querySelector('.chatbot-toggle');
-    const closeChatbot = document.querySelector('.close-chatbot');
-    const messageInput = document.querySelector('.chatbot-input input');
-    const sendButton = document.querySelector('.send-message');
-    const messagesContainer = document.querySelector('.chatbot-messages');
-    let isProcessing = false;
-
-    // Chuyển đổi chatbot
-    chatbotToggle.addEventListener('click', () => {
-        chatbotContainer.classList.toggle('active');
-        if (chatbotContainer.classList.contains('active')) {
-            messageInput.focus(); // Focus input when opening chat
+// Kiểm tra và hiển thị thông tin người dùng đã đăng nhập
+document.addEventListener('DOMContentLoaded', function() {
+    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    const userProfileContainer = document.querySelector('.user-profile');
+    const loginBtn = document.getElementById('loginBtn');
+    
+    if (currentUser && userProfileContainer) {
+        // Ẩn nút đăng nhập
+        if (loginBtn) {
+            loginBtn.style.display = 'none';
         }
-    });
-
-    closeChatbot.addEventListener('click', () => {
-        chatbotContainer.classList.remove('active');
-    });
-
-    // Gửi tin nhắn
-    async function sendMessage() {
-        const message = messageInput.value.trim();
-        if (message && !isProcessing) {
-            isProcessing = true;
-            sendButton.disabled = true;
-
-            // Thêm tin nhắn người dùng vào chat
-            addMessage(message, 'user');
-            messageInput.value = '';
-
-            // Thêm chỉ báo đang gõ
-            const typingIndicator = addTypingIndicator();
-
-            try {
-                // Gọi API để lấy phản hồi từ AI
-                const response = await getAIResponse(message);
-                typingIndicator.remove();
-                addMessage(response, 'bot');
-            } catch (error) {
-                console.error('Chatbot Error:', error);
-                typingIndicator.remove();
-                addMessage('Xin lỗi, tôi đang gặp sự cố. Vui lòng thử lại sau.', 'bot');
-            } finally {
-                isProcessing = false;
-                sendButton.disabled = false;
-                messageInput.focus();
+        
+        // Hiển thị thông tin người dùng
+        userProfileContainer.style.display = 'flex';
+        
+        // Hiển thị tên người dùng rút gọn
+        const fullName = currentUser.fullname;
+        const shortName = getShortName(fullName);
+        document.getElementById('userShortName').textContent = shortName;
+        
+        // Hiển thị thông tin đầy đủ trong dropdown
+        document.getElementById('userFullname').textContent = fullName;
+        document.getElementById('userEmail').textContent = currentUser.email || '';
+        
+        // Thêm xử lý cho dropdown khi click
+        const userAvatar = document.querySelector('.user-avatar');
+        if (userAvatar) {
+            userAvatar.addEventListener('click', function(event) {
+                event.stopPropagation(); // Ngăn sự kiện click lan ra document
+                userProfileContainer.classList.toggle('active');
+            });
+            
+            // Đóng dropdown khi click bên ngoài
+            document.addEventListener('click', function(event) {
+                if (!userProfileContainer.contains(event.target)) {
+                    userProfileContainer.classList.remove('active');
+                }
+            });
+            
+            // Ngăn sự kiện click bên trong dropdown lan ra
+            const dropdownMenu = document.querySelector('.dropdown-menu');
+            if (dropdownMenu) {
+                dropdownMenu.addEventListener('click', function(event) {
+                    // Không đóng dropdown khi click vào các menu item
+                    // trừ khi đó là nút đăng xuất
+                    if (!event.target.closest('.dropdown-item[onclick="logout()"]')) {
+                        event.stopPropagation();
+                    }
+                });
             }
         }
-    }
-
-    // Lấy phản hồi từ AI (giả lập hoặc gọi API thực tế)
-    async function getAIResponse(message) {
-        // Giả lập thời gian phản hồi
-        await new Promise(resolve => setTimeout(resolve, 1000));
-        const responses = [
-            "Cảm ơn bạn đã hỏi!",
-            "Tôi không chắc về điều đó.",
-            "Có vẻ như bạn đang gặp khó khăn.",
-            "Bạn có thể cho tôi biết thêm chi tiết không?",
-            "Tôi sẽ cố gắng giúp bạn."
-        ];
-        return responses[Math.floor(Math.random() * responses.length)];
-    }
-
-    // Thêm tin nhắn vào giao diện
-    function addMessage(text, sender) {
-        const messageDiv = document.createElement('div');
-        messageDiv.classList.add('message', sender === 'user' ? 'user-message' : 'bot-message');
-        messageDiv.textContent = text;
-        messagesContainer.appendChild(messageDiv);
-        messagesContainer.scrollTop = messagesContainer.scrollHeight;
-    }
-
-    // Thêm chỉ báo đang gõ
-    function addTypingIndicator() {
-        const typingDiv = document.createElement('div');
-        typingDiv.classList.add('message', 'bot-message', 'typing-indicator');
-        typingDiv.innerHTML = '<span></span><span></span><span></span>';
-        messagesContainer.appendChild(typingDiv);
-        messagesContainer.scrollTop = messagesContainer.scrollHeight;
-        return typingDiv;
-    }
-
-    // Xử lý sự kiện gửi tin nhắn
-    sendButton.addEventListener('click', sendMessage);
-    messageInput.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter' && !isProcessing) {
-            sendMessage();
+    } else {
+        // Hiển thị nút đăng nhập
+        if (loginBtn) {
+            loginBtn.style.display = 'block';
         }
-    });
-
-    // Ngăn chặn gửi form khi nhấn Enter
-    messageInput.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter') {
-            e.preventDefault();
+        // Ẩn thông tin người dùng
+        if (userProfileContainer) {
+            userProfileContainer.style.display = 'none';
         }
-    });
+    }
 });
+
+// Hàm lấy tên ngắn gọn từ họ tên đầy đủ
+function getShortName(fullName) {
+    if (!fullName) return '';
+    
+    // Tách tên thành các phần
+    const nameParts = fullName.trim().split(' ');
+    
+    // Nếu chỉ có một từ, trả về từ đó
+    if (nameParts.length === 1) {
+        return nameParts[0];
+    }
+    
+    // Lấy tên (phần cuối cùng)
+    return nameParts[nameParts.length - 1];
+}
+
+// Hàm đăng xuất
+function logout() {
+    localStorage.removeItem('currentUser');
+    window.location.href = 'pages/dangky/dangnhap.html';
+}
+
