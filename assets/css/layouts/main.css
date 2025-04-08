@@ -91,11 +91,28 @@ body {
     color: #2c3e50;
     text-decoration: none;
     font-weight: 500;
-    transition: color 0.3s ease;
+    transition: all 0.3s ease;
     display: flex;
     align-items: center;
     height: 100%;
     padding: 0.5rem 0;
+    position: relative;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #3498db;
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+    width: 70%;
 }
 
 .nav-links a:hover {
@@ -108,10 +125,18 @@ body {
     padding: 0.5rem 1rem !important;
     border-radius: 5px;
     height: auto !important;
+    position: relative;
+    overflow: hidden;
+}
+
+.login-btn::after {
+    display: none;
 }
 
 .login-btn:hover {
     background-color: #2980b9;
+    transform: translateY(-2px);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
 
 footer {
@@ -169,7 +194,7 @@ footer {
     cursor: pointer;
 }
 
-/* Partner section styling */
+/* Kiểu dáng phần đối tác */
 .partners-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -297,4 +322,84 @@ main {
 
 html {
     height: 100%;
+}
+
+/* Loại bỏ hiệu ứng gạch chân cho menu user */
+.user-profile-container a::after {
+    display: none;
+}
+
+.user-profile-container a:hover {
+    color: #3498db;
+}
+
+/* Hiệu ứng hover cho các mục trong dropdown menu */
+.dropdown-item {
+    display: block;
+    width: 100%;
+    padding: 10px 15px;
+    transition: all 0.3s ease;
+}
+
+.dropdown-item:hover {
+    background-color: #f8f9fa;
+    color: #3498db;
+}
+
+.dropdown-item:hover i {
+    color: #3498db;
+}
+
+/* Đảm bảo dropdown menu có chiều rộng đủ */
+.dropdown-menu {
+    min-width: 200px;
+    width: 100%;
+}
+
+/* Đảm bảo các liên kết trong dropdown menu chiếm toàn bộ chiều rộng */
+.dropdown-menu a {
+    display: block;
+    width: 100%;
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Kiểu dáng breadcrumb */
+.breadcrumb {
+    background-color: #f8f9fa;
+    padding: 10px 0;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+.breadcrumb-container {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.breadcrumb-item {
+    display: flex;
+    align-items: center;
+    color: #6c757d;
+    font-size: 0.9rem;
+}
+
+.breadcrumb-item a {
+    color: #3498db;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.breadcrumb-item a:hover {
+    color: #2980b9;
+}
+
+.breadcrumb-item.active {
+    color: #6c757d;
+}
+
+.breadcrumb-separator {
+    margin: 0 8px;
+    color: #6c757d;
 } 

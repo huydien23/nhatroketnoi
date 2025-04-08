@@ -1,14 +1,14 @@
-/* Main container */
+/* Khung chứa chính */
 .rooms-container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 2rem;
 }
 
-/* Page title */
+/* Tiêu đề trang */
 .page-title {
     text-align: center;
-    margin: 2rem 0 72px;
+    margin: 6rem 0 72px;
     color: #333;
     font-size: 2rem;
     font-weight: bold;
@@ -16,7 +16,7 @@
     width: 100%;
 }
 
-/* Search section */
+/* Phần tìm kiếm */
 .search-section {
     background: #fff;
     padding: 1.5rem;
@@ -42,7 +42,7 @@
     appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
-    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-image: url(""); /*bổ sung ảnh*/
     background-repeat: no-repeat;
     background-position: right 0.75rem center;
     background-size: 1em;
@@ -69,7 +69,7 @@
     background: #0056b3;
 }
 
-/* Rooms grid */
+/* Lưới phòng */
 .rooms-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -146,7 +146,7 @@
     background: #0056b3;
 }
 
-/* Pagination */
+/* Phân trang */
 .pagination {
     display: flex;
     justify-content: center;
@@ -173,7 +173,7 @@
     border-color: #007bff;
 }
 
-/* Responsive design */
+/* Thiết kế responsive */
 @media (max-width: 1200px) {
     .rooms-grid {
         grid-template-columns: repeat(3, 1fr);

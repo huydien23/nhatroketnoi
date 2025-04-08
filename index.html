@@ -26,33 +26,35 @@
                 <li><a href="./pages/tintuc.html">Tin tức</a></li>
                 <li><a href="./pages/thongtin.html">Về chúng tôi</a></li>
                 <li><a href="./pages/dangky/dangky.html" class="login-btn" id="loginBtn">Đăng nhập</a></li>
-                <li class="user-profile" style="display: none;">
-                    <div class="user-avatar">
-                        <img id="userAvatar" src="assets/image/user/user2.jpg" alt="User Avatar">
-                        <span id="userShortName"></span>
-                        <i class="fas fa-caret-down"></i>
-                    </div>
-                    <div class="dropdown-menu">
-                        <div class="dropdown-item user-info-header">
-                            <img src="assets/image/user/user2.jpg" alt="User Avatar">
-                            <div>
-                                <span id="userFullname"></span>
-                                <small id="userEmail"></small>
-                            </div>
+                <li class="user-profile-container" style="margin-right: 0; padding-right: 0;">
+                    <div class="user-profile" style="display: none; position: relative;">
+                        <div class="user-avatar">
+                            <img id="userAvatar" src="assets/image/user/user2.jpg" alt="User Avatar">
+                            <span id="userShortName"></span>
+                            <i class="fas fa-caret-down"></i>
                         </div>
-                        <a href="./pages/user/profile.html" class="dropdown-item">
-                            <i class="fas fa-user"></i> Tài khoản của tôi
-                        </a>
-                        <a href="./pages/user/posts.html" class="dropdown-item">
-                            <i class="fas fa-list"></i> Bài đăng của tôi
-                        </a>
-                        <a href="./pages/user/saved.html" class="dropdown-item">
-                            <i class="fas fa-bookmark"></i> Phòng đã lưu
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item" onclick="logout()">
-                            <i class="fas fa-sign-out-alt"></i> Đăng xuất
-                        </a>
+                        <div class="dropdown-menu">
+                            <div class="dropdown-item user-info-header">
+                                <img src="assets/image/user/user2.jpg" alt="User Avatar">
+                                <div>
+                                    <span id="userFullname"></span>
+                                    <small id="userEmail"></small>
+                                </div>
+                            </div>
+                            <a href="./pages/user/profile.html" class="dropdown-item">
+                                <i class="fas fa-user"></i> Tài khoản của tôi
+                            </a>
+                            <a href="./pages/user/posts.html" class="dropdown-item">
+                                <i class="fas fa-list"></i> Bài đăng của tôi
+                            </a>
+                            <a href="./pages/user/saved.html" class="dropdown-item">
+                                <i class="fas fa-bookmark"></i> Phòng đã lưu
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a href="#" class="dropdown-item" onclick="logout()">
+                                <i class="fas fa-sign-out-alt"></i> Đăng xuất
+                            </a>
+                        </div>
                     </div>
                 </li>
             </ul>
@@ -273,5 +275,26 @@
     </button>
     <script src="assets/js/ai-chat.js"></script>
     <script src="assets/js/main.js"></script>
+    <script>
+        // Xử lý sự kiện cho menu user profile
+        document.addEventListener('DOMContentLoaded', function() {
+            const userProfile = document.querySelector('.user-profile');
+            const userAvatar = document.querySelector('.user-avatar');
+            
+            if (userAvatar) {
+                userAvatar.addEventListener('click', function(event) {
+                    event.stopPropagation(); // Ngăn sự kiện click lan ra document
+                    userProfile.classList.toggle('active');
+                });
+                
+                // Đóng dropdown khi click bên ngoài
+                document.addEventListener('click', function(event) {
+                    if (!userProfile.contains(event.target)) {
+                        userProfile.classList.remove('active');
+                    }
+                });
+            }
+        });
+    </script>
 </body>
 </html>  
