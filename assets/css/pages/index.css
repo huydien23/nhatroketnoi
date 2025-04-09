@@ -79,6 +79,99 @@
     background: #52aeff;
 }
 
+/* Tin tức nổi bật */
+.featured-news {
+    padding: 80px 0;
+    background-color: #f9f9f9;
+}
+
+.featured-news h2 {
+    margin-top: -80px;
+    text-align: center;
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 40px;
+    position: relative;
+}
+
+.featured-news h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(to right, #4aa1cd, #5690ad);
+    border-radius: 2px;
+}
+
+.news-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.news-card {
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.news-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.news-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.news-info {
+    padding: 15px;
+}
+
+.news-info h3 {
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.news-info p {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+.read-more {
+    display: inline-block;
+    font-size: 0.9rem;
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.read-more:hover {
+    color: #1e90ff;
+}
+
+@media (max-width: 900px) {
+    .news-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .news-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
 /* Gạch dưới */
 .featured-rooms h2,
 .features h2 {
@@ -143,7 +236,6 @@
     color: var(--light-text);
 }
 
-/* Responsive */
 @media (max-width: 768px) {
     .hero {
         padding: 80px 0;
@@ -245,7 +337,6 @@
     background-color: #2980b9;
 }
 
-/* Add responsive */
 @media (max-width: 1440px) {
     .room-grid {
         grid-template-columns: repeat(3, 1fr);
@@ -317,6 +408,114 @@
 
     .hero-content p {
         font-size: 1rem;
+    }
+}
+
+/* Top khu vực nổi bật */
+.featured-areas {
+    padding: 60px 0;
+    background-color: #f9f9f9;
+}
+
+.featured-areas h2 {
+    text-align: center;
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 40px;
+    position: relative;
+}
+
+.featured-areas h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(to right, #4aa1cd, #5690ad);
+    border-radius: 2px;
+}
+
+.area-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.area-card {
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.area-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.area-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.area-card h3 {
+    font-size: 1.2rem;
+    color: #333;
+    margin: 15px;
+}
+
+.area-card p {
+    font-size: 0.9rem;
+    color: #666;
+    margin: 0 15px 15px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+    .area-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .area-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .area-card img {
+        height: auto;
+    }
+}
+
+/* Responsive "Tại Sao Chọn Chúng Tôi" */
+@media (max-width: 900px) {
+    .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px; 
+    }
+}
+
+@media (max-width: 600px) {
+    .features-grid {
+        grid-template-columns: 1fr; 
+        gap: 10px; 
+    }
+
+    .feature {
+        padding: 20px; 
+    }
+
+    .feature h3 {
+        font-size: 1rem; 
+    }
+
+    .feature p {
+        font-size: 0.85rem; 
     }
 }
 
