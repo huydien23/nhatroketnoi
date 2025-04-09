@@ -92,11 +92,11 @@
         </div>
 
         <div class="news-categories">
-            <button class="category-btn active">Tất cả</button>
-            <button class="category-btn">Thị trường</button>
-            <button class="category-btn">Mẹo hay</button>
-            <button class="category-btn">Pháp lý</button>
-            <button class="category-btn">Đời sống</button>
+            <button class="category-btn active" data-category="all">Tất cả</button>
+            <button class="category-btn" data-category="thitruong">Thị trường</button>
+            <button class="category-btn" data-category="meohay">Mẹo hay</button>
+            <button class="category-btn" data-category="phaply">Pháp lý</button>
+            <button class="category-btn" data-category="doisong">Đời sống</button>
         </div>
 
         <div class="news-grid">
@@ -205,8 +205,26 @@
     </button>
 
     <script src="../assets/js/main.js"></script>
-    <!-- Script xử lý đăng nhập -->
+
+    <!-- Script xử lý trang và đăng nhập -->
     <script>
+        document.addEventListener('DOMContentLoaded', function () {
+                const categoryButtons = document.querySelectorAll('.category-btn');
+
+                categoryButtons.forEach(button => {
+                    button.addEventListener('click', function () {
+                        const category = this.getAttribute('data-category');
+
+                        // Chuyển hướng đến trang tương ứng
+                        if (category === 'all') {
+                            window.location.href = './tintuc.html';
+                        } else {
+                            window.location.href = `../pages/tintuc/tintuc-${category}.html`;
+                        }
+                    });
+                });
+            });
+
         // Kiểm tra và hiển thị thông tin người dùng đã đăng nhập
         document.addEventListener('DOMContentLoaded', function() {
             const currentUser = JSON.parse(localStorage.getItem('currentUser'));
