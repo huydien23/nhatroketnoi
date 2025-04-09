@@ -168,6 +168,7 @@ function getShortName(fullName) {
 // Hàm đăng xuất
 function logout() {
     localStorage.removeItem('currentUser');
-    window.location.href = 'pages/dangky/dangnhap.html';
+    window.location.href = '../pages/auth/dangnhap.html';
+    alert("Đăng xuất thành công!");
 }
 

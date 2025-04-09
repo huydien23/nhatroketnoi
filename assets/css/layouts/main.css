@@ -194,7 +194,7 @@ footer {
     cursor: pointer;
 }
 
-/* Kiểu dáng phần đối tác */
+/* Partner section styling */
 .partners-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -330,76 +330,5 @@ html {
 }
 
 .user-profile-container a:hover {
-    color: #3498db;
-}
-
-/* Hiệu ứng hover cho các mục trong dropdown menu */
-.dropdown-item {
-    display: block;
-    width: 100%;
-    padding: 10px 15px;
-    transition: all 0.3s ease;
-}
-
-.dropdown-item:hover {
-    background-color: #f8f9fa;
-    color: #3498db;
-}
-
-.dropdown-item:hover i {
-    color: #3498db;
-}
-
-/* Đảm bảo dropdown menu có chiều rộng đủ */
-.dropdown-menu {
-    min-width: 200px;
-    width: 100%;
-}
-
-/* Đảm bảo các liên kết trong dropdown menu chiếm toàn bộ chiều rộng */
-.dropdown-menu a {
-    display: block;
-    width: 100%;
-    text-decoration: none;
     color: inherit;
-}
-
-/* Kiểu dáng breadcrumb */
-.breadcrumb {
-    background-color: #f8f9fa;
-    padding: 10px 0;
-    margin-bottom: 20px;
-    border-radius: 5px;
-}
-
-.breadcrumb-container {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-}
-
-.breadcrumb-item {
-    display: flex;
-    align-items: center;
-    color: #6c757d;
-    font-size: 0.9rem;
-}
-
-.breadcrumb-item a {
-    color: #3498db;
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-.breadcrumb-item a:hover {
-    color: #2980b9;
-}
-
-.breadcrumb-item.active {
-    color: #6c757d;
-}
-
-.breadcrumb-separator {
-    margin: 0 8px;
-    color: #6c757d;
 } 

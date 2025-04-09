@@ -49,37 +49,45 @@ function login() {
     
     // Giả lập thời gian xử lý
     setTimeout(() => {
-        let users = JSON.parse(localStorage.getItem("user"));
-        let userName = $("#username").val();
-        let password = $("#password").val();
-        let toLogin = false;
-        console.log(users);
-        
-        if (users && Array.isArray(users)) {
-            users.forEach(element => {
-                if(userName == element.namelogin && password == element.password) {
-                    localStorage.setItem("currentUser", JSON.stringify({
-                        id: element.id,
-                        namelogin: element.namelogin,
-                        fullname: element.fullname,
-                        email: element.email,
-                        phone: element.phone
-                    }));
-                    toLogin = true;
-                }
-            });
+        try {
+            let users = JSON.parse(localStorage.getItem("user"));
+            let userName = $("#username").val();
+            let password = $("#password").val();
+            let toLogin = false;
+            console.log('Đang cố gắng đăng nhập với tên tài khoản:', userName);
+            console.log('Lấy người dùng từ localStorage:', users);
             
-            if(toLogin) {
-                alert("Đăng nhập thành công!");
-                window.location.href = "../../index.html";
+            if (users && Array.isArray(users)) {
+                users.forEach(element => {
+                    console.log('Kiểm tra người dùng:', element);
+                    if(userName === element.namelogin && password === element.password) {
+                        localStorage.setItem("currentUser", JSON.stringify({
+                            id: element.id,
+                            namelogin: element.namelogin,
+                            fullname: element.fullname,
+                            email: element.email,
+                            phone: element.phone
+                        }));
+                        toLogin = true;
+                        console.log('Người dùng đã đăng nhập thành công:', element);
+                    }
+                });
+                
+                if(toLogin) {
+                    alert("Đăng nhập thành công!");
+                    window.location.href = "../../index.html";
+                } else {
+                    alert("Tên tài khoản hoặc mật khẩu không đúng!");
+                    hideLoading('loginButton');
+                }
             } else {
-                alert("Đăng nhập không thành công!");
+                alert("Không tìm thấy dữ liệu người dùng!");
                 hideLoading('loginButton');
             }
-        } else {
-            alert("Không tìm thấy dữ liệu người dùng!");
+        } catch (error) {
+            console.error('Lỗi khi xử lý đăng nhập:', error);
+            alert("Đã xảy ra lỗi trong quá trình đăng nhập. Vui lòng thử lại sau.");
             hideLoading('loginButton');
-            return false;
         }
     }, 1000); // Giả lập thời gian xử lý 1 giây
     
@@ -137,7 +145,7 @@ function register() {
         localStorage.setItem("user", JSON.stringify(users));
         
         alert("Đăng ký thành công! Vui lòng đăng nhập.");
-        window.location.href = "dangnhap.html";
+        window.location.href = "../../pages/auth/dangnhap.html";
     }, 1000); // Giả lập thời gian xử lý 1 giây
     
     return false;
@@ -162,7 +170,8 @@ function getShortName(fullName) {
 // Hàm đăng xuất
 function logout() {
     localStorage.removeItem('currentUser');
-    window.location.href = '../pages/dangky/dangnhap.html';
+    window.location.href = '../../pages/auth/dangnhap.html';
+    alert("Đăng xuất thành công!");
 }
 
 // Hàm khởi tạo thông tin người dùng và nút cuộn lên đầu trang
@@ -184,6 +193,13 @@ function initializeUserProfile() {
             // Hiển thị tên người dùng rút gọn
             const fullName = currentUser.fullname;
             const shortName = getShortName(fullName);
+            console.log('Initializing user profile with currentUser:', currentUser);
+            console.log('User profile element:', userProfile);
+            console.log('Login button element:', loginBtn);
+            console.log('Displaying user profile for:', fullName);
+            console.log('Short name set to:', shortName);
+            console.log('Full name set to:', fullName);
+            console.log('Email set to:', currentUser.email || '');
             document.getElementById('userShortName').textContent = shortName;
             
             // Hiển thị thông tin đầy đủ trong dropdown

@@ -29,7 +29,7 @@ NhaTroKetNoi là một ứng dụng web được thiết kế để kết nối 
 git clone https://github.com/huydien23/nhatroketnoi.git
 ```
 
-2. Mở dự án:
+2. Mở dự án:  
 ```
 cd NhaTroKetNoi
 ```

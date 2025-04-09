@@ -24,7 +24,7 @@
                 <li><a href="./phong/phong.html">Danh sách phòng</a></li>
                 <li><a href="./tintuc.html">Tin tức</a></li>
                 <li><a href="./thongtin.html">Về chúng tôi</a></li>
-                <li><a href="./dangky/dangky.html" class="login-btn" id="loginBtn">Đăng nhập</a></li>
+                <li><a href="./auth/dangnhap.html" class="login-btn" id="loginBtn">Đăng nhập</a></li>
                 <li class="user-profile-container" style="margin-right: 0; padding-right: 0;">
                     <div class="user-profile" style="display: none; position: relative;">
                         <div class="user-avatar">
@@ -344,7 +344,7 @@
         // Hàm đăng xuất
         function logout() {
             localStorage.removeItem('currentUser');
-            window.location.href = '../pages/dangky/dangnhap.html';
+            window.location.href = '../pages/auth/dangnhap.html'; // Chuyển hướng về trang đăng nhập
         }
     </script>
 </body>
