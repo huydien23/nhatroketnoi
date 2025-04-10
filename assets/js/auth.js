@@ -170,7 +170,8 @@ function getShortName(fullName) {
 // Hàm đăng xuất
 function logout() {
     localStorage.removeItem('currentUser');
-    window.location.href = '../../pages/auth/dangnhap.html';
+    localStorage.setItem('isLoggedIn', 'false'); // Cập nhật trạng thái đăng nhập
+    window.location.href = '../../index.html';
     alert("Đăng xuất thành công!");
 }
 
@@ -179,30 +180,23 @@ function initializeUserProfile() {
     const currentUser = JSON.parse(localStorage.getItem('currentUser'));
     const userProfile = document.querySelector('.user-profile');
     const loginBtn = document.getElementById('loginBtn');
-    
+    const btnDangTin = document.getElementById('btnDangTin');
+
     if (currentUser) {
-        // Ẩn nút đăng nhập
+        // Ẩn nút đăng nhập và hiển thị nút Đăng Tin
         if (loginBtn) {
             loginBtn.style.display = 'none';
         }
-        
+        if (btnDangTin) {
+            btnDangTin.style.display = 'block';
+        }
+
         // Hiển thị thông tin người dùng
         if (userProfile) {
             userProfile.style.display = 'flex';
-            
-            // Hiển thị tên người dùng rút gọn
             const fullName = currentUser.fullname;
             const shortName = getShortName(fullName);
-            console.log('Initializing user profile with currentUser:', currentUser);
-            console.log('User profile element:', userProfile);
-            console.log('Login button element:', loginBtn);
-            console.log('Displaying user profile for:', fullName);
-            console.log('Short name set to:', shortName);
-            console.log('Full name set to:', fullName);
-            console.log('Email set to:', currentUser.email || '');
             document.getElementById('userShortName').textContent = shortName;
-            
-            // Hiển thị thông tin đầy đủ trong dropdown
             document.getElementById('userFullname').textContent = fullName;
             document.getElementById('userEmail').textContent = currentUser.email || '';
             
@@ -223,11 +217,13 @@ function initializeUserProfile() {
             }
         }
     } else {
-        // Hiển thị nút đăng nhập
+        // Hiển thị nút đăng nhập và ẩn nút Đăng Tin
         if (loginBtn) {
             loginBtn.style.display = 'block';
         }
-        // Ẩn thông tin người dùng
+        if (btnDangTin) {
+            btnDangTin.style.display = 'none';
+        }
         if (userProfile) {
             userProfile.style.display = 'none';
         }
@@ -268,16 +264,19 @@ document.addEventListener('DOMContentLoaded', function () {
     const userProfile = document.querySelector('.user-profile');
 
     // Kiểm tra trạng thái đăng nhập
-    const user = JSON.parse(localStorage.getItem('user')); // Lấy thông tin người dùng từ localStorage
+    const currentUser = JSON.parse(localStorage.getItem('currentUser')); // Lấy thông tin người dùng từ localStorage
 
-    if (user) {
+    if (currentUser) {
         // Nếu đã đăng nhập, hiển thị nút "Đăng Tin" và thông tin người dùng
         btnDangTin.style.display = 'inline-block';
         loginBtn.style.display = 'none';
         userProfile.style.display = 'flex';
-        // document.getElementById('userShortName').textContent = user.shortName || 'User';
-        // document.getElementById('userFullname').textContent = user.fullName || 'Người dùng';
-        // document.getElementById('userEmail').textContent = user.email || 'example@example.com';
+
+        // Thêm sự kiện click cho nút "Đăng Tin"
+        btnDangTin.addEventListener('click', function(event) {
+            event.preventDefault();
+            window.location.href = '../../pages/dangtin.html'; // Điều hướng đến trang dashboard
+        });
     } else {
         // Nếu chưa đăng nhập, ẩn nút "Đăng Tin"
         btnDangTin.style.display = 'none';
