@@ -759,3 +759,18 @@ section {
         transform: translateY(0);
     }
 }
+
+/* Nút Đăng Tin */
+/* .btn-dangtin {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.btn-dangtin:hover {
+    background-color: #2980b9;
+} */

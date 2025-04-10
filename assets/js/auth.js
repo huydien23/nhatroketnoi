@@ -260,3 +260,28 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeUserProfile();
     initializeScrollTopButton();
 });
+
+// Hàm xử lý sự kiện khi người dùng nhấn nút "Đăng Tin"
+document.addEventListener('DOMContentLoaded', function () {
+    const btnDangTin = document.getElementById('btnDangTin');
+    const loginBtn = document.getElementById('loginBtn');
+    const userProfile = document.querySelector('.user-profile');
+
+    // Kiểm tra trạng thái đăng nhập
+    const user = JSON.parse(localStorage.getItem('user')); // Lấy thông tin người dùng từ localStorage
+
+    if (user) {
+        // Nếu đã đăng nhập, hiển thị nút "Đăng Tin" và thông tin người dùng
+        btnDangTin.style.display = 'inline-block';
+        loginBtn.style.display = 'none';
+        userProfile.style.display = 'flex';
+        // document.getElementById('userShortName').textContent = user.shortName || 'User';
+        // document.getElementById('userFullname').textContent = user.fullName || 'Người dùng';
+        // document.getElementById('userEmail').textContent = user.email || 'example@example.com';
+    } else {
+        // Nếu chưa đăng nhập, ẩn nút "Đăng Tin"
+        btnDangTin.style.display = 'none';
+        loginBtn.style.display = 'inline-block';
+        userProfile.style.display = 'none';
+    }
+});

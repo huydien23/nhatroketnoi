@@ -1,3 +1,7 @@
+:root {
+    --primary-color: #3498db;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -119,6 +123,37 @@ body {
     color: #3498db;
 }
 
+/* CSS cho nút đăng tin - tăng độ ưu tiên */
+.nav-links .btn-dangtin {
+    min-width: 120px !important;
+    display: inline-flex !important;
+    background: #4aa1cd !important;
+    color: white !important;
+    padding: 8px 20px !important;
+    border-radius: 10px !important;
+    font-weight: 600 !important;
+    align-items: center !important;
+    text-decoration: none !important;
+    transition: background-color 0.3s ease !important;
+    
+}
+
+.nav-links .btn-dangtin i {
+    margin-right: 8px !important;
+    font-size: 16px !important;
+}
+
+.nav-links .btn-dangtin:hover {
+    background-color: #5690ad !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1) !important;
+    color: #ffffff !important;
+}
+
+.nav-links .btn-dangtin::after {
+    display: none !important;
+}
+
 .login-btn {
     background-color: #3498db;
     color: white !important;
@@ -194,7 +229,7 @@ footer {
     cursor: pointer;
 }
 
-/* Partner section styling */
+/*  */
 .partners-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -332,3 +367,4 @@ html {
 .user-profile-container a:hover {
     color: inherit;
 } 
+

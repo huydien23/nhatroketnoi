@@ -25,6 +25,8 @@
                 <li><a href="./tintuc.html">Tin tức</a></li>
                 <li><a href="./thongtin.html">Về chúng tôi</a></li>
                 <li><a href="./auth/dangnhap.html" class="login-btn" id="loginBtn">Đăng nhập</a></li>
+                <li><a href="./pages/dangtin.html" class="btn-dangtin" id="btnDangTin" style="display: none;">
+                    <i class="fas fa-plus-circle"></i>Đăng Tin</a></li>
                 <li class="user-profile-container" style="margin-right: 0; padding-right: 0;">
                     <div class="user-profile" style="display: none; position: relative;">
                         <div class="user-avatar">
@@ -253,99 +255,6 @@
     </button>
 
     <script src="../assets/js/main.js"></script>
-    <!-- Script xử lý đăng nhập -->
-    <script>
-        // Kiểm tra và hiển thị thông tin người dùng đã đăng nhập
-        document.addEventListener('DOMContentLoaded', function() {
-            const currentUser = JSON.parse(localStorage.getItem('currentUser'));
-            const userProfile = document.querySelector('.user-profile');
-            const loginBtn = document.getElementById('loginBtn');
-            
-            if (currentUser) {
-                // Ẩn nút đăng nhập
-                if (loginBtn) {
-                    loginBtn.style.display = 'none';
-                }
-                
-                // Hiển thị thông tin người dùng
-                if (userProfile) {
-                    userProfile.style.display = 'flex';
-                    
-                    // Hiển thị tên người dùng rút gọn
-                    const fullName = currentUser.fullname;
-                    const shortName = getShortName(fullName);
-                    document.getElementById('userShortName').textContent = shortName;
-                    
-                    // Hiển thị thông tin đầy đủ trong dropdown
-                    document.getElementById('userFullname').textContent = fullName;
-                    document.getElementById('userEmail').textContent = currentUser.email || '';
-                    
-                    // Xử lý dropdown khi click
-                    const userAvatar = document.querySelector('.user-avatar');
-                    if (userAvatar) {
-                        userAvatar.addEventListener('click', function(event) {
-                            event.stopPropagation(); // Ngăn sự kiện click lan ra document
-                            userProfile.classList.toggle('active');
-                        });
-                        
-                        // Đóng dropdown khi click bên ngoài
-                        document.addEventListener('click', function(event) {
-                            if (!userProfile.contains(event.target)) {
-                                userProfile.classList.remove('active');
-                            }
-                        });
-                    }
-                }
-            } else {
-                // Hiển thị nút đăng nhập
-                if (loginBtn) {
-                    loginBtn.style.display = 'block';
-                }
-                // Ẩn thông tin người dùng
-                if (userProfile) {
-                    userProfile.style.display = 'none';
-                }
-            }
-            
-            // Nút cuộn lên đầu trang
-            const scrollTopBtn = document.getElementById('scrollTopBtn');
-            window.addEventListener('scroll', function() {
-                if (window.pageYOffset > 300) {
-                    scrollTopBtn.classList.add('visible');
-                } else {
-                    scrollTopBtn.classList.remove('visible');
-                }
-            });
-            
-            scrollTopBtn.addEventListener('click', function() {
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
-            });
-        });
-        
-        // Hàm lấy tên ngắn gọn từ họ tên đầy đủ
-        function getShortName(fullName) {
-            if (!fullName) return '';
-            
-            // Tách tên thành các phần
-            const nameParts = fullName.trim().split(' ');
-            
-            // Nếu chỉ có một từ, trả về từ đó
-            if (nameParts.length === 1) {
-                return nameParts[0];
-            }
-            
-            // Lấy tên (phần cuối cùng)
-            return nameParts[nameParts.length - 1];
-        }
-        
-        // Hàm đăng xuất
-        function logout() {
-            localStorage.removeItem('currentUser');
-            window.location.href = '../pages/auth/dangnhap.html'; // Chuyển hướng về trang đăng nhập
-        }
-    </script>
+    <script src="../assets/js/auth.js"></script>    
 </body>
 </html> 

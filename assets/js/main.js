@@ -86,6 +86,26 @@ style.textContent = `
     }
 `;
 document.head.appendChild(style);
+
+// Hàm kiểm tra trạng thái đăng nhập
+function isLoggedIn() {
+    // Kiểm tra xem người dùng đã đăng nhập chưa bằng cách kiểm tra localStorage
+    return localStorage.getItem('isLoggedIn') === 'true';
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    const btnDangTin = document.getElementById('btnDangTin');
+    const loginBtn = document.getElementById('loginBtn');
+
+    if (isLoggedIn()) {
+        btnDangTin.style.display = 'block';
+        loginBtn.style.display = 'none';
+    } else {
+        btnDangTin.style.display = 'none';
+        loginBtn.style.display = 'block';
+    }
+});
+
 // Kiểm tra và hiển thị thông tin người dùng đã đăng nhập
 document.addEventListener('DOMContentLoaded', function() {
     const currentUser = JSON.parse(localStorage.getItem('currentUser'));
@@ -171,4 +191,5 @@ function logout() {
     window.location.href = '../pages/auth/dangnhap.html';
     alert("Đăng xuất thành công!");
 }
+
 

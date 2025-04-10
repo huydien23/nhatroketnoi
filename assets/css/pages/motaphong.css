@@ -1,0 +1,420 @@
+/* CSS cho dropdown menu */
+.user-avatar {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.user-avatar img {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    margin-right: 5px;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    width: 220px;
+    z-index: 1000;
+}
+
+.dropdown-menu.show {
+    display: block;
+}
+
+.dropdown-item {
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #333;
+}
+
+.dropdown-item:hover {
+    background-color: #f5f5f5;
+}
+
+.dropdown-item i {
+    margin-right: 10px;
+    color: #3498db;
+}
+
+.user-info-header {
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.user-info-header img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.dropdown-divider {
+    height: 1px;
+    background-color: #eee;
+    margin: 5px 0;
+}
+/* Kiểu dáng container chính */
+.room-detail-container {
+    margin-bottom: 2rem;
+}
+
+/* Điều hướng đường dẫn */
+.breadcrumb {
+    display: flex;
+    align-items: center;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.breadcrumb a {
+    color: #3498db;
+    text-decoration: none;
+    margin: 0 0.5rem;
+}
+
+.breadcrumb a:first-child {
+    margin-left: 0;
+}
+
+.breadcrumb span {
+    margin-left: 0.5rem;
+}
+
+/* Bố cục chi tiết phòng */
+.room-detail {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-top: 4rem;
+    margin-bottom: 2rem;
+}
+
+@media (max-width: 768px) {
+    .room-detail {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Kiểu dáng phần thư viện ảnh */
+.room-gallery {
+    position: relative;
+}
+
+.main-image {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
+}
+
+.thumbnail-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.5rem;
+}
+
+.thumbnail {
+    width: 100%;
+    height: 80px;
+    object-fit: cover;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all 0.2s;
+}
+
+.thumbnail:hover, .thumbnail.active {
+    opacity: 0.8;
+    border: 2px solid #3498db;
+}
+
+/* Kiểu dáng thông tin phòng */
+.room-info h1 {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+    color: #333;
+}
+
+.price {
+    font-size: 1.5rem;
+    color: #e74c3c;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.location {
+    color: #666;
+    margin-bottom: 1.5rem;
+}
+
+.location i {
+    margin-right: 0.5rem;
+    color: #3498db;
+}
+
+/* Danh sách tính năng */
+.features-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 1rem;
+    margin: 1.5rem 0;
+    padding: 1rem;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+}
+
+.feature-item {
+    display: flex;
+    align-items: center;
+}
+
+.feature-item i {
+    margin-right: 0.5rem;
+    color: #3498db;
+    font-size: 1.2rem;
+}
+
+/* Phần mô tả */
+.description {
+    margin: 1.5rem 0;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #eee;
+}
+
+.description h2 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: #333;
+}
+
+.description p {
+    line-height: 1.6;
+    color: #555;
+}
+
+/* Phần thông tin liên hệ */
+.contact-info {
+    margin: 1.5rem 0;
+    padding: 1rem;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+}
+
+.contact-info h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+.contact-info p {
+    margin-bottom: 0.5rem;
+}
+
+.contact-info i {
+    margin-right: 0.5rem;
+    color: #3498db;
+}
+
+/* Nút liên hệ */
+.contact-btn {
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    margin-right: 0.5rem;
+    margin-top: 1rem;
+    display: inline-flex;
+    align-items: center;
+    transition: all 0.3s;
+}
+
+.contact-btn i {
+    margin-right: 0.5rem;
+}
+
+.primary-btn {
+    background-color: #3498db;
+    color: white;
+}
+
+.primary-btn:hover {
+    background-color: #2980b9;
+}
+
+.secondary-btn {
+    background-color: white;
+    color: #3498db;
+    border: 1px solid #3498db;
+}
+
+.secondary-btn:hover {
+    background-color: #f0f8ff;
+}
+
+/* Phần bản đồ */
+.map-section {
+    margin: 2rem 0;
+}
+
+.map-section h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+.map-container {
+    width: 100%;
+    height: 450px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* Phần form liên hệ */
+.contact-form-section {
+    margin: 2rem 0;
+}
+
+.contact-form-section h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+.contact-form {
+    background: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 8px;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-family: inherit;
+}
+
+.submit-btn {
+    background-color: #3498db;
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s;
+}
+
+.submit-btn:hover {
+    background-color: #2980b9;
+}
+
+/* Phần phòng tương tự */
+.similar-rooms {
+    margin: 2rem 0;
+}
+
+.similar-rooms h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+.room-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.room-card {
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+}
+
+.room-card:hover {
+    transform: translateY(-5px);
+}
+
+.room-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.room-card-info {
+    padding: 1rem;
+}
+
+.room-card-info h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.room-card-info .price {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+
+.room-card-info .location {
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.view-btn {
+    display: inline-block;
+    background: #3498db;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.view-btn:hover {
+    background: #2980b9;
+}
+
+/* Điều chỉnh cho thiết bị di động */
+@media (max-width: 768px) {
+    .room-detail {
+        grid-template-columns: 1fr;
+    }
+    
+    .contact-btn {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 0.5rem;
+    }
+    
+    .room-cards {
+        grid-template-columns: 1fr;
+    }
+    
+    .thumbnail-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
