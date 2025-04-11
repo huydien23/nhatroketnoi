@@ -69,138 +69,176 @@
         </div>
     </nav>
 
-    <section class="hero">
+    <div class="hero-section">
+        <div class="hero-content">
+            <h1>Tìm Phòng Trọ Phù Hợp Với Bạn</h1>
+            <p>Kết nối bạn với những căn phòng lý tưởng và chủ nhà uy tín</p>
+            <div class="search-box">
+                <div class="search-input">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Nhập địa điểm, khu vực bạn muốn tìm...">
+                </div>
+                <div class="search-filters">
+                    <select>
+                        <option value="">Giá tiền</option>
+                        <option value="0-1">Dưới 1 triệu</option>
+                        <option value="1-2">1 - 2 triệu</option>
+                        <option value="2-3">2 - 3 triệu</option>
+                        <option value="3+">Trên 3 triệu</option>
+                    </select>
+                    <select>
+                        <option value="">Diện tích</option>
+                        <option value="0-20">Dưới 20m²</option>
+                        <option value="20-30">20 - 30m²</option>
+                        <option value="30-40">30 - 40m²</option>
+                        <option value="40+">Trên 40m²</option>
+                    </select>
+                </div>
+                <button class="search-button">Tìm Kiếm</button>
+            </div>
+        </div>
+    </div>
+
+    <section class="stats-section">
         <div class="container">
-            <div class="hero-content">
-                <h2>Tìm kiếm phòng trọ dễ dàng</h2>
-                <p>Kết nối chủ trọ và người thuê trọ một cách nhanh chóng và tiện lợi</p>
-                <div class="search-box">
-                    <input type="text" placeholder="Tìm kiếm địa điểm, khu vực...">
-                    <button><i class="fas fa-search"></i> Tìm kiếm</button>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">2,500+</div>
+                    <div class="stat-label">Phòng trọ</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">1,200+</div>
+                    <div class="stat-label">Chủ nhà tin cậy</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">5,000+</div>
+                    <div class="stat-label">Người thuê hài lòng</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">98%</div>
+                    <div class="stat-label">Tỷ lệ thành công</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Tin tức nổi bật -->
-    <section class="featured-news">
-        <div class="container">
-            <h2>Tin Tức Nổi Bật</h2>
-            <div class="news-grid">
-                <div class="news-card">
-                    <img src="./assets/image/news/news1.png" alt="Tin tức 1">
-                    <div class="news-info">
-                        <h3>Top Những Mẹo Tìm Phòng Trọ Nhanh Chóng</h3>
-                        <p>Thuê trọ đang dần trở thành một nhu cầu thiết yếu của nhiều người, đặc biệt là sinh viên, người lao động đang làm việc,...</p>
-                        <a href="./pages/tintuc/mota.html" class="read-more">Đọc thêm</a>
-                    </div>
-                </div>
-                <div class="news-card">
-                    <img src="./assets/image/news/news2.jpg" alt="Tin tức 2">
-                    <div class="news-info">
-                        <h3>Những yếu tố ảnh hưởng đến giá thuê</h3>
-                        <p>Tìm hiểu các yếu tổ chính ảnh hưởng đến giá thuê nhà trong thời gian gần đây.</p>
-                        <a href="./pages/tintuc/mota.html" class="read-more">Đọc thêm</a>
-                    </div>
-                </div>
-                <div class="news-card">
-                    <img src="./assets/image/news/news3.png" alt="Tin tức 3">
-                    <div class="news-info">
-                        <h3>Định nghĩa phòng trọ là gì?</h3>
-                        <p>Những ngày đầu xa nhà lên thành phố với một chiếc balo nhỏ, vài bộ quần áo, và số tiền mà mẹ gửi theo...</p>
-                        <a href="./pages/tintuc/mota.html" class="read-more">Đọc thêm</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="featured-rooms">
-        <div class="container">
-            <h2>Phòng Trọ Nổi Bật</h2>
-            <div class="room-grid">
-                <div class="room-card">
-                    <img src="./assets/image/nhatro1.jpg" alt="Phòng trọ 1">
-                    <div class="room-info">
-                        <h3>Phòng trọ đẹp, gần trung tâm</h3>
-                        <p class="price">2.5 triệu/tháng</p>
-                        <p class="location"><i class="fas fa-map-marker-alt"></i> Ninh Kiều - Cần Thơ</p>
-                        <a href="./pages/phong/danhsach/motaphong.html" class="view-detail">Xem chi tiết</a>
-                    </div>
-                </div>
-                <div class="room-card">
-                    <img src="./assets/image/nhatro1.jpg" alt="Phòng trọ 2">
-                    <div class="room-info">
-                        <h3>Phòng trọ mới</h3>
-                        <p class="price">3 triệu/tháng</p>
-                        <p class="location"><i class="fas fa-map-marker-alt"></i> Ninh Kiều - Cần Thơ</p>
-                        <a href="./pages/phong/danhsach/motaphong.html" class="view-detail">Xem chi tiết</a>
-                    </div>
-                </div>
-                <div class="room-card">
-                    <img src="./assets/image/nhatro1.jpg" alt="Phòng trọ 3">
-                    <div class="room-info">
-                        <h3>Phòng trọ giá rẻ, an ninh</h3>
-                        <p class="price">1.8 triệu/tháng</p>
-                        <p class="location"><i class="fas fa-map-marker-alt"></i> Ninh Kiều - Cần Thơ</p>
-                        <a href="./pages/phong/danhsach/motaphong.html" class="view-detail">Xem chi tiết</a>
-                    </div>
-                </div>
-                <div class="room-card">
-                    <img src="./assets/image/nhatro1.jpg" alt="Phòng trọ 4">
-                    <div class="room-info">
-                        <h3>Phòng trọ giá rẻ, an ninh</h3>
-                        <p class="price">1.8 triệu/tháng</p>
-                        <p class="location"><i class="fas fa-map-marker-alt"></i> Ninh Kiều - Cần Thơ</p>
-                        <a href="./pages/phong/danhsach/motaphong.html" class="view-detail">Xem chi tiết</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Top khu vực nổi bật -->
     <section class="featured-areas">
         <div class="container">
-            <h2>Khu Vực Trọ Nổi Bật</h2>
-            <div class="area-grid">
+            <div class="section-header">
+                <h2>Khu Vực Nổi Bật</h2>
+                <p>Khám phá những khu vực phòng trọ được tìm kiếm nhiều nhất</p>
+            </div>
+            <div class="areas-grid">
                 <div class="area-card">
-                    <img src="./assets/image/khuvucnoibat/ctu.jpg" alt="Khu vực 1">
-                    <h3>Đại học Cần Thơ</h3>
-                    <p>Địa chỉ: Khu 2, Đ. 3/2, P. Xuân Khánh, Q. Ninh Kiều, TP. CT</p>
+                    <div class="area-image">
+                        <img src="./assets/image/khuvucnoibat/dhct.jpg" alt="Đại học Cần Thơ">
+                        <div class="area-overlay">
+                            <div class="area-stats">
+                                <span><i class="fas fa-home"></i> 150+ phòng</span>
+                                <span><i class="fas fa-star"></i> 4.8/5</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="area-content">
+                        <h3>Đại học Cần Thơ</h3>
+                        <p>Khu 2, Đ. 3/2, P. Xuân Khánh, Q. Ninh Kiều, TP. CT</p>
+                        <a href="#" class="area-link">Xem phòng trọ <i class="fas fa-arrow-right"></i></a>
+                    </div>
                 </div>
+
                 <div class="area-card">
-                    <img src="./assets/image/khuvucnoibat/dnc.jpg" alt="Khu vực 2">
-                    <h3>Trường Đại học Nam Cần Thơ</h3>
-                    <p>Địa chỉ: 168, Nguyễn Văn Cừ (nối dài), P. An Bình, Q. Ninh Kiều, TP. Cần Thơ</p>
+                    <div class="area-image">
+                        <img src="./assets/image/khuvucnoibat/dhnamct.jpg" alt="Đại học Nam Cần Thơ">
+                        <div class="area-overlay">
+                            <div class="area-stats">
+                                <span><i class="fas fa-home"></i> 120+ phòng</span>
+                                <span><i class="fas fa-star"></i> 4.6/5</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="area-content">
+                        <h3>Đại học Nam Cần Thơ</h3>
+                        <p>Khu vực Nguyễn Văn Cừ nối dài, An Bình, Ninh Kiều</p>
+                        <a href="#" class="area-link">Xem phòng trọ <i class="fas fa-arrow-right"></i></a>
+                    </div>
                 </div>
+
                 <div class="area-card">
-                    <img src="./assets/image/khuvucnoibat/yduoc.jpg" alt="Khu vực 3">
-                    <h3>Trường Đại học Y Dược Cần Thơ</h3>
-                    <p>Địa chỉ: Số 179, đường Nguyễn Văn Cừ, P. An Khánh, Q. Ninh Kiều, TP. Cần Thơ</p>
+                    <div class="area-image">
+                        <img src="./assets/image/khuvucnoibat/dhyt.jpg" alt="Đại học Y Dược">
+                        <div class="area-overlay">
+                            <div class="area-stats">
+                                <span><i class="fas fa-home"></i> 100+ phòng</span>
+                                <span><i class="fas fa-star"></i> 4.7/5</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="area-content">
+                        <h3>Đại học Y Dược</h3>
+                        <p>179 Đ. Nguyễn Văn Cừ, An Khánh, Ninh Kiều, Cần Thơ</p>
+                        <a href="#" class="area-link">Xem phòng trọ <i class="fas fa-arrow-right"></i></a>
+                    </div>
                 </div>
             </div>
         </div>
+    </section>
 
-    <section class="features">
+    <section class="features-section">
         <div class="container">
-            <h2>Tại Sao Chọn Chúng Tôi</h2>
+            <div class="section-header">
+                <h2>Tại Sao Chọn Chúng Tôi</h2>
+                <p>Những lý do khiến Nhà Trọ Kết Nối trở thành lựa chọn hàng đầu của bạn</p>
+            </div>
             <div class="features-grid">
-                <div class="feature">
-                    <i class="fas fa-search"></i>
-                    <h3>Tìm Kiếm Dễ Dàng</h3>
-                    <p>Tìm phòng trọ phù hợp với nhu cầu của bạn</p>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Tìm Kiếm Thông Minh</h3>
+                        <p>Dễ dàng tìm phòng theo khu vực, giá cả và tiện ích</p>
+                    </div>
                 </div>
-                <div class="feature">
-                    <i class="fas fa-shield-alt"></i>
-                    <h3>Uy Tín</h3>
-                    <p>Đảm bảo thông tin chính xác từ chủ nhà</p>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3>An Toàn & Uy Tín</h3>
+                        <p>Thông tin được xác thực, đảm bảo quyền lợi người thuê</p>
+                    </div>
                 </div>
-                <div class="feature">
-                    <i class="fas fa-handshake"></i>
-                    <h3>Kết Nối Nhanh</h3>
-                    <p>Liên hệ trực tiếp với chủ nhà</p>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Kết Nối Trực Tiếp</h3>
+                        <p>Dễ dàng liên hệ với chủ nhà mà không cần thông qua trung gian</p>
+                    </div>
                 </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Cập Nhật Liên Tục</h3>
+                        <p>Thông tin phòng trọ mới được cập nhật hàng ngày, đảm bảo tính thời sự</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Bạn có phòng trọ cần cho thuê?</h2>
+                <p>Đăng tin ngay để tiếp cận hàng ngàn người đang tìm phòng trọ mỗi ngày</p>
+                <a href="./pages/dangtin.html" class="cta-button">Đăng Tin Ngay <i class="fas fa-arrow-right"></i></a>
             </div>
         </div>
     </section>
@@ -253,7 +291,6 @@
         </div>
     </footer>
 
-
     <!-- Chatbot -->
     <div class="chatbot-container">
         <div class="chatbot-header">
@@ -299,4 +336,4 @@
 
     </script>
 </body>
-</html>  
+</html>
