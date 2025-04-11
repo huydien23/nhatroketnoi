@@ -36,225 +36,367 @@
                             <i class="fas fa-caret-down"></i>
                         </div>
                         <div class="dropdown-menu">
-                            <div class="dropdown-item user-info-header">
-                                <img src="../../assets/image/user/user2.jpg" alt="User Avatar">
-                                <div>
-                                    <span id="userFullname"></span>
-                                    <small id="userEmail"></small>
-                                </div>
-                            </div>
-                            <a href="../../pages/user/profile.html" class="dropdown-item">
-                                <i class="fas fa-user"></i> Tài khoản của tôi
-                            </a>
-                            <a href="../../pages/user/posts.html" class="dropdown-item">
-                                <i class="fas fa-list"></i> Bài đăng của tôi
-                            </a>
-                            <a href="../../pages/user/saved.html" class="dropdown-item">
-                                <i class="fas fa-bookmark"></i> Phòng đã lưu
-                            </a>
-                            <div class="dropdown-divider"></div>
-                            <a href="#" class="dropdown-item" onclick="logout()">
-                                <i class="fas fa-sign-out-alt"></i> Đăng xuất
-                            </a>
+                            <a href="../../pages/thongtin.html"><i class="fas fa-user"></i>Thông tin cá nhân</a>
+                            <a href="../../pages/quanlyphong.html"><i class="fas fa-home"></i>Quản lý phòng</a>
+                            <a href="#" id="logoutBtn"><i class="fas fa-sign-out-alt"></i>Đăng xuất</a>
                         </div>
                     </div>
                 </li>
             </ul>
-            <div class="burger">
-                <div></div>
-                <div></div>
-                <div></div>
-            </div>
         </div>
     </nav>
 
-    <!-- Main content -->
-    <div class="rooms-container">
-        <!-- Breadcrumb -->
-        <!-- <div class="breadcrumb">
+    <main>
+        <!-- Hero Section -->
+        <section class="hero-section">
             <div class="container">
-                <div class="breadcrumb-container">
-                    <div class="breadcrumb-item">
-                        <a href="../../index.html">Trang chủ</a>
-                    </div>
-                    <div class="breadcrumb-separator">
-                        <i class="fas fa-chevron-right"></i>
-                    </div>
-                    <div class="breadcrumb-item active">
-                        Danh sách phòng trọ
+                <div class="search-container">
+                    <h1>Tìm phòng trọ phù hợp với bạn</h1>
+                    <div class="search-box">
+                        <div class="search-row">
+                            <div class="search-group">
+                                <i class="fas fa-search"></i>
+                                <input type="text" placeholder="Nhập địa điểm, khu vực...">
+                            </div>
+                            <div class="search-group">
+                                <i class="fas fa-money-bill"></i>
+                                <select>
+                                    <option value="">Chọn khoảng giá</option>
+                                    <option value="0-2">Dưới 2 triệu</option>
+                                    <option value="2-4">2 - 4 triệu</option>
+                                    <option value="4-6">4 - 6 triệu</option>
+                                    <option value="6+">Trên 6 triệu</option>
+                                </select>
+                            </div>
+                            <div class="search-group">
+                                <i class="fas fa-home"></i>
+                                <select>
+                                    <option value="">Loại phòng</option>
+                                    <option value="phong-tro">Phòng trọ</option>
+                                    <option value="chung-cu-mini">Chung cư mini</option>
+                                    <option value="nha-nguyen-can">Nhà nguyên căn</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="search-row">
+                            <div class="search-group">
+                                <i class="fas fa-expand"></i>
+                                <select>
+                                    <option value="">Diện tích</option>
+                                    <option value="0-20">Dưới 20m²</option>
+                                    <option value="20-30">20 - 30m²</option>
+                                    <option value="30-50">30 - 50m²</option>
+                                    <option value="50+">Trên 50m²</option>
+                                </select>
+                            </div>
+                            <div class="search-group">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <select>
+                                    <option value="">Khu vực</option>
+                                    <option value="binh-thuy">Bình Thủy</option>
+                                    <option value="ninh-kyu">Ninh Kiều</option>
+                                    <option value="an-khanh">An Khánh</option>
+                                    <option value="xuan-khanh">Xuân Khánh</option>
+                                    <option value="cai-rang">Cái Răng</option>
+                                </select>
+                            </div>
+                            <button class="search-button">
+                                <i class="fas fa-search"></i>
+                                Tìm kiếm
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div> -->
-        
-        <h1 class="page-title">Danh Sách Phòng Trọ</h1>
-        
-        <!-- Bộ lọc -->
-        <section class="search-section">
-            <form class="search-form">
-                <input type="text" placeholder="Nhập địa điểm...">
-                <select>
-                    <option value="">Chọn giá</option>
-                    <option value="1-2">1-2 triệu</option>
-                    <option value="2-3">2-3 triệu</option>
-                    <option value="3-4">3-4 triệu</option>
-                    <option value="4+">Trên 4 triệu</option>
-                </select>
-                <select>
-                    <option value="">Chọn diện tích</option>
-                    <option value="15-20">15-20m²</option>
-                    <option value="20-25">20-25m²</option>
-                    <option value="25-30">25-30m²</option>
-                    <option value="30+">Trên 30m²</option>
-                </select>
-                <button type="submit">Tìm kiếm</button>
-            </form>
         </section>
 
-        <!-- Danh sách phòng -->
-        <div class="rooms-grid">
-            <div class="room-card">
-                <img src="../../assets/image/nhatro2.jpg" alt="Phòng trọ 1">
-                <div class="room-info">
-                    <h3>Phòng trọ đẹp</h3>
-                    <p class="price">2.5 triệu/tháng</p>
-                    <p class="location"><i class="fas fa-map-marker-alt"></i> Ninh Kiều - Cần Thơ</p>
-                    <div class="room-features">
-                        <span class="feature"><i class="fas fa-ruler-combined"></i> 25m²</span>
-                        <span class="feature"><i class="fas fa-bed"></i> 1 giường</span>
-                        <span class="feature"><i class="fas fa-bath"></i> 1 WC</span>
+        <!-- Filter Section -->
+        <section class="filter-section">
+            <div class="container">
+                <div class="filter-container">
+                    <div class="filter-group">
+                        <label>Sắp xếp theo:</label>
+                        <select class="filter-select">
+                            <option value="newest">Mới nhất</option>
+                            <option value="price-asc">Giá tăng dần</option>
+                            <option value="price-desc">Giá giảm dần</option>
+                            <option value="area-asc">Diện tích tăng dần</option>
+                            <option value="area-desc">Diện tích giảm dần</option>
+                        </select>
                     </div>
-                    <a href="./danhsach/motaphong.html" class="view-detail">Xem chi tiết</a>
+                    <div class="filter-tags">
+                        <span class="filter-tag active">Tất cả <i class="fas fa-times"></i></span>
+                        <span class="filter-tag">Dưới 3 triệu <i class="fas fa-times"></i></span>
+                        <span class="filter-tag">Cần Thơ <i class="fas fa-times"></i></span>
+                        <span class="filter-tag">20 - 30m² <i class="fas fa-times"></i></span>
+                    </div>
                 </div>
             </div>
-            
-            
-            <div class="room-card">
-                <img src="../../assets/image/nhatro2.jpg" alt="Phòng trọ 3">
-                <div class="room-info">
-                    <h3>Phòng trọ giá rẻ, an ninh</h3>
-                    <p class="price">1.8 triệu/tháng</p>
-                    <p class="location"><i class="fas fa-map-marker-alt"></i> Ninh Kiều - Cần Thơ</p>
-                    <div class="room-features">
-                        <span class="feature"><i class="fas fa-ruler-combined"></i> 20m²</span>
-                        <span class="feature"><i class="fas fa-bed"></i> 1 giường</span>
-                        <span class="feature"><i class="fas fa-bath"></i> 1 WC</span>
-                    </div>
-                    <a href="./danhsach/motaphong.html" class="view-detail">Xem chi tiết</a>
-                </div>
-            </div>
-            
-            <div class="room-card">
-                <img src="../../assets/image/nhatro2.jpg" alt="Phòng trọ 4">
-                <div class="room-info">
-                    <h3>Phòng trọ giá rẻ, an ninh</h3>
-                    <p class="price">2 triệu/tháng</p>
-                    <p class="location"><i class="fas fa-map-marker-alt"></i> Ninh Kiều - Cần Thơ</p>
-                    <div class="room-features">
-                        <span class="feature"><i class="fas fa-ruler-combined"></i> 20m²</span>
-                        <span class="feature"><i class="fas fa-bed"></i> 1 giường</span>
-                        <span class="feature"><i class="fas fa-bath"></i> 1 WC</span>
-                    </div>
-                    <a href="./danhsach/motaphong.html" class="view-detail">Xem chi tiết</a>
-                </div>
-            </div>
-            
-            <div class="room-card">
-                <img src="../../assets/image/nhatro2.jpg" alt="Phòng trọ 5">
-                <div class="room-info">
-                    <h3>Phòng trọ giá rẻ, an ninh</h3>
-                    <p class="price">2 triệu/tháng</p>
-                    <p class="location"><i class="fas fa-map-marker-alt"></i> Ninh Kiều - Cần Thơ</p>
-                    <div class="room-features">
-                        <span class="feature"><i class="fas fa-ruler-combined"></i> 20m²</span>
-                        <span class="feature"><i class="fas fa-bed"></i> 1 giường</span>
-                        <span class="feature"><i class="fas fa-bath"></i> 1 WC</span>
-                    </div>
-                    <a href="./danhsach/motaphong.html" class="view-detail">Xem chi tiết</a>
-                </div>
-            </div>
-            
-            <div class="room-card">
-                <img src="../../assets/image/nhatro2.jpg" alt="Phòng trọ 6">
-                <div class="room-info">
-                    <h3>Phòng trọ giá rẻ, an ninh</h3>
-                    <p class="price">2 triệu/tháng</p>
-                    <p class="location"><i class="fas fa-map-marker-alt"></i> Ninh Kiều - Cần Thơ</p>
-                    <div class="room-features">
-                        <span class="feature"><i class="fas fa-ruler-combined"></i> 20m²</span>
-                        <span class="feature"><i class="fas fa-bed"></i> 1 giường</span>
-                        <span class="feature"><i class="fas fa-bath"></i> 1 WC</span>
-                    </div>
-                    <a href="./danhsach/motaphong.html" class="view-detail">Xem chi tiết</a>
-                </div>
-            </div>
-            
-            <div class="room-card">
-                <img src="../../assets/image/nhatro2.jpg" alt="Phòng trọ 7">
-                <div class="room-info">
-                    <h3>Phòng trọ giá rẻ, an ninh</h3>
-                    <p class="price">2 triệu/tháng</p>
-                    <p class="location"><i class="fas fa-map-marker-alt"></i> Ninh Kiều - Cần Thơ</p>
-                    <div class="room-features">
-                        <span class="feature"><i class="fas fa-ruler-combined"></i> 20m²</span>
-                        <span class="feature"><i class="fas fa-bed"></i> 1 giường</span>
-                        <span class="feature"><i class="fas fa-bath"></i> 1 WC</span>
-                    </div>
-                    <a href="./danhsach/motaphong.html" class="view-detail">Xem chi tiết</a>
-                </div>
-            </div>
-            
-            <div class="room-card">
-                <img src="../../assets/image/nhatro2.jpg" alt="Phòng trọ 8">
-                <div class="room-info">
-                    <h3>Phòng trọ giá rẻ, an ninh</h3>
-                    <p class="price">2 triệu/tháng</p>
-                    <p class="location"><i class="fas fa-map-marker-alt"></i> Ninh Kiều - Cần Thơ</p>
-                    <div class="room-features">
-                        <span class="feature"><i class="fas fa-ruler-combined"></i> 20m²</span>
-                        <span class="feature"><i class="fas fa-bed"></i> 1 giường</span>
-                        <span class="feature"><i class="fas fa-bath"></i> 1 WC</span>
-                    </div>
-                    <a href="./danhsach/motaphong.html" class="view-detail">Xem chi tiết</a>
-                </div>
-            </div>
-            
-            <div class="room-card">
-                <img src="../../assets/image/nhatro2.jpg" alt="Phòng trọ 9">
-                <div class="room-info">
-                    <h3>Phòng trọ giá rẻ, an ninh</h3>
-                    <p class="price">2 triệu/tháng</p>
-                    <p class="location"><i class="fas fa-map-marker-alt"></i> Ninh Kiều - Cần Thơ</p>
-                    <div class="room-features">
-                        <span class="feature"><i class="fas fa-ruler-combined"></i> 20m²</span>
-                        <span class="feature"><i class="fas fa-bed"></i> 1 giường</span>
-                        <span class="feature"><i class="fas fa-bath"></i> 1 WC</span>
-                    </div>
-                    <a href="./danhsach/motaphong.html" class="view-detail">Xem chi tiết</a>
-                </div>
-            </div>
-        </div>
+        </section>
 
-        <!-- Phân trang -->
-        <div class="pagination">
-            <button class="active">1</button>
-            <button>2</button>
-            <button>3</button>
-            <button>4</button>
-            <button>5</button>
-        </div>
-    </div>
+        <!-- Room List Section -->
+        <section class="room-list-section">
+            <div class="container">
+                <div class="room-grid">
+                    <!-- Room Card -->
+                    <div class="room-card">
+                        <div class="room-image">
+                            <img src="../../assets/image/danhsachphong/nhatro1/nha-tro-anh-dien.jpg" alt="Phòng trọ anh Điền">
+                            <span class="room-status new">Mới</span>
+                            <button class="favorite-btn">
+                                <i class="far fa-heart"></i>
+                            </button>
+                            <button class="detail-view-btn">
+                                <i class="fas fa-search"></i> Xem chi tiết
+                            </button>
+                        </div>
+                        <div class="room-content">
+                            <div class="room-price">3.5 triệu/tháng</div>
+                            <h3 class="room-title">Phòng trọ cao cấp full nội thất phường An Khánh</h3>
+                            <div class="room-meta">
+                                <span><i class="fas fa-expand"></i> 25m²</span>
+                                <span><i class="fas fa-map-marker-alt"></i> An Khánh, Cần Thơ</span>
+                            </div>
+                            <p class="room-description">Phòng trọ mới xây, đầy đủ nội thất, có ban công, cửa sổ thoáng mát...</p>
+                            <div class="room-footer">
+                                <div class="owner">
+                                    <img src="../../assets/image/user/user2.jpg" alt="Chủ trọ">
+                                    <span>Nguyễn Huy Điền</span>
+                                </div>
+                                <div class="post-time">2 giờ trước</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="room-card">
+                        <div class="room-image">
+                            <img src="../../assets/image/danhsachphong/nhatro2/nha-tro-anh-hung.jpg" alt="Phòng trọ anh Hưng">
+                            <span class="room-status new">Mới</span>
+                            <button class="favorite-btn">
+                                <i class="far fa-heart"></i>
+                            </button>
+                            <button class="detail-view-btn">
+                                <i class="fas fa-search"></i> Xem chi tiết
+                            </button>
+                        </div>
+                        <div class="room-content">
+                            <div class="room-price">3.5 triệu/tháng</div>
+                            <h3 class="room-title">Phòng trọ cao cấp full nội thất Ninh Kiều</h3>
+                            <div class="room-meta">
+                                <span><i class="fas fa-expand"></i> 25m²</span>
+                                <span><i class="fas fa-map-marker-alt"></i> Ninh Kiều, Cần Thơ</span>
+                            </div>
+                            <p class="room-description">Phòng trọ mới xây, đầy đủ nội thất, có ban công, cửa sổ thoáng mát...</p>
+                            <div class="room-footer">
+                                <div class="owner">
+                                    <img src="../../assets/image/user/user2.jpg" alt="Chủ trọ">
+                                    <span>Đoàn Vĩnh Hưng</span>
+                                </div>
+                                <div class="post-time">2 giờ trước</div>
+                            </div>
+                        </div>
+                    </div>
 
-    <footer>
+                    <div class="room-card">
+                        <div class="room-image">
+                            <img src="../../assets/image/danhsachphong/nhatro3/nha-tro-nghia.jpg" alt="Phòng trọ Nghĩa">
+                            <span class="room-status new">Mới</span>
+                            <button class="favorite-btn">
+                                <i class="far fa-heart"></i>
+                            </button>
+                            <button class="detail-view-btn">
+                                <i class="fas fa-search"></i> Xem chi tiết
+                            </button>
+                        </div>
+                        <div class="room-content">
+                            <div class="room-price">3.5 triệu/tháng</div>
+                            <h3 class="room-title">Phòng trọ cao cấp full nội thất Bình Thủy</h3>
+                            <div class="room-meta">
+                                <span><i class="fas fa-expand"></i> 25m²</span>
+                                <span><i class="fas fa-map-marker-alt"></i> Bình Thủy, Cần Thơ</span>
+                            </div>
+                            <p class="room-description">Phòng trọ mới xây, đầy đủ nội thất, có ban công, cửa sổ thoáng mát...</p>
+                            <div class="room-footer">
+                                <div class="owner">
+                                    <img src="../../assets/image/user/user2.jpg" alt="Chủ trọ">
+                                    <span>Nguyễn Trọng Nghĩa</span>
+                                </div>
+                                <div class="post-time">2 giờ trước</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="room-card">
+                        <div class="room-image">
+                            <img src="../../assets/image/danhsachphong/nhatro4/nha-tro-huy.jpg" alt="Phòng trọ Huy">
+                            <span class="room-status new">Mới</span>
+                            <button class="favorite-btn">
+                                <i class="far fa-heart"></i>
+                            </button>
+                            <button class="detail-view-btn">
+                                <i class="fas fa-search"></i> Xem chi tiết
+                            </button>
+                        </div>
+                        <div class="room-content">
+                            <div class="room-price">3.5 triệu/tháng</div>
+                            <h3 class="room-title">Phòng trọ cao cấp full nội thất Quận 1</h3>
+                            <div class="room-meta">
+                                <span><i class="fas fa-expand"></i> 25m²</span>
+                                <span><i class="fas fa-map-marker-alt"></i> Bệnh Viện Nhi Đồng, Cần Thơ</span>
+                            </div>
+                            <p class="room-description">Phòng trọ mới xây, đầy đủ nội thất, có ban công, cửa sổ thoáng mát...</p>
+                            <div class="room-footer">
+                                <div class="owner">
+                                    <img src="../../assets/image/user/user2.jpg" alt="Chủ trọ">
+                                    <span>Trần Thanh Huy</span>
+                                </div>
+                                <div class="post-time">2 giờ trước</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="room-card">
+                        <div class="room-image">
+                            <img src="../../assets/image/danhsachphong/nhatro5/nha-tro-linh.jpg" alt="Phòng trọ Linh">
+                            <span class="room-status new">Mới</span>
+                            <button class="favorite-btn">
+                                <i class="far fa-heart"></i>
+                            </button>
+                            <button class="detail-view-btn">
+                                <i class="fas fa-search"></i> Xem chi tiết
+                            </button>
+                        </div>
+                        <div class="room-content">
+                            <div class="room-price">3.5 triệu/tháng</div>
+                            <h3 class="room-title">Phòng trọ cao cấp gần trường Đại học Nam Cần Thơ</h3>
+                            <div class="room-meta">
+                                <span><i class="fas fa-expand"></i> 25m²</span>
+                                <span><i class="fas fa-map-marker-alt"></i> Đường NVC, Cần Thơ</span>
+                            </div>
+                            <p class="room-description">Phòng trọ mới xây, đầy đủ nội thất, có ban công, cửa sổ thoáng mát...</p>
+                            <div class="room-footer">
+                                <div class="owner">
+                                    <img src="../../assets/image/user/user2.jpg" alt="Chủ trọ">
+                                    <span>Trần Chí Linh</span>
+                                </div>
+                                <div class="post-time">2 giờ trước</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="room-card">
+                        <div class="room-image">
+                            <img src="../../assets/image/danhsachphong/nhatro6/nha-tro-khang.jpg" alt="Phòng trọ Khang">
+                            <span class="room-status new">Mới</span>
+                            <button class="favorite-btn">
+                                <i class="far fa-heart"></i>
+                            </button>
+                            <button class="detail-view-btn">
+                                <i class="fas fa-search"></i> Xem chi tiết
+                            </button>
+                        </div>
+                        <div class="room-content">
+                            <div class="room-price">3.5 triệu/tháng</div>
+                            <h3 class="room-title">Mini house cao cấp full nội thất gần Đại học Cần Thơ</h3>
+                            <div class="room-meta">
+                                <span><i class="fas fa-expand"></i> 25m²</span>
+                                <span><i class="fas fa-map-marker-alt"></i> Đường 3/2, Cần Thơ</span>
+                            </div>
+                            <p class="room-description">Mini house mới xây, đầy đủ nội thất, có ban công, cửa sổ thoáng mát...</p>
+                            <div class="room-footer">
+                                <div class="owner">
+                                    <img src="../../assets/image/user/user2.jpg" alt="Chủ trọ">
+                                    <span>Nguyễn Hoàng Khang</span>
+                                </div>
+                                <div class="post-time">2 giờ trước</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="room-card">
+                        <div class="room-image">
+                            <img src="../../assets/image/danhsachphong/nhatro7/hinh2.jpg" alt="Phòng trọ Tiến">
+                            <span class="room-status new">Mới</span>
+                            <button class="favorite-btn">
+                                <i class="far fa-heart"></i>
+                            </button>
+                            <button class="detail-view-btn">
+                                <i class="fas fa-search"></i> Xem chi tiết
+                            </button>
+                        </div>
+                        <div class="room-content">
+                            <div class="room-price">3.5 triệu/tháng</div>
+                            <h3 class="room-title">Phòng trọ cao cấp full nội thất gần trường Đại học Tây Đô</h3>
+                            <div class="room-meta">
+                                <span><i class="fas fa-expand"></i> 25m²</span>
+                                <span><i class="fas fa-map-marker-alt"></i> Đường 3/2, Cần Thơ</span>
+                            </div>
+                            <p class="room-description">Phòng trọ mới xây, đầy đủ nội thất, có ban công, cửa sổ thoáng mát...</p>
+                            <div class="room-footer">
+                                <div class="owner">
+                                    <img src="../../assets/image/user/user2.jpg" alt="Chủ trọ">
+                                    <span>Đỗ Minh Tiến</span>
+                                </div>
+                                <div class="post-time">2 giờ trước</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="room-card">
+                        <div class="room-image">
+                            <img src="../../assets/image/danhsachphong/nhatro8/nha-tro-tran.jpg" alt="Phòng trọ Trân">
+                            <span class="room-status new">Mới</span>
+                            <button class="favorite-btn">
+                                <i class="far fa-heart"></i>
+                            </button>
+                            <button class="detail-view-btn">
+                                <i class="fas fa-search"></i> Xem chi tiết
+                            </button>
+                        </div>
+                        <div class="room-content">
+                            <div class="room-price">3.5 triệu/tháng</div>
+                            <h3 class="room-title">Phòng trọ gần trường Đại học Kỹ Thuật - Công Nghệ Cần Thơ</h3>
+                            <div class="room-meta">
+                                <span><i class="fas fa-expand"></i> 25m²</span>
+                                <span><i class="fas fa-map-marker-alt"></i> Đường NVC, Cần Thơ</span>
+                            </div>
+                            <p class="room-description">Phòng trọ mới xây, đầy đủ nội thất, có ban công, cửa sổ thoáng mát...</p>
+                            <div class="room-footer">
+                                <div class="owner">
+                                    <img src="../../assets/image/user/user2.jpg" alt="Chủ trọ">
+                                    <span>Cô Trân</span>
+                                </div>
+                                <div class="post-time">2 giờ trước</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+                </div>
+
+                <!-- Pagination -->
+                <div class="pagination">
+                    <a href="#" class="prev-page"><i class="fas fa-chevron-left"></i></a>
+                    <a href="#" class="active">1</a>
+                    <a href="#">2</a>
+                    <a href="#">3</a>
+                    <span>...</span>
+                    <a href="#">8</a>
+                    <a href="#" class="next-page"><i class="fas fa-chevron-right"></i></a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
                     <h3>Về Nhà Trọ Kết Nối</h3>
-                    <p>Website Nhà Trọ Kết Nối là một nơi để kết kết nối tất cả nhà trọ lại với nhau. Để giúp khách hàng có thể tìm trọ một
-                    cách nhanh nhất và dễ dàng.</p>
+                    <p>Trang web tìm kiếm phòng trọ uy tín, kết nối người thuê và chủ trọ một cách nhanh chóng, hiệu quả.</p>
                 </div>
                 <div class="footer-section">
-                    <h3>Liên Kết Nhanh</h3>
+                    <h3>Liên kết nhanh</h3>
                     <ul>
                         <li><a href="../../index.html">Trang chủ</a></li>
                         <li><a href="../../pages/phong/phong.html">Danh sách phòng</a></li>
@@ -263,43 +405,29 @@
                     </ul>
                 </div>
                 <div class="footer-section">
-                    <h3>Liên Hệ</h3>
-                    <p><i class="fas fa-phone"></i> 0123.456.789</p>
-                    <p><i class="fas fa-envelope"></i> huydien23@nhatroketnoi.com</p>
-                    <p><i class="fas fa-map-marker-alt"></i> Toàn nhà khu I Đại học Nam Cần Thơ</p>
+                    <h3>Liên hệ</h3>
+                    <ul>
+                        <li><i class="fas fa-phone"></i> 0123 456 789</li>
+                        <li><i class="fas fa-envelope"></i> huydien23@nhatroketnoi.com</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Cần Thơ</li>
+                    </ul>
                 </div>
-
                 <div class="footer-section">
-                    <h3>Đối Tác</h3>
-                    <div class="partners-grid">
-                        <a href="https://nctu.edu.vn/" target="_blank" class="partner-item">
-                            <i class="fas fa-university"></i>
-                            <span>Trường Đại học Nam Cần Thơ</span>
-                        </a>
-                        <a href="https://batdongsan.com.vn/" target="_blank" class="partner-item">
-                            <i class="fas fa-building"></i>
-                            <span>Batdongsan.com.vn</span>
-                        </a>
-                        <a href="https://www.chotot.com/" target="_blank" class="partner-item">
-                            <i class="fas fa-home"></i>
-                            <span>Chotot.com</span>
-                        </a>
+                    <h3>Theo dõi chúng tôi</h3>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 Nhà Trọ Kết Nối.</p>
+                <p>&copy; 2024 Nhà Trọ Kết Nối. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
-    <!-- Nút cuộn lên đầu trang -->
-    <button id="scrollTopBtn" class="scroll-top-btn">
-        <i class="fas fa-arrow-up"></i>
-    </button>
-
     <script src="../../assets/js/main.js"></script>
-    <script src="../../assets/js/auth.js"></script>
-    
 </body>
-</html> 
+</html>
