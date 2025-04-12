@@ -1,15 +1,14 @@
 <!DOCTYPE html>
 <html lang="vi">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thị trường - Nhà Trọ Kết Nối</title>
+    <title>Thị Trường Nhà Trọ - Nhà Trọ Kết Nối</title>
     <link rel="shortcut icon" href="../../assets/image/favicon.svg" type="image/x-icon">
     <link rel="stylesheet" href="../../assets/css/layouts/main.css">
     <link rel="stylesheet" href="../../assets/css/user-dropdown.css">
     <link rel="stylesheet" href="../../assets/css/pages/tintuc.css">
-    <script src="../assets/js/auth.js"></script>
+    <script src="../../assets/js/auth.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 
@@ -28,7 +27,7 @@
                 <li><a href="../thongtin.html">Về chúng tôi</a></li>
                 <li><a href="../auth/dangnhap.html" class="login-btn" id="loginBtn">Đăng nhập</a></li>
                 <li><a href="../dangtin.html" class="btn-dangtin" id="btnDangTin" style="display: none;">
-                        <i class="fas fa-plus-circle"></i>Đăng Tin</a></li>
+                    <i class="fas fa-plus-circle"></i>Đăng Tin</a></li>
                 <li class="user-profile-container" style="margin-right: 0; padding-right: 0;">
                     <div class="user-profile" style="display: none; position: relative;">
                         <div class="user-avatar">
@@ -44,13 +43,13 @@
                                     <small id="userEmail"></small>
                                 </div>
                             </div>
-                            <a href="../pages/user/profile.html" class="dropdown-item">
+                            <a href="../../pages/user/profile.html" class="dropdown-item">
                                 <i class="fas fa-user"></i> Tài khoản của tôi
                             </a>
-                            <a href="../pages/user/posts.html" class="dropdown-item">
+                            <a href="../../pages/user/posts.html" class="dropdown-item">
                                 <i class="fas fa-list"></i> Bài đăng của tôi
                             </a>
-                            <a href="../pages/user/saved.html" class="dropdown-item">
+                            <a href="../../pages/user/saved.html" class="dropdown-item">
                                 <i class="fas fa-bookmark"></i> Phòng đã lưu
                             </a>
                             <div class="dropdown-divider"></div>
@@ -69,115 +68,125 @@
         </div>
     </nav>
 
-    <!-- Main content -->
-    <div class="news-container">
-        <!-- Breadcrumb -->
-        <!-- <div class="breadcrumb">
-            <div class="container">
-                <div class="breadcrumb-container">
-                    <div class="breadcrumb-item">
-                        <a href="../index.html">Trang chủ</a>
-                    </div>
-                    <div class="breadcrumb-separator">
-                        <i class="fas fa-chevron-right"></i>
-                    </div>
-                    <div class="breadcrumb-item active">
-                        Tin tức
-                    </div>
-                </div>
-            </div>
-        </div> -->
-
-        <h1 class="page-title">Tin Tức</h1>
-
-        <div class="news-header">
-            <h1>Tin Tức & Cập Nhật</h1>
-            <p>Cập nhật những tin tức mới nhất về thị trường phòng trọ và các mẹo hữu ích</p>
-        </div>
-
-        <div class="news-categories">
-            <button class="category-btn">Tất cả</button>
-            <button class="category-btn active">Thị trường</button>
-            <button class="category-btn">Mẹo hay</button>
-            <button class="category-btn">Pháp lý</button>
-            <button class="category-btn">Đời sống</button>
-        </div>
-
-        <div class="news-grid">
-            <article class="news-card">
-                <img src="../../assets/image/news/thitruong/thitruong1.webp" alt="Thị trường 1">
-                <div class="news-content">
-                    <span class="news-date">05/04/2025</span>
-                    <h3>Xu hướng giá thuê nhà năm 2025</h3>
-                    <p>
-                        Phân tích xu hướng giá thuê nhà trong năm 2025 và các yếu tố ảnh
-                        hưởng đến thị trường...
-                    </p>
-                    <a href="#" class="read-more">Đọc thêm</a>
-                </div>
-            </article>
-
-            <article class="news-card">
-                <img src="../../assets/image/news/thitruong/thitruong2.webp" alt="Thị trường 2">
-                <div class="news-content">
-                    <span class="news-date">28/03/2025</span>
-                    <h3>Khu vực nào đang "hot" trên thị trường?</h3>
-                    <p>
-                        Điểm qua các khu vực đang thu hút sự chú ý của người thuê nhà và
-                        nhà đầu tư...
-                    </p>
-                    <a href="#" class="read-more">Đọc thêm</a>
-                </div>
-            </article>
-
-            <article class="news-card">
-                <img src="../../assets/image/news/thitruong/thitruong3.jpg" alt="Thị trường 3">
-                <div class="news-content">
-                    <span class="news-date">20/03/2025</span>
-                    <h3>Những yếu tố ảnh hưởng đến giá thuê</h3>
-                    <p>
-                        Tìm hiểu các yếu tố chính ảnh hưởng đến giá thuê nhà trong thời
-                        gian gần đây...
-                    </p>
-                    <a href="#" class="read-more">Đọc thêm</a>
-                </div>
-            </article>
-
-            <article class="news-card">
-                <img src="../../assets/image/news/thitruong/thitruong4.jpg" alt="Thị trường 4">
-                <div class="news-content">
-                    <span class="news-date">10/03/2025</span>
-                    <h3>Cơ hội đầu tư bất động sản</h3>
-                    <p>
-                        Những cơ hội đầu tư bất động sản tiềm năng trong năm 2025 mà bạn
-                        không nên bỏ lỡ...
-                    </p>
-                    <a href="#" class="read-more">Đọc thêm</a>
-                </div>
-            </article>
-        </div>
-
-        <div class="pagination">
-            <button class="active">1</button>
-            <button>2</button>
-            <button>3</button>
-            <button>4</button>
-            <button>5</button>
+    <div class="breadcrumbs">
+        <div class="container">
+            <ul>
+                <li><a href="../../index.html">Trang chủ</a></li>
+                <li class="separator"><i class="fas fa-chevron-right"></i></li>
+                <li><a href="../tintuc.html">Tin tức</a></li>
+                <li class="separator"><i class="fas fa-chevron-right"></i></li>
+                <li>Thị trường</li>
+            </ul>
         </div>
     </div>
 
-    <footer>
+    <!-- Main content -->
+    <div class="news-container">
+        <div class="hero-section">
+            <h1 class="page-title">Thị Trường Nhà Trọ</h1>
+            <div class="search-bar">
+                <input type="text" placeholder="Tìm kiếm tin tức...">
+                <button type="button"><i class="fas fa-search"></i></button>
+            </div>
+            <div class="news-categories">
+                <a href="../tintuc.html" class="category-tag" data-category="all">Tất cả</a>
+                <a href="./tintuc-xuhuong.html" class="category-tag" data-category="xuhuong">Xu hướng</a>
+                <a href="./tintuc-kinhnghiem.html" class="category-tag" data-category="kinhnghiem">Kinh nghiệm</a>
+                <a href="./tintuc-congdong.html" class="category-tag" data-category="congdong">Cộng đồng</a>
+                <a href="./tintuc-thitruong.html" class="category-tag active" data-category="thitruong">Thị trường</a>
+            </div>
+        </div>
+
+        <div class="news-grid">
+            <!-- Bài viết thị trường 1 -->
+            <div class="news-item">
+                <div class="news-image">
+                    <img src="../../assets/image/news/thitruong/gia-thue-phong.jpg" alt="Giá thuê phòng">
+                    <div class="news-category">Thị trường</div>
+                </div>
+                <div class="news-content">
+                    <div class="news-meta">
+                        <span><i class="far fa-calendar-alt"></i> 10/04/2025</span>
+                        <span><i class="far fa-eye"></i> 1245</span>
+                    </div>
+                    <h3>Biến Động Giá Thuê Phòng Trọ 2025</h3>
+                    <p>Phân tích chi tiết về xu hướng giá thuê phòng trọ và dự báo thị trường năm 2025.</p>
+                    <a href="#" class="read-more">Đọc tiếp <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <!-- Bài viết thị trường 2 -->
+            <div class="news-item">
+                <div class="news-image">
+                    <img src="../../assets/image/news/thitruong/khu-vuc-phat-trien.jpg" alt="Khu vực phát triển">
+                    <div class="news-category">Thị trường</div>
+                </div>
+                <div class="news-content">
+                    <div class="news-meta">
+                        <span><i class="far fa-calendar-alt"></i> 08/04/2025</span>
+                        <span><i class="far fa-eye"></i> 932</span>
+                    </div>
+                    <h3>Khu Vực Phát Triển Mới Cho Nhà Trọ</h3>
+                    <p>Khám phá những khu vực đang phát triển mạnh và tiềm năng cho thị trường nhà trọ.</p>
+                    <a href="#" class="read-more">Đọc tiếp <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <!-- Bài viết thị trường 3 -->
+            <div class="news-item">
+                <div class="news-image">
+                    <img src="../../assets/image/news/thitruong/dau-tu-nha-tro.jpg" alt="Đầu tư nhà trọ">
+                    <div class="news-category">Thị trường</div>
+                </div>
+                <div class="news-content">
+                    <div class="news-meta">
+                        <span><i class="far fa-calendar-alt"></i> 06/04/2025</span>
+                        <span><i class="far fa-eye"></i> 854</span>
+                    </div>
+                    <h3>Cơ Hội Đầu Tư Nhà Trọ 2025</h3>
+                    <p>Phân tích cơ hội đầu tư và phát triển nhà trọ trong năm 2025, các khu vực tiềm năng.</p>
+                    <a href="#" class="read-more">Đọc tiếp <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <!-- Bài viết thị trường 4 -->
+            <div class="news-item">
+                <div class="news-image">
+                    <img src="../../assets/image/news/thitruong/chinh-sach-thue.jpg" alt="Chính sách thuế">
+                    <div class="news-category">Thị trường</div>
+                </div>
+                <div class="news-content">
+                    <div class="news-meta">
+                        <span><i class="far fa-calendar-alt"></i> 04/04/2025</span>
+                        <span><i class="far fa-eye"></i> 789</span>
+                    </div>
+                    <h3>Chính Sách Thuế Mới Cho Nhà Trọ</h3>
+                    <p>Cập nhật về các chính sách thuế mới ảnh hưởng đến thị trường cho thuê nhà trọ.</p>
+                    <a href="#" class="read-more">Đọc tiếp <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="pagination">
+            <a href="#" class="prev-page"><i class="fas fa-chevron-left"></i></a>
+            <a href="#" class="active">1</a>
+            <a href="#">2</a>
+            <a href="#">3</a>
+            <span>...</span>
+            <a href="#">5</a>
+            <a href="#" class="next-page"><i class="fas fa-chevron-right"></i></a>
+        </div>
+    </div>
+
+    <footer class="footer">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
                     <h3>Về Nhà Trọ Kết Nối</h3>
-                    <p>Website Nhà Trọ Kết Nối là một nơi để kết kết nối tất cả nhà trọ lại với nhau. Để giúp khách hàng
-                        có thể tìm
-                        trọ một
-                        cách nhanh nhất và dễ dàng.</p>
+                    <p>Trang web tìm kiếm phòng trọ uy tín, kết nối người thuê và chủ trọ một cách nhanh chóng, hiệu quả.</p>
                 </div>
                 <div class="footer-section">
-                    <h3>Liên Kết Nhanh</h3>
+                    <h3>Liên kết nhanh</h3>
                     <ul>
                         <li><a href="../../index.html">Trang chủ</a></li>
                         <li><a href="../phong/phong.html">Danh sách phòng</a></li>
@@ -186,32 +195,25 @@
                     </ul>
                 </div>
                 <div class="footer-section">
-                    <h3>Liên Hệ</h3>
-                    <p><i class="fas fa-phone"></i> 0123.456.789</p>
-                    <p><i class="fas fa-envelope"></i> huydien23@nhatroketnoi.com</p>
-                    <p><i class="fas fa-map-marker-alt"></i> Toàn nhà khu I Đại học Nam Cần Thơ</p>
+                    <h3>Liên hệ</h3>
+                    <ul>
+                        <li><i class="fas fa-phone"></i> 0123 456 789</li>
+                        <li><i class="fas fa-envelope"></i> huydien23@nhatroketnoi.com</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Cần Thơ</li>
+                    </ul>
                 </div>
-
                 <div class="footer-section">
-                    <h3>Đối Tác</h3>
-                    <div class="partners-grid">
-                        <a href="https://nctu.edu.vn/" target="_blank" class="partner-item">
-                            <i class="fas fa-university"></i>
-                            <span>Trường Đại học Nam Cần Thơ</span>
-                        </a>
-                        <a href="https://batdongsan.com.vn/" target="_blank" class="partner-item">
-                            <i class="fas fa-building"></i>
-                            <span>Batdongsan.com.vn</span>
-                        </a>
-                        <a href="https://www.chotot.com/" target="_blank" class="partner-item">
-                            <i class="fas fa-home"></i>
-                            <span>Chotot.com</span>
-                        </a>
+                    <h3>Theo dõi chúng tôi</h3>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 Nhà Trọ Kết Nối.</p>
+                <p>&copy; 2024 Nhà Trọ Kết Nối. All rights reserved.</p>
             </div>
         </div>
     </footer>
@@ -221,35 +223,8 @@
         <i class="fas fa-arrow-up"></i>
     </button>
 
-    <script src="../../assets/js/main.js""></script>
-
-   <!-- Script xử lý trang -->
-    <script>
-       document.addEventListener('DOMContentLoaded', function () {
-            const categoryButtons = document.querySelectorAll('.category-btn');
-
-            categoryButtons.forEach(button => {
-                button.addEventListener('click', function () {
-                    const category = this.textContent.trim().toLowerCase();
-
-                     // Chuyển hướng đến trang tương ứng
-                    if (category === 'tất cả') {
-                        window.location.href = '../tintuc.html'; 
-                    } else if (category === 'thị trường') {
-                        window.location.href = './tintuc-thitruong.html'; 
-                    } else if (category === 'mẹo hay') {
-                        window.location.href = './tintuc-meohay.html'; 
-                    } else if (category === 'pháp lý') {
-                        window.location.href = './tintuc-phaply.html'; 
-                    } else if (category === 'đời sống') {
-                        window.location.href = './tintuc-doisong.html'; 
-                    }
-                });
-            });
-        });
-
-       
-    </script>
+    <script src="../../assets/js/main.js"></script>
+    <script src="../../assets/js/auth.js"></script>
+    <script src="../../assets/js/tintuc-loc.js"></script>
 </body>
-
 </html>

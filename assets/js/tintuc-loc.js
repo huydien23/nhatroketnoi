@@ -1,7 +1,7 @@
  //Xử lý chuyển đổi giữa các trang tin tức theo danh mục
 document.addEventListener("DOMContentLoaded", function() {
     // Lấy tất cả các nút danh mục
-    const categoryButtons = document.querySelectorAll(".category-btn");
+    const categoryButtons = document.querySelectorAll(".category-tag");
     
     // Xác định trang hiện tại để đặt trạng thái active
     const currentPath = window.location.pathname;
@@ -9,24 +9,25 @@ document.addEventListener("DOMContentLoaded", function() {
     
     // Thiết lập trạng thái active cho nút phù hợp
     categoryButtons.forEach(button => {
-        // Lấy danh mục từ thuộc tính data hoặc văn bản
-        const category = button.getAttribute("data-category") || 
-                         button.textContent.trim().toLowerCase();
+        const category = button.getAttribute("data-category");
         
         // Thiết lập trạng thái active dựa trên URL hiện tại
-        if ((currentPage === "tintuc.html" && (category === "all" || category === "tất cả")) ||
-            (currentPage === `tintuc-${category}.html`) ||
-            (currentPage === `tintuc-thitruong.html` && category === "thị trường") ||
-            (currentPage === `tintuc-meohay.html` && category === "mẹo hay") ||
-            (currentPage === `tintuc-phaply.html` && category === "pháp lý") ||
-            (currentPage === `tintuc-doisong.html` && category === "đời sống")) {
+        if ((currentPage === "tintuc.html" && category === "all") ||
+            (currentPage === `tintuc-${category}.html`)) {
             button.classList.add("active");
         } else {
             button.classList.remove("active");
         }
         
         // Thêm sự kiện click cho nút
-        button.addEventListener("click", function() {
+        button.addEventListener("click", function(e) {
+            e.preventDefault(); // Ngăn chặn hành vi mặc định của thẻ a
+            
+            // Xóa class active từ tất cả các nút
+            categoryButtons.forEach(btn => btn.classList.remove("active"));
+            // Thêm class active cho nút được click
+            this.classList.add("active");
+            
             // Xác định cần chuyển đến trang nào dựa trên vị trí hiện tại và danh mục
             let targetUrl = "";
             
@@ -34,34 +35,17 @@ document.addEventListener("DOMContentLoaded", function() {
             const isInSubfolder = currentPath.includes("/tintuc/");
             
             // Xác định danh mục từ nút được nhấp
-            const buttonCategory = this.getAttribute("data-category") || 
-                                   this.textContent.trim().toLowerCase();
+            const buttonCategory = this.getAttribute("data-category");
             
             // Xây dựng URL đích dựa trên vị trí hiện tại
-            if (buttonCategory === "all" || buttonCategory === "tất cả") {
+            if (buttonCategory === "all") {
                 // Chuyển đến trang chính tin tức
                 targetUrl = isInSubfolder ? "../tintuc.html" : "./tintuc.html";
             } else {
                 // Chuyển đến trang danh mục tương ứng
-                let categorySlug = "";
-                
-                // Ánh xạ tên danh mục tiếng Việt sang slug
-                if (buttonCategory === "thị trường" || buttonCategory === "thitruong") {
-                    categorySlug = "thitruong";
-                } else if (buttonCategory === "mẹo hay" || buttonCategory === "meohay") {
-                    categorySlug = "meohay";
-                } else if (buttonCategory === "pháp lý" || buttonCategory === "phaply") {
-                    categorySlug = "phaply";
-                } else if (buttonCategory === "đời sống" || buttonCategory === "doisong") {
-                    categorySlug = "doisong";
-                } else {
-                    categorySlug = buttonCategory; // Trường hợp đã có slug sẵn
-                }
-                
-                // Tạo URL tương ứng
                 targetUrl = isInSubfolder ? 
-                    `./tintuc-${categorySlug}.html` : 
-                    `./tintuc/tintuc-${categorySlug}.html`;
+                    `./tintuc-${buttonCategory}.html` : 
+                    `./tintuc/tintuc-${buttonCategory}.html`;
             }
             
             // Chuyển hướng đến trang mục tiêu

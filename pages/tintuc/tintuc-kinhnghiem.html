@@ -3,52 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tin tức - Nhà Trọ Kết Nối</title>
-    <link rel="shortcut icon" href="../assets/image/favicon.svg" type="image/x-icon">
-    <link rel="stylesheet" href="../assets/css/layouts/main.css">
-    <link rel="stylesheet" href="../assets/css/user-dropdown.css">
-    <link rel="stylesheet" href="../assets/css/pages/tintuc.css">
-    <script src="../assets/js/auth.js"></script>
+    <title>Kinh Nghiệm Nhà Trọ - Nhà Trọ Kết Nối</title>
+    <link rel="shortcut icon" href="../../assets/image/favicon.svg" type="image/x-icon">
+    <link rel="stylesheet" href="../../assets/css/layouts/main.css">
+    <link rel="stylesheet" href="../../assets/css/user-dropdown.css">
+    <link rel="stylesheet" href="../../assets/css/pages/tintuc.css">
+    <script src="../../assets/js/auth.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
     <nav class="navbar">
         <div class="navbar-container">
             <div class="logo">
-                <a href="../index.html">
-                    <img src="../assets/image/logo.svg" alt="logo">
+                <a href="../../index.html">
+                    <img src="../../assets/image/logo.svg" alt="logo">
                 </a>
             </div>
             <ul class="nav-links">
-                <li><a href="../index.html">Trang chủ</a></li>
-                <li><a href="./phong/phong.html">Danh sách phòng</a></li>
-                <li><a href="./tintuc.html">Tin tức</a></li>
-                <li><a href="./thongtin.html">Về chúng tôi</a></li>
-                <li><a href="./auth/dangnhap.html" class="login-btn" id="loginBtn">Đăng nhập</a></li>
-                <li><a href="./dangtin.html" class="btn-dangtin"id="btnDangTin" style="display: none;">
+                <li><a href="../../index.html">Trang chủ</a></li>
+                <li><a href="../phong/phong.html">Danh sách phòng</a></li>
+                <li><a href="../tintuc.html">Tin tức</a></li>
+                <li><a href="../thongtin.html">Về chúng tôi</a></li>
+                <li><a href="../auth/dangnhap.html" class="login-btn" id="loginBtn">Đăng nhập</a></li>
+                <li><a href="../dangtin.html" class="btn-dangtin" id="btnDangTin" style="display: none;">
                     <i class="fas fa-plus-circle"></i>Đăng Tin</a></li>
                 <li class="user-profile-container" style="margin-right: 0; padding-right: 0;">
                     <div class="user-profile" style="display: none; position: relative;">
                         <div class="user-avatar">
-                            <img id="userAvatar" src="../assets/image/user/user2.jpg" alt="User Avatar">
+                            <img id="userAvatar" src="../../assets/image/user/user2.jpg" alt="User Avatar">
                             <span id="userShortName"></span>
                             <i class="fas fa-caret-down"></i>
                         </div>
                         <div class="dropdown-menu">
                             <div class="dropdown-item user-info-header">
-                                <img src="../assets/image/user/user2.jpg" alt="User Avatar">
+                                <img src="../../assets/image/user/user2.jpg" alt="User Avatar">
                                 <div>
                                     <span id="userFullname"></span>
                                     <small id="userEmail"></small>
                                 </div>
                             </div>
-                            <a href="../pages/user/profile.html" class="dropdown-item">
+                            <a href="../../pages/user/profile.html" class="dropdown-item">
                                 <i class="fas fa-user"></i> Tài khoản của tôi
                             </a>
-                            <a href="../pages/user/posts.html" class="dropdown-item">
+                            <a href="../../pages/user/posts.html" class="dropdown-item">
                                 <i class="fas fa-list"></i> Bài đăng của tôi
                             </a>
-                            <a href="../pages/user/saved.html" class="dropdown-item">
+                            <a href="../../pages/user/saved.html" class="dropdown-item">
                                 <i class="fas fa-bookmark"></i> Phòng đã lưu
                             </a>
                             <div class="dropdown-divider"></div>
@@ -70,9 +70,11 @@
     <div class="breadcrumbs">
         <div class="container">
             <ul>
-                <li><a href="../index.html">Trang chủ</a></li>
+                <li><a href="../../index.html">Trang chủ</a></li>
                 <li class="separator"><i class="fas fa-chevron-right"></i></li>
-                <li>Tin tức</li>
+                <li><a href="../tintuc.html">Tin tức</a></li>
+                <li class="separator"><i class="fas fa-chevron-right"></i></li>
+                <li>Kinh nghiệm</li>
             </ul>
         </div>
     </div>
@@ -80,100 +82,85 @@
     <!-- Main content -->
     <div class="news-container">
         <div class="hero-section">
-            <h1 class="page-title">Tin Tức & Cập Nhật</h1>
+            <h1 class="page-title">Kinh Nghiệm Thuê Trọ</h1>
             <div class="search-bar">
                 <input type="text" placeholder="Tìm kiếm tin tức...">
                 <button type="button"><i class="fas fa-search"></i></button>
             </div>
             <div class="news-categories">
-                <a href="#" class="category-tag" data-category="all">Tất cả</a>
-                <a href="#" class="category-tag" data-category="xuhuong">Xu hướng</a>
-                <a href="#" class="category-tag" data-category="kinhnghiem">Kinh nghiệm</a>
-                <a href="#" class="category-tag" data-category="congdong">Cộng đồng</a>
-                <a href="#" class="category-tag" data-category="thitruong">Thị trường</a>
-            </div>
-        </div>
-
-        <div class="featured-news">
-            <div class="featured-news-card">
-                <div class="news-image">
-                    <img src="../assets/image/news/xuhuong/thiet-ke-xay-nha-cho-thue.webp" alt="Tin tức nổi bật">
-                    <div class="news-overlay">
-                        <div class="news-category">Xu hướng</div>
-                        <div class="news-meta">
-                            <span><i class="far fa-calendar-alt"></i> 11/04/2025</span>
-                            <span><i class="far fa-eye"></i> 2.5K</span>
-                            <span><i class="far fa-comment"></i> 18</span>
-                        </div>
-                        <h2>Xu Hướng Thiết Kế Phòng Trọ 2025: Tối Giản và Thông Minh</h2>
-                        <p>Khám phá những xu hướng thiết kế phòng trọ mới nhất năm 2025, từ nội thất thông minh đến không gian sống xanh.</p>
-                        <a href="#" class="read-more">Đọc tiếp <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
+                <a href="../tintuc.html" class="category-tag" data-category="all">Tất cả</a>
+                <a href="./tintuc-xuhuong.html" class="category-tag" data-category="xuhuong">Xu hướng</a>
+                <a href="./tintuc-kinhnghiem.html" class="category-tag active" data-category="kinhnghiem">Kinh nghiệm</a>
+                <a href="./tintuc-congdong.html" class="category-tag" data-category="congdong">Cộng đồng</a>
+                <a href="./tintuc-thitruong.html" class="category-tag" data-category="thitruong">Thị trường</a>
             </div>
         </div>
 
         <div class="news-grid">
+            <!-- Bài viết kinh nghiệm 1 -->
             <div class="news-item">
                 <div class="news-image">
-                    <img src="../assets/image/news/kinhnghiem/cachtimthuenhatro.webp" alt="Tin tức">
+                    <img src="../../assets/image/news/kinhnghiem/cachtimthuenhatro.webp" alt="Tìm nhà trọ">
+                    <div class="news-category">Kinh nghiệm</div>
+                </div>
+                <div class="news-content">
+                    <div class="news-meta">
+                        <span><i class="far fa-calendar-alt"></i> 12/04/2025</span>
+                        <span><i class="far fa-eye"></i> 1.2K</span>
+                    </div>
+                    <h3>10 Bí Quyết Tìm Phòng Trọ An Toàn</h3>
+                    <p>Những kinh nghiệm quý báu giúp bạn tìm được phòng trọ ưng ý và tránh những rủi ro không đáng có.</p>
+                    <a href="#" class="read-more">Đọc tiếp <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <!-- Bài viết kinh nghiệm 2 -->
+            <div class="news-item">
+                <div class="news-image">
+                    <img src="../../assets/image/news/kinhnghiem/tienkiemnhatro.jpg" alt="Tiết kiệm chi phí">
                     <div class="news-category">Kinh nghiệm</div>
                 </div>
                 <div class="news-content">
                     <div class="news-meta">
                         <span><i class="far fa-calendar-alt"></i> 10/04/2025</span>
-                        <span><i class="far fa-eye"></i> 1.2K</span>
-                    </div>
-                    <h3>Cách Tìm Phòng Trọ An Toàn và Hiệu Quả</h3>
-                    <p>Những bí quyết giúp bạn tìm được phòng trọ ưng ý và tránh những rủi ro không đáng có.</p>
-                    <a href="#" class="read-more">Đọc tiếp <i class="fas fa-arrow-right"></i></a>
-                </div>
-            </div>
-
-            <div class="news-item">
-                <div class="news-image">
-                    <img src="../assets/image/news/news2.jpg" alt="Tin tức">
-                    <div class="news-category">Thị trường</div>
-                </div>
-                <div class="news-content">
-                    <div class="news-meta">
-                        <span><i class="far fa-calendar-alt"></i> 09/04/2025</span>
                         <span><i class="far fa-eye"></i> 956</span>
                     </div>
-                    <h3>Thị Trường Phòng Trọ Quý 2/2025</h3>
-                    <p>Phân tích chi tiết về tình hình thị trường và dự báo xu hướng giá phòng trọ trong thời gian tới.</p>
+                    <h3>Cách Tiết Kiệm Chi Phí Khi Thuê Trọ</h3>
+                    <p>Hướng dẫn chi tiết cách quản lý và tiết kiệm chi phí sinh hoạt khi ở trọ hiệu quả.</p>
                     <a href="#" class="read-more">Đọc tiếp <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
 
+            <!-- Bài viết kinh nghiệm 3 -->
             <div class="news-item">
                 <div class="news-image">
-                    <img src="../assets/image/news/congdong/xaydungcongdongtro.jpg" alt="Tin tức">
-                    <div class="news-category">Cộng đồng</div>
+                    <img src="../../assets/image/news/kinhnghiem/hopdongthue.jpg" alt="Hợp đồng thuê nhà">
+                    <div class="news-category">Kinh nghiệm</div>
                 </div>
                 <div class="news-content">
                     <div class="news-meta">
                         <span><i class="far fa-calendar-alt"></i> 08/04/2025</span>
                         <span><i class="far fa-eye"></i> 845</span>
                     </div>
-                    <h3>Xây Dựng Cộng Đồng Người Thuê Trọ</h3>
-                    <p>Những hoạt động và sự kiện kết nối cộng đồng người thuê trọ trong tháng 4/2025.</p>
+                    <h3>Những Điều Cần Biết Về Hợp Đồng Thuê Trọ</h3>
+                    <p>Giải thích chi tiết các điều khoản quan trọng trong hợp đồng thuê trọ bạn cần lưu ý.</p>
                     <a href="#" class="read-more">Đọc tiếp <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
 
+            <!-- Bài viết kinh nghiệm 4 -->
             <div class="news-item">
                 <div class="news-image">
-                    <img src="../assets/image/news/xuhuong/trang-tri-phong-tro-cho-sinh-vien.jpg" alt="Tin tức">
-                    <div class="news-category">Xu hướng</div>
+                    <img src="../../assets/image/news/kinhnghiem/chuyentro.jpg" alt="Chuyển trọ">
+                    <div class="news-category">Kinh nghiệm</div>
                 </div>
                 <div class="news-content">
                     <div class="news-meta">
-                        <span><i class="far fa-calendar-alt"></i> 07/04/2025</span>
+                        <span><i class="far fa-calendar-alt"></i> 05/04/2025</span>
                         <span><i class="far fa-eye"></i> 723</span>
                     </div>
-                    <h3>5 Tiện Ích Thông Minh Cho Phòng Trọ</h3>
-                    <p>Những gadget và thiết bị thông minh giúp nâng cao chất lượng cuộc sống trong phòng trọ.</p>
+                    <h3>Kinh Nghiệm Chuyển Trọ An Toàn</h3>
+                    <p>Hướng dẫn chi tiết quy trình chuyển trọ, từ chuẩn bị đến sắp xếp đồ đạc tại nhà mới.</p>
                     <a href="#" class="read-more">Đọc tiếp <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
@@ -185,7 +172,7 @@
             <a href="#">2</a>
             <a href="#">3</a>
             <span>...</span>
-            <a href="#">8</a>
+            <a href="#">5</a>
             <a href="#" class="next-page"><i class="fas fa-chevron-right"></i></a>
         </div>
     </div>
@@ -200,10 +187,10 @@
                 <div class="footer-section">
                     <h3>Liên kết nhanh</h3>
                     <ul>
-                        <li><a href="../index.html">Trang chủ</a></li>
-                        <li><a href="../pages/phong/phong.html">Danh sách phòng</a></li>
-                        <li><a href="../pages/tintuc.html">Tin tức</a></li>
-                        <li><a href="../pages/thongtin.html">Về chúng tôi</a></li>
+                        <li><a href="../../index.html">Trang chủ</a></li>
+                        <li><a href="../phong/phong.html">Danh sách phòng</a></li>
+                        <li><a href="../tintuc.html">Tin tức</a></li>
+                        <li><a href="../thongtin.html">Về chúng tôi</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
@@ -235,8 +222,8 @@
         <i class="fas fa-arrow-up"></i>
     </button>
 
-    <script src="../assets/js/main.js"></script>
-    <script src="../assets/js/auth.js"></script>
-    <script src="../assets/js/tintuc-loc.js"></script>
+    <script src="../../assets/js/main.js"></script>
+    <script src="../../assets/js/auth.js"></script>
+    <script src="../../assets/js/tintuc-loc.js"></script>
 </body>
 </html>

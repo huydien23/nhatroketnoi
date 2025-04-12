@@ -5,21 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chi tiết phòng trọ - Nhà Trọ Kết Nối</title>
     <link rel="shortcut icon" href="/assets/image/favicon.svg" type="image/x-icon">
-    <link rel="shortcut icon" href="../../assets/image/favicon.svg" type="image/x-icon">
     <link rel="stylesheet" href="../../../assets/css/layouts/main.css">
     <link rel="stylesheet" href="../../../assets/css/pages/common.css">
     <link rel="stylesheet" href="../../../assets/css/pages/motaphong.css">
     <link rel="stylesheet" href="../../../assets/css/pages/auth.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <script src="../../../assets/js/main.js"></script>
-    
 </head>
 <body>
-    <!-- Header/Navbar - Using the same structure as other pages -->
+    <!-- Header/Navbar -->
     <nav class="navbar">
         <div class="navbar-container">
             <div class="logo">
-                <a href="../index.html">
+                <a href="../../../index.html">
                     <img src="../../../assets/image/logo.svg" alt="logo">
                 </a>
             </div>
@@ -30,8 +27,8 @@
                 <li><a href="../../thongtin.html">Về chúng tôi</a></li>
                 <li><a href="../../auth/dangnhap.html" class="login-btn" id="loginBtn">Đăng nhập</a></li>
                 <li><a href="../../dangtin.html" class="btn-dangtin" id="btnDangTin" style="display: none;">Đăng Tin</a></li>
-                <li class="user-profile-container" style="margin-right: 0; padding-right: 0;">
-                    <div class="user-profile" style="display: none; position: relative;">
+                <li class="user-profile-container">
+                    <div class="user-profile" style="display: none;">
                         <div class="user-avatar">
                             <img id="userAvatar" src="../../../assets/image/user/user2.jpg" alt="User Avatar">
                             <span id="userShortName"></span>
@@ -71,274 +68,271 @@
     </nav>
 
     <main class="container">
-        <!-- Breadcrumbs navigation -->
+        <!-- Breadcrumbs -->
         <div class="breadcrumb">
-            <a href="/index.html">Trang chủ</a> &gt;
-            <a href="/pages/phong/phong.html">Danh sách phòng</a> &gt;
-            <span>Chi tiết phòng</span>
+            <a href="../../../index.html" class="breadcrumb-item">
+                <i class="fas fa-home"></i> Trang chủ
+            </a>
+            <i class="fas fa-angle-right"></i>
+            <a href="../phong.html" class="breadcrumb-item">Danh sách phòng</a>
+            <i class="fas fa-angle-right"></i>
+            <span class="breadcrumb-item active">Chi tiết phòng</span>
         </div>
 
         <div class="room-detail-container">
-            <div class="room-detail">
-                <div class="room-gallery">
-                    <img src="/assets/image/nhatro2.jpg" alt="Phòng trọ" class="main-image">
-                    <div class="thumbnail-grid">
-                        <img src="/assets/image/danhsachphong/hinh1.jpg" alt="phongtro" class="thumbnail active">
-                        <img src="/assets/image/danhsachphong/hinh1.jpg" alt="phongtro" class="thumbnail">
-                        <img src="/assets/image/danhsachphong/hinh2.jpg" alt="phongtro" class="thumbnail">
-                        <img src="/assets/image/danhsachphong/hinh3.jpg" alt="phongtro" class="thumbnail">
+            <!-- Image Gallery -->
+            <div class="room-gallery">
+                <div class="main-image">
+                    <img id="mainImage" src="../../../assets/image/danhsachphong/nhatro1/nha-tro-anh-dien.jpg" alt="Phòng trọ">
+                </div>
+                <div class="thumbnails" id="thumbnailContainer">
+                    <div class="thumbnail" data-index="0">
+                        <img src="../../../assets/image/danhsachphong/nhatro1/nha-tro-anh-dien.jpg" alt="Phòng trọ">
+                    </div>
+                    <div class="thumbnail" data-index="1">
+                        <img src="../../../assets/image/danhsachphong/nhatro1/hinh2.jpg" alt="Phòng trọ">
+                    </div>
+                    <div class="thumbnail" data-index="2">
+                        <img src="../../../assets/image/danhsachphong/nhatro1/hinh3.jpg" alt="Phòng trọ">
+                    </div>
+                    <div class="thumbnail" data-index="3">
+                        <img src="../../../assets/image/danhsachphong/nhatro1/hinh2.jpg" alt="Phòng trọ">
+                    </div>
+                </div>
+                <div class="gallery-nav">
+                    <button class="nav-btn prev" onclick="prevImage()">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="nav-btn next" onclick="nextImage()">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="room-content">
+                <!-- Room Header -->
+                <div class="room-header">
+                    <div class="room-title">
+                        <h1>Phòng trọ đẹp, gần trung tâm</h1>
+                        <div class="room-meta">
+                            <span class="location"><i class="fas fa-map-marker-alt"></i> An Khánh, Cần Thơ</span>
+                            <span class="post-date"><i class="far fa-clock"></i> Đăng ngày: 12/04/2025</span>
+                        </div>
+                    </div>
+                    <div class="room-price">
+                        <div class="price-tag">3.5 triệu/tháng</div>
+                        <button class="save-room"><i class="far fa-heart"></i> Lưu tin</button>
                     </div>
                 </div>
 
-                <div class="room-info">
-                    <h1>Phòng trọ đẹp, gần trung tâm</h1>
-                    <p class="price">2.5 triệu/tháng</p>
-                    <p class="location"><i class="fas fa-map-marker-alt"></i> Ninh Kiều - Cần Thơ</p>
-
-                    <div class="features-list">
-                        <div class="feature-item">
-                            <i class="fas fa-ruler-combined"></i>
-                            <span>Diện tích: 25m²</span>
+                <!-- Room Details -->
+                <div class="room-details">
+                    <h2>Thông tin phòng</h2>
+                    <div class="details-grid">
+                        <div class="detail-item">
+                            <i class="fas fa-expand"></i>
+                            <div class="detail-info">
+                                <label>Diện tích</label>
+                                <span>25 m²</span>
+                            </div>
                         </div>
-                        <div class="feature-item">
-                            <i class="fas fa-bed"></i>
-                            <span>1 giường</span>
+                        <div class="detail-item">
+                            <i class="fas fa-bolt"></i>
+                            <div class="detail-info">
+                                <label>Điện</label>
+                                <span>3.500đ/kWh</span>
+                            </div>
                         </div>
-                        <div class="feature-item">
-                            <i class="fas fa-bath"></i>
-                            <span>1 WC</span>
+                        <div class="detail-item">
+                            <i class="fas fa-water"></i>
+                            <div class="detail-info">
+                                <label>Nước</label>
+                                <span>100.000đ/người</span>
+                            </div>
                         </div>
-                        <div class="feature-item">
+                        <div class="detail-item">
                             <i class="fas fa-wifi"></i>
-                            <span>WiFi miễn phí</span>
+                            <div class="detail-info">
+                                <label>Internet</label>
+                                <span>Miễn phí</span>
+                            </div>
                         </div>
-                        <div class="feature-item">
-                            <i class="fas fa-car"></i>
+                    </div>
+                </div>
+
+                <!-- Room Amenities -->
+                <div class="room-amenities">
+                    <h2>Tiện nghi</h2>
+                    <div class="amenities-grid">
+                        <div class="amenity-item">
+                            <i class="fas fa-wind"></i>
+                            <span>Máy lạnh</span>
+                        </div>
+                        <div class="amenity-item">
+                            <i class="fas fa-toilet"></i>
+                            <span>WC riêng</span>
+                        </div>
+                        <div class="amenity-item">
+                            <i class="fas fa-motorcycle"></i>
                             <span>Chỗ để xe</span>
                         </div>
-                    </div>
-
-                    <div class="description">
-                        <h2>Mô tả</h2>
-                        <p>Phòng trọ mới xây, đầy đủ tiện nghi, gần trung tâm thành phố. Phòng có nội thất cơ bản: giường,
-                            tủ quần áo, bàn học, điều hòa, nóng lạnh. Khu vực an ninh, có bảo vệ 24/7.</p>
-                    </div>
-
-                    <div class="contact-info">
-                        <h2>Thông tin liên hệ</h2>
-                        <p><i class="fas fa-user"></i> <strong>Người cho thuê:</strong> Nguyễn Huy Điền</p>
-                        <p><i class="fas fa-phone"></i> <strong>Số điện thoại:</strong> 0989 9999 8888</p>
-                        <button class="contact-btn primary-btn"><i class="fas fa-phone"></i> Gọi ngay</button>
-                        <button class="contact-btn secondary-btn"><i class="fas fa-comment"></i> Nhắn tin</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="map-section">
-                <h2>Vị trí</h2>
-                <div class="map-container">
-                    <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d62862.66749740028!2d105.7456128!3d10.0237312!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1svi!2s!4v1743490573225!5m2!1svi!2s"
-                        width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-                        referrerpolicy="no-referrer-when-downgrade">
-                    </iframe>
-                </div>
-            </div>
-
-            <div class="contact-form-section">
-                <h2>Gửi yêu cầu xem phòng</h2>
-                <form class="contact-form">
-                    <div class="form-group">
-                        <label for="name">Họ tên</label>
-                        <input type="text" id="name" placeholder="Nhập họ tên của bạn" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="phone">Số điện thoại</label>
-                        <input type="tel" id="phone" placeholder="Nhập số điện thoại" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" placeholder="Nhập email của bạn" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Nội dung</label>
-                        <textarea id="message" placeholder="Nhập nội dung tin nhắn" rows="4" required></textarea>
-                    </div>
-                    <button type="submit" class="submit-btn">Gửi yêu cầu</button>
-                </form>
-            </div>
-
-            <div class="similar-rooms">
-                <h2>Phòng tương tự</h2>
-                <div class="room-cards">
-                    <div class="room-card">
-                        <img src="/assets/image/danhsachphong/hinh2.jpg" alt="Phòng trọ tương tự">
-                        <div class="room-card-info">
-                            <h3>Phòng trọ gần chợ</h3>
-                            <p class="price">2.2 triệu/tháng</p>
-                            <p class="location">Ninh Kiều, Cần Thơ</p>
-                            <a href="#" class="view-btn">Xem chi tiết</a>
+                        <div class="amenity-item">
+                            <i class="fas fa-door-open"></i>
+                            <span>Tự do</span>
                         </div>
-                    </div>
-                    <div class="room-card">
-                        <img src="/assets/image/danhsachphong/hinh3.jpg" alt="Phòng trọ tương tự">
-                        <div class="room-card-info">
-                            <h3>Phòng trọ gần trường học</h3>
-                            <p class="price">2.4 triệu/tháng</p>
-                            <p class="location">Ninh Kiều, Cần Thơ</p>
-                            <a href="#" class="view-btn">Xem chi tiết</a>
+                        <div class="amenity-item">
+                            <i class="fas fa-couch"></i>
+                            <span>Nội thất</span>
+                        </div>
+                        <div class="amenity-item">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>An ninh</span>
                         </div>
                     </div>
                 </div>
+
+                <!-- Room Description -->
+                <div class="room-description">
+                    <h2>Mô tả chi tiết</h2>
+                    <div class="description-content">
+                        <p>Phòng trọ mới xây, đầy đủ tiện nghi, gần trung tâm thành phố. Phòng có nội thất cơ bản:</p>
+                        <ul>
+                            <li>Giường, nệm cao cấp</li>
+                            <li>Tủ quần áo</li>
+                            <li>Máy lạnh mới</li>
+                            <li>Nhà vệ sinh riêng</li>
+                            <li>Kệ bếp, tủ lạnh</li>
+                        </ul>
+                        <p>Vị trí thuận lợi:</p>
+                        <ul>
+                            <li>Gần chợ, siêu thị</li>
+                            <li>Nhiều trường đại học</li>
+                            <li>Khu vực an ninh</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Map Section -->
+                <div class="map-section">
+                    <h2>Vị trí phòng trọ</h2>
+                    <div class="map-container">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d62860.41593375341!2d105.72005182167967!3d10.034724899999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31a0629f6de3edb7%3A0x527f09dbfb20b659!2zxJDhuqFpIGjhu41jIE5hbSBD4bqnbiBUaMah!5e0!3m2!1svi!2s!4v1681999999999!5m2!1svi!2s"
+                            width="100%" 
+                            height="450" 
+                            style="border:0;" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                </div>
+
+                <!-- Booking Form Section -->
+                <div class="booking-form">
+                    <h2>Đặt lịch xem phòng</h2>
+                    <form id="bookingForm" onsubmit="sendBookingEmail(event)">
+                        <div class="form-group">
+                            <label for="name">Họ và tên *</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="phone">Số điện thoại *</label>
+                                <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email *</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="date">Ngày xem phòng *</label>
+                            <input type="date" id="date" name="date" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="time">Thời gian *</label>
+                            <select id="time" name="time" required>
+                                <option value="">Chọn thời gian</option>
+                                <option value="09:00">09:00</option>
+                                <option value="10:00">10:00</option>
+                                <option value="14:00">14:00</option>
+                                <option value="15:00">15:00</option>
+                                <option value="16:00">16:00</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Ghi chú</label>
+                            <textarea id="message" name="message" rows="4"></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">Gửi yêu cầu đặt lịch</button>
+                    </form>
+                </div>
+
+                <!-- Contact Section -->
+                <div class="contact-section">
+                    <div class="host-info">
+                        <img src="../../../assets/image/user/user2.jpg" alt="Chủ trọ" class="host-avatar">
+                        <div class="host-details">
+                            <h3>Nguyễn Huy Điền</h3>
+                            <span class="host-type">Chủ trọ</span>
+                        </div>
+                    </div>
+                    <div class="contact-buttons">
+                        <a href="tel:0123456789" class="contact-btn primary-btn">
+                            <i class="fas fa-phone"></i> 0123.456.789
+                        </a>
+                        <button class="contact-btn secondary-btn">
+                            <i class="fas fa-comment"></i> Gửi tin nhắn
+                        </button>
+                    </div>
+                </div>
             </div>
-        </div>
+        </div>    
     </main>
 
-    <footer>
-        <div class="footer-content container">
-            <div class="footer-section">
-                <h3>Về Nhà Trọ Kết Nối</h3>
-                <p>Website Nhà Trọ Kết Nối là một nơi để kết nối tất cả nhà trọ lại với nhau. Để giúp khách hàng có thể tìm
-                    trọ một cách nhanh nhất và dễ dàng.</p>
-            </div>
-            <div class="footer-section">
-                <h3>Liên Kết Nhanh</h3>
-                <ul>
-                    <li><a href="/index.html">Trang chủ</a></li>
-                    <li><a href="/pages/phong/phong.html">Danh sách phòng</a></li>
-                    <li><a href="/pages/tintuc.html">Tin tức</a></li>
-                    <li><a href="/pages/thongtin.html">Về chúng tôi</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h3>Liên Hệ</h3>
-                <p><i class="fas fa-phone"></i> 0123.456.789</p>
-                <p><i class="fas fa-envelope"></i> huydien23@nhatroketnoi.com</p>
-                <p><i class="fas fa-map-marker-alt"></i> Toàn nhà khu I Đại học Nam Cần Thơ</p>
-            </div>
-        
-            <div class="footer-section">
-                <h3>Đối Tác</h3>
-                <div class="partners-grid">
-                    <a href="https://nctu.edu.vn/" target="_blank" class="partner-item">
-                        <i class="fas fa-university"></i>
-                        <span>Trường Đại học Nam Cần Thơ</span>
-                    </a>
-                    <a href="https://batdongsan.com.vn/" target="_blank" class="partner-item">
-                        <i class="fas fa-building"></i>
-                        <span>Batdongsan.com.vn</span>
-                    </a>
-                    <a href="https://www.chotot.com/" target="_blank" class="partner-item">
-                        <i class="fas fa-home"></i>
-                        <span>Chotot.com</span>
-                    </a>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Về Nhà Trọ Kết Nối</h3>
+                    <p>Trang web tìm kiếm phòng trọ uy tín, kết nối người thuê và chủ trọ một cách nhanh chóng, hiệu quả.
+                    </p>
+                </div>
+                <div class="footer-section">
+                    <h3>Liên kết nhanh</h3>
+                    <ul>
+                        <li><a href="../../../index.html">Trang chủ</a></li>
+                        <li><a href="../../phong/phong.html">Danh sách phòng</a></li>
+                        <li><a href="../../tintuc.html">Tin tức</a></li>
+                        <li><a href="../../thongtin.html">Về chúng tôi</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Liên hệ</h3>
+                    <ul>
+                        <li><i class="fas fa-phone"></i> 0123 456 789</li>
+                        <li><i class="fas fa-envelope"></i> huydien23@nhatroketnoi.com</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Cần Thơ</li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Theo dõi chúng tôi</h3>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2024 Nhà Trọ Kết Nối. Nguyễn Huy Điền.</p>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Nhà Trọ Kết Nối. All rights reserved.</p>
+            </div>
         </div>
     </footer>
 
-       <!-- Thêm đường dẫn script cuối trang -->
-    <script src="../../../assets/js/main.js"></script>
-    <script>
-        // Hàm kiểm tra trạng thái đăng nhập khi trang được tải
-        document.addEventListener('DOMContentLoaded', function() {
-            checkLoginStatus();
-        });
-    
-        // Kiểm tra trạng thái đăng nhập
-        function checkLoginStatus() {
-            // Lấy thông tin người dùng từ localStorage
-            const userData = JSON.parse(localStorage.getItem('userData'));
-            
-            // Lấy các phần tử UI
-            const loginBtn = document.getElementById('loginBtn');
-            const btnDangTin = document.getElementById('btnDangTin');
-            const userProfile = document.querySelector('.user-profile');
-            
-            if (userData) {
-                // Người dùng đã đăng nhập
-                // Ẩn nút đăng nhập
-                if (loginBtn) loginBtn.style.display = 'none';
-                
-                // Hiển thị nút đăng tin
-                if (btnDangTin) btnDangTin.style.display = 'block';
-                
-                // Hiển thị thông tin người dùng
-                if (userProfile) userProfile.style.display = 'flex';
-                
-                // Cập nhật thông tin người dùng
-                updateUserInfo(userData);
-            } else {
-                // Người dùng chưa đăng nhập
-                // Hiển thị nút đăng nhập
-                if (loginBtn) loginBtn.style.display = 'block';
-                
-                // Ẩn nút đăng tin và thông tin người dùng
-                if (btnDangTin) btnDangTin.style.display = 'none';
-                if (userProfile) userProfile.style.display = 'none';
-            }
-        }
-    
-        // Cập nhật thông tin người dùng trên giao diện
-        function updateUserInfo(userData) {
-            // Cập nhật avatar
-            const userAvatar = document.getElementById('userAvatar');
-            if (userAvatar && userData.avatar) {
-                userAvatar.src = userData.avatar;
-            }
-            
-            // Cập nhật tên ngắn (chữ cái đầu của họ tên)
-            const userShortName = document.getElementById('userShortName');
-            if (userShortName) {
-                userShortName.textContent = userData.fullname ? userData.fullname.charAt(0).toUpperCase() : 'U';
-            }
-            
-            // Cập nhật tên đầy đủ
-            const userFullname = document.getElementById('userFullname');
-            if (userFullname) {
-                userFullname.textContent = userData.fullname || 'Người dùng';
-            }
-            
-            // Cập nhật email
-            const userEmail = document.getElementById('userEmail');
-            if (userEmail) {
-                userEmail.textContent = userData.email || '';
-            }
-        }
-    
-        // Hàm đăng xuất
-        function logout() {
-            // Xóa thông tin người dùng khỏi localStorage
-            localStorage.removeItem('userData');
-            localStorage.removeItem('token');
-            
-            // Cập nhật lại giao diện
-            checkLoginStatus();
-            
-            // Chuyển về trang chủ hoặc trang đăng nhập
-            // window.location.href = '../../../index.html';
-            alert('Đã đăng xuất thành công!');
-        }
-    
-        // Xử lý sự kiện click vào avatar để hiển thị dropdown menu
-        document.addEventListener('click', function(event) {
-            const userAvatar = document.querySelector('.user-avatar');
-            const dropdownMenu = document.querySelector('.dropdown-menu');
-            
-            if (userAvatar && dropdownMenu) {
-                if (userAvatar.contains(event.target)) {
-                    // Toggle dropdown menu khi click vào avatar
-                    dropdownMenu.classList.toggle('show');
-                } else if (!dropdownMenu.contains(event.target)) {
-                    // Ẩn dropdown menu khi click bên ngoài
-                    dropdownMenu.classList.remove('show');
-                }
-            }
-        });
-    </script>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <script src="../../../assets/js/motaphong.js"></script>
 </body>
-
 </html>
