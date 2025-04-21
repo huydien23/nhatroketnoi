@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,16 +9,18 @@
     <link rel="stylesheet" href="../../assets/css/layouts/main.css">
     <link rel="stylesheet" href="../../assets/css/pages/auth.css">
     <link rel="stylesheet" href="../../assets/css/user-dropdown.css">
+    <link rel="stylesheet" href="../../assets/css/components/notification.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
+
 <body>
     <nav class="navbar">
         <div class="navbar-container">
             <div class="logo">
                 <a href="../../index.html">
                     <img src="../../assets/image/logo.svg" alt="logo">
-                </a> 
+                </a>
             </div>
             <ul class="nav-links">
                 <li><a href="../../index.html">Trang chủ</a></li>
@@ -25,7 +28,7 @@
                 <li><a href="../tintuc.html">Tin tức</a></li>
                 <li><a href="../thongtin.html">Về chúng tôi</a></li>
                 <li><a href="../auth/dangnhap.html" class="login-btn" id="loginBtn">Đăng nhập</a></li>
-                
+
             </ul>
             <div class="burger">
                 <div></div>
@@ -48,10 +51,6 @@
             <h2>Đăng ký tài khoản</h2>
             <form id="registerForm" onsubmit="return register()">
                 <div class="form-group">
-                    <label for="username">Tên đăng nhập</label>
-                    <input type="text" id="username" name="username" placeholder="Nhập tên đăng nhập" required>
-                </div>
-                <div class="form-group">
                     <label for="email">Email</label>
                     <input type="email" id="email" name="email" placeholder="Nhập email" required>
                 </div>
@@ -70,11 +69,252 @@
                 <button type="submit" class="btn btn-primary w-100" id="registerButton">Đăng ký</button>
             </form>
             <p class="auth-link">Đã có tài khoản? <a href="../auth/dangnhap.html">Đăng nhập</a></p>
+            <p id="errorMessage" style="color: red; display: none;"></p>
         </div>
     </div>
 
-    <script src="../../assets/js/taikhoan.js"></script>
-    <script src="../../assets/js/auth.js"></script>
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Về Nhà Trọ Kết Nối</h3>
+                    <p>Website Nhà Trọ Kết Nối là một nơi để kết kết nối tất cả nhà trọ lại với nhau. Để giúp khách hàng
+                        có thể tìm trọ một
+                        cách nhanh nhất và dễ dàng.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Liên Kết Nhanh</h3>
+                    <ul>
+                        <li><a href="../../index.html">Trang chủ</a></li>
+                        <li><a href="../phong/phong.html">Danh sách phòng</a></li>
+                        <li><a href="../tintuc.html">Tin tức</a></li>
+                        <li><a href="../thongtin.html">Về chúng tôi</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Liên Hệ</h3>
+                    <p><i class="fas fa-phone"></i> 0123.456.789</p>
+                    <p><i class="fas fa-envelope"></i> huydien23@nhatroketnoi.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Toàn nhà khu I Đại học Nam Cần Thơ</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Đối Tác</h3>
+                    <div class="partners-grid">
+                        <a href="https://nctu.edu.vn/" target="_blank" class="partner-item">
+                            <i class="fas fa-university"></i>
+                            <span>Trường Đại học Nam Cần Thơ</span>
+                        </a>
+                        <a href="https://batdongsan.com.vn/" target="_blank" class="partner-item">
+                            <i class="fas fa-building"></i>
+                            <span>Batdongsan.com.vn</span>
+                        </a>
+                        <a href="https://www.chotot.com/" target="_blank" class="partner-item">
+                            <i class="fas fa-home"></i>
+                            <span>Chotot.com</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Nhà Trọ Kết Nối.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Nút cuộn lên đầu trang -->
+    <button id="scrollTopBtn" class="scroll-top-btn">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-storage-compat.js"></script>
+
+    <script>
+        // Cấu hình Firebase
+        const firebaseConfig = {
+            apiKey: "AIzaSyCe63NDqYR2A-hUOu22S5Kr1g6vclkIcGw",
+            authDomain: "nhatroketnoi-9390a.firebaseapp.com",
+            databaseURL: "https://nhatroketnoi-9390a-default-rtdb.firebaseio.com",
+            projectId: "nhatroketnoi-9390a",
+            storageBucket: "nhatroketnoi-9390a.appspot.com",
+            messagingSenderId: "249753111607",
+            appId: "1:249753111607:web:3f6d0ddaa27e34fc6683b2",
+            measurementId: "G-219LR643DB"
+        };
+
+        // Khởi tạo Firebase
+        if (!firebase.apps.length) {
+            firebase.initializeApp(firebaseConfig);
+        }
+
+        // Định nghĩa trực tiếp hàm firebaseSignUp trong trang để tránh phụ thuộc vào main.js
+        window.firebaseSignUp = async function (email, password, userData, userProfile) {
+            try {
+                if (!firebase.auth) {
+                    throw new Error("Firebase Auth chưa được khởi tạo");
+                }
+
+                console.log("Đang đăng ký với email:", email);
+                console.log("Thông tin người dùng:", userData);
+
+                // Tạo tài khoản mới
+                const userCredential = await firebase.auth().createUserWithEmailAndPassword(email, password);
+                const user = userCredential.user;
+
+                console.log("Tài khoản đã được tạo:", user.uid);
+
+                // Cập nhật thông tin hiển thị
+                await user.updateProfile({
+                    displayName: userData.displayName,
+                    photoURL: userData.photoURL || null
+                });
+
+                console.log("Đã cập nhật profile với displayName:", userData.displayName);
+
+                // Lưu thông tin chi tiết vào Realtime Database
+                await firebase.database().ref(`users/${user.uid}`).set({
+                    ...userProfile,
+                    uid: user.uid,
+                    lastLogin: Date.now()
+                });
+
+                console.log("Đã lưu thông tin người dùng vào database");
+
+                return {
+                    success: true,
+                    user: user
+                };
+            } catch (error) {
+                console.error("Lỗi đăng ký:", error);
+                return {
+                    success: false,
+                    error: error.code,
+                    message: error.message
+                };
+            }
+        };
+
+        // Hàm đăng ký trực tiếp không sử dụng auth.js
+        async function register(event) {
+            if (event) {
+                event.preventDefault();
+            }
+
+            // Xác thực form
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+            const fullName = document.getElementById("full_name").value;
+            const phone = document.getElementById("phone_number").value;
+
+            // Kiểm tra dữ liệu trước khi gửi
+            if (!email || !password || !fullName || !phone) {
+                const errorElement = document.getElementById("errorMessage");
+                if (errorElement) {
+                    errorElement.textContent = "Vui lòng điền đầy đủ thông tin!";
+                    errorElement.style.display = "block";
+                } else {
+                    alert("Vui lòng điền đầy đủ thông tin!");
+                }
+                return false;
+            }
+
+            // Hiển thị loading
+            const registerButton = document.getElementById("registerButton");
+            if (registerButton) {
+                registerButton.textContent = "Đang xử lý...";
+                registerButton.disabled = true;
+            }
+
+            try {
+                // Chỉ truyền displayName là chuỗi String đơn giản
+                const userData = {
+                    displayName: fullName,
+                    phoneNumber: phone
+                };
+
+                // Tạo một đối tượng riêng cho dữ liệu chi tiết người dùng để lưu vào database
+                const userProfile = {
+                    fullName: fullName,
+                    email: email,
+                    phoneNumber: phone,
+                    createdAt: new Date().toISOString()
+                };
+
+                console.log("Bắt đầu đăng ký...");
+
+                // Gọi hàm đăng ký
+                const result = await window.firebaseSignUp(email, password, userData, userProfile);
+                console.log("Kết quả đăng ký:", result);
+
+                if (result.success) {
+                    // Reset form
+                    document.getElementById("registerForm").reset();
+
+                    // Hiển thị thông báo thành công
+                    alert("Đăng ký thành công!");
+
+                    // Chuyển hướng sau 1.5 giây
+                    setTimeout(() => {
+                        window.location.href = "../../pages/auth/dangnhap.html";
+                    }, 1500);
+                } else {
+                    let errorMessage = "Đăng ký thất bại. Vui lòng thử lại!";
+
+                    // Xử lý các loại lỗi
+                    if (result.error === "auth/email-already-in-use") {
+                        errorMessage = "Email này đã được sử dụng! Vui lòng sử dụng email khác hoặc đăng nhập.";
+                    } else if (result.error === "auth/invalid-value-(display-name)") {
+                        errorMessage = "Tên hiển thị không hợp lệ!";
+                    } else if (result.error === "auth/weak-password") {
+                        errorMessage = "Mật khẩu yếu! Vui lòng chọn mật khẩu có ít nhất 6 ký tự.";
+                    } else if (result.message) {
+                        errorMessage = result.message;
+                    }
+
+                    // Hiển thị lỗi
+                    const errorElement = document.getElementById("errorMessage");
+                    if (errorElement) {
+                        errorElement.textContent = errorMessage;
+                        errorElement.style.display = "block";
+                    } else {
+                        alert(errorMessage);
+                    }
+                }
+            } catch (error) {
+                console.error("Lỗi đăng ký:", error);
+                const errorElement = document.getElementById("errorMessage");
+                if (errorElement) {
+                    errorElement.textContent = error.message || "Đã có lỗi xảy ra khi đăng ký!";
+                    errorElement.style.display = "block";
+                } else {
+                    alert(error.message || "Đã có lỗi xảy ra khi đăng ký!");
+                }
+            }
+
+            // Khôi phục nút đăng ký
+            if (registerButton) {
+                registerButton.textContent = "Đăng ký";
+                registerButton.disabled = false;
+            }
+
+            return false;
+        }
+
+        // Gắn trình xử lý sự kiện cho form đăng ký
+        document.addEventListener("DOMContentLoaded", function () {
+            const registerForm = document.getElementById("registerForm");
+            if (registerForm) {
+                registerForm.onsubmit = register;
+            }
+        });
+    </script>
+
+    <!-- Đảm bảo main.js được tải trước auth.js -->
     <script src="../../assets/js/main.js"></script>
+    <script src="../../assets/js/notification.js"></script>
 </body>
-</html> 
+
+</html>

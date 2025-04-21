@@ -1,26 +1,31 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Nhà Trọ Kết Nối - Tìm kiếm phòng trọ dễ dàng và nhanh chóng.">
     <meta name="keywords" content="Nhà trọ, phòng trọ, tìm phòng trọ, cho thuê phòng, nhà ở">
     <meta name="author" content="Nhà Trọ Kết Nối">
+    <meta name="robots" content="index, follow">
     <title>Nhà Trọ Kết Nối - Tìm Phòng Trọ Dễ Dàng</title>
     <link rel="shortcut icon" href="/assets/image/favicon.svg" type="image/x-icon">
     <link rel="stylesheet" href="assets/css/layouts/main.css">
     <link rel="stylesheet" href="assets/css/pages/index.css">
+    <link rel="stylesheet" href="assets/css/components/testimonial.css">
     <link rel="stylesheet" href="assets/css/pages/auth.css">
     <link rel="stylesheet" href="assets/css/user-dropdown.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
+
 <body>
     <nav class="navbar">
         <div class="navbar-container">
             <div class="logo">
                 <a href="index.html">
                     <img src="assets/image/logo.svg" alt="logo">
-                </a> 
+                </a>
             </div>
             <ul class="nav-links">
                 <li><a href="#">Trang chủ</a></li>
@@ -29,9 +34,9 @@
                 <li><a href="./pages/thongtin.html">Về chúng tôi</a></li>
                 <li><a href="./pages/auth/dangnhap.html" class="login-btn" id="loginBtn">Đăng nhập</a></li>
                 <li><a href="./pages/dangtin.html" class="btn-dangtin" id="btnDangTin" style="display: none;">
-                    <i class="fas fa-plus-circle"></i>Đăng Tin
-                </a></li>
-                <li class="user-profile-container" style="margin-right: 0; padding-right: 0;"> 
+                        <i class="fas fa-plus-circle"></i>Đăng Tin
+                    </a></li>
+                <li class="user-profile-container" style="margin-right: 0; padding-right: 0;">
                     <div class="user-profile" style="display: none; position: relative;">
                         <div class="user-avatar">
                             <img id="userAvatar" src="assets/image/user/user2.jpg" alt="User Avatar">
@@ -246,12 +251,114 @@
         </div>
     </section>
 
+    <section class="testimonials-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Đánh Giá Từ Khách Hàng</h2>
+                <p>Những trải nghiệm thực tế từ cộng đồng Nhà Trọ Kết Nối</p>
+            </div>
+
+            <div class="testimonials-container">
+                <button class="slider-nav prev-btn"><i class="fas fa-chevron-left"></i></button>
+                <div class="testimonials-list" id="testimonialsList">
+                    <div class="testimonial-card">
+                        <div class="testimonial-header">
+                            <img src="assets/image/user/user2.jpg" alt="Người dùng 1">
+                            <div class="testimonial-info">
+                                <h4>Trường Giang</h4>
+                                <div class="rating yellow-stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <small class="review-meta">
+                                    <i class="fas fa-map-marker-alt"></i> Ninh Kiều, Cần Thơ
+                                    <!-- <i class="fas fa-graduation-cap"></i> Đại học Nam Cần Thơ -->
+                                    <span class="review-date">15/03/2024</span>
+                                </small>
+                            </div>
+                        </div>
+                        <p>"Website rất hữu ích cho sinh viên tìm trọ. Tôi đã tìm được phòng gần trường DNC!"</p>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <div class="testimonial-header">
+                            <img src="assets/image/user/user2.jpg" alt="Người dùng 2">
+                            <div class="testimonial-info">
+                                <h4>Trung Kiên</h4>
+                                <div class="rating yellow-stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                </div>
+                                <small class="review-meta">
+                                    <i class="fas fa-map-marker-alt"></i> Bình Thủy, Cần Thơ
+                                    <!-- <i class="fas fa-graduation-cap"></i> Đại học Nam Cần Thơ -->
+                                    <span class="review-date">14/03/2024</span>
+                                </small>
+                            </div>
+                        </div>
+                        <p>"Giao diện dễ sử dụng, tìm kiếm nhanh chóng. Đã giới thiệu cho bạn bè cùng lớp!"</p>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <div class="testimonial-header">
+                            <img src="assets/image/user/user2.jpg" alt="Người dùng 3">
+                            <div class="testimonial-info">
+                                <h4>Đăng Khoa</h4>
+                                <div class="rating yellow-stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                </div>
+                                <small class="review-meta">
+                                    <i class="fas fa-map-marker-alt"></i> Cái Răng, Cần Thơ
+                                    <!-- <i class="fas fa-graduation-cap"></i> Đại học Nam Cần Thơ -->
+                                    <span class="review-date">13/03/2024</span>
+                                </small>
+                            </div>
+                        </div>
+                        <p>"Tìm được phòng trọ gần bệnh viện thực hành, rất tiện cho việc đi học!"</p>
+                    </div>
+                </div>
+                <button class="slider-nav next-btn"><i class="fas fa-chevron-right"></i></button>
+
+                <div class="slider-dots">
+                    <span class="dot active"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                </div>
+
+                <div class="review-form" id="reviewForm" style="display: none;">
+                    <h3>Chia sẻ đánh giá của bạn</h3>
+                    <div class="rating">
+                        <i class="far fa-star" data-rating="1"></i>
+                        <i class="far fa-star" data-rating="2"></i>
+                        <i class="far fa-star" data-rating="3"></i>
+                        <i class="far fa-star" data-rating="4"></i>
+                        <i class="far fa-star" data-rating="5"></i>
+                    </div>
+                    <textarea id="reviewContent" placeholder="Chia sẻ trải nghiệm của bạn..."
+                        maxlength="500"></textarea>
+                    <button id="submitReview" class="submit-review">Gửi đánh giá</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
                     <h3>Về Nhà Trọ Kết Nối</h3>
-                    <p>Trang web tìm kiếm phòng trọ uy tín, kết nối người thuê và chủ trọ một cách nhanh chóng, hiệu quả.</p>
+                    <p>Trang web tìm kiếm phòng trọ uy tín, kết nối người thuê và chủ trọ một cách nhanh chóng, hiệu
+                        quả.</p>
                 </div>
                 <div class="footer-section">
                     <h3>Liên kết nhanh</h3>
@@ -305,30 +412,19 @@
     <button class="chatbot-toggle">
         <i class="fas fa-comments"></i>
     </button>
+
+    <!-- Firebase SDK -->
+    <!-- Sử dụng Firebase Compat SDK cho tính tương thích tốt hơn -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-storage-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-analytics-compat.js"></script>
+
     <script src="assets/js/ai-chat.js"></script>
     <script src="assets/js/main.js"></script>
     <script src="assets/js/auth.js"></script>
-    <script>
-        // Xử lý sự kiện cho menu user profile
-        document.addEventListener('DOMContentLoaded', function() {
-            const userProfile = document.querySelector('.user-profile');
-            const userAvatar = document.querySelector('.user-avatar');
-            
-            if (userAvatar) {
-                userAvatar.addEventListener('click', function(event) {
-                    event.stopPropagation(); // Ngăn sự kiện click lan ra document
-                    userProfile.classList.toggle('active');
-                });
-                
-                // Đóng dropdown khi click bên ngoài
-                document.addEventListener('click', function(event) {
-                    if (!userProfile.contains(event.target)) {
-                        userProfile.classList.remove('active');
-                    }
-                });
-            }
-        });
-
-    </script>
+    <script src="assets/js/testimonial.js"></script>
 </body>
+
 </html>

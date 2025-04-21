@@ -1,33 +1,36 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nhà Trọ Kết Nối - Danh sách phòng trọ</title>
+    <title>Danh sách phòng - Nhà Trọ Kết Nối</title>
     <link rel="shortcut icon" href="../../assets/image/favicon.svg" type="image/x-icon">
     <link rel="stylesheet" href="../../assets/css/layouts/main.css">
-    <link rel="stylesheet" href="../../assets/css/user-dropdown.css">
-    <link rel="stylesheet" href="../../assets/css/pages/common.css">
     <link rel="stylesheet" href="../../assets/css/pages/phong.css">
-    <script src="../../assets/js/auth.js"></script>
+    <link rel="stylesheet" href="../../assets/css/user-dropdown.css">
+    <link rel="stylesheet" href="../../assets/css/components/notification.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
+
 <body>
     <nav class="navbar">
         <div class="navbar-container">
             <div class="logo">
                 <a href="../../index.html">
                     <img src="../../assets/image/logo.svg" alt="logo">
-                </a> 
+                </a>
             </div>
             <ul class="nav-links">
                 <li><a href="../../index.html">Trang chủ</a></li>
-                <li><a href="../../pages/phong/phong.html">Danh sách phòng</a></li>
-                <li><a href="../../pages/tintuc.html">Tin tức</a></li>
-                <li><a href="../../pages/thongtin.html">Về chúng tôi</a></li>
-                <li><a href="../../pages/auth/dangnhap.html" class="login-btn" id="loginBtn">Đăng nhập</a></li>
-                <li><a href="../../pages/dangtin.html" class="btn-dangtin" id="btnDangTin" style="display: none;">
-                    <i class="fas fa-plus-circle"></i>Đăng Tin</a></li>
+                <li><a href="../phong/phong.html">Danh sách phòng</a></li>
+                <li><a href="../tintuc.html">Tin tức</a></li>
+                <li><a href="../thongtin.html">Về chúng tôi</a></li>
+                <li><a href="../auth/dangnhap.html" class="login-btn" id="loginBtn">Đăng nhập</a></li>
+                <li><a href="../dangtin.html" class="btn-dangtin" id="btnDangTin" style="display: none;">
+                        <i class="fas fa-plus-circle"></i>Đăng Tin
+                    </a></li>
                 <li class="user-profile-container" style="margin-right: 0; padding-right: 0;">
                     <div class="user-profile" style="display: none; position: relative;">
                         <div class="user-avatar">
@@ -36,13 +39,35 @@
                             <i class="fas fa-caret-down"></i>
                         </div>
                         <div class="dropdown-menu">
-                            <a href="../../pages/thongtin.html"><i class="fas fa-user"></i>Thông tin cá nhân</a>
-                            <a href="../../pages/quanlyphong.html"><i class="fas fa-home"></i>Quản lý phòng</a>
-                            <a href="#" id="logoutBtn"><i class="fas fa-sign-out-alt"></i>Đăng xuất</a>
+                            <div class="dropdown-item user-info-header">
+                                <img src="../../assets/image/user/user2.jpg" alt="User Avatar">
+                                <div>
+                                    <span id="userFullname"></span>
+                                    <small id="userEmail"></small>
+                                </div>
+                            </div>
+                            <a href="../user/profile.html" class="dropdown-item">
+                                <i class="fas fa-user"></i> Tài khoản của tôi
+                            </a>
+                            <a href="../user/posts.html" class="dropdown-item">
+                                <i class="fas fa-list"></i> Bài đăng của tôi
+                            </a>
+                            <a href="../user/saved.html" class="dropdown-item">
+                                <i class="fas fa-bookmark"></i> Phòng đã lưu
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a href="#" class="dropdown-item" onclick="logout()">
+                                <i class="fas fa-sign-out-alt"></i> Đăng xuất
+                            </a>
                         </div>
                     </div>
                 </li>
             </ul>
+            <div class="burger">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
         </div>
     </nav>
 
@@ -141,7 +166,8 @@
                     <!-- Room Card -->
                     <div class="room-card">
                         <div class="room-image">
-                            <img src="../../assets/image/danhsachphong/nhatro1/nha-tro-anh-dien.jpg" alt="Phòng trọ anh Điền">
+                            <img src="../../assets/image/danhsachphong/nhatro1/nha-tro-anh-dien.jpg"
+                                alt="Phòng trọ anh Điền">
                             <span class="room-status new">Mới</span>
                             <button class="favorite-btn">
                                 <i class="far fa-heart"></i>
@@ -157,7 +183,8 @@
                                 <span><i class="fas fa-expand"></i> 25m²</span>
                                 <span><i class="fas fa-map-marker-alt"></i> An Khánh, Cần Thơ</span>
                             </div>
-                            <p class="room-description">Phòng trọ mới xây, đầy đủ nội thất, có ban công, cửa sổ thoáng mát...</p>
+                            <p class="room-description">Phòng trọ mới xây, đầy đủ nội thất, có ban công, cửa sổ thoáng
+                                mát...</p>
                             <div class="room-footer">
                                 <div class="owner">
                                     <img src="../../assets/image/user/user2.jpg" alt="Chủ trọ">
@@ -167,10 +194,11 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="room-card">
                         <div class="room-image">
-                            <img src="../../assets/image/danhsachphong/nhatro2/nha-tro-anh-hung.jpg" alt="Phòng trọ anh Hưng">
+                            <img src="../../assets/image/danhsachphong/nhatro2/nha-tro-anh-hung.jpg"
+                                alt="Phòng trọ anh Hưng">
                             <span class="room-status new">Mới</span>
                             <button class="favorite-btn">
                                 <i class="far fa-heart"></i>
@@ -186,7 +214,8 @@
                                 <span><i class="fas fa-expand"></i> 25m²</span>
                                 <span><i class="fas fa-map-marker-alt"></i> Ninh Kiều, Cần Thơ</span>
                             </div>
-                            <p class="room-description">Phòng trọ mới xây, đầy đủ nội thất, có ban công, cửa sổ thoáng mát...</p>
+                            <p class="room-description">Phòng trọ mới xây, đầy đủ nội thất, có ban công, cửa sổ thoáng
+                                mát...</p>
                             <div class="room-footer">
                                 <div class="owner">
                                     <img src="../../assets/image/user/user2.jpg" alt="Chủ trọ">
@@ -215,7 +244,8 @@
                                 <span><i class="fas fa-expand"></i> 25m²</span>
                                 <span><i class="fas fa-map-marker-alt"></i> Bình Thủy, Cần Thơ</span>
                             </div>
-                            <p class="room-description">Phòng trọ mới xây, đầy đủ nội thất, có ban công, cửa sổ thoáng mát...</p>
+                            <p class="room-description">Phòng trọ mới xây, đầy đủ nội thất, có ban công, cửa sổ thoáng
+                                mát...</p>
                             <div class="room-footer">
                                 <div class="owner">
                                     <img src="../../assets/image/user/user2.jpg" alt="Chủ trọ">
@@ -244,7 +274,8 @@
                                 <span><i class="fas fa-expand"></i> 25m²</span>
                                 <span><i class="fas fa-map-marker-alt"></i> Bệnh Viện Nhi Đồng, Cần Thơ</span>
                             </div>
-                            <p class="room-description">Phòng trọ mới xây, đầy đủ nội thất, có ban công, cửa sổ thoáng mát...</p>
+                            <p class="room-description">Phòng trọ mới xây, đầy đủ nội thất, có ban công, cửa sổ thoáng
+                                mát...</p>
                             <div class="room-footer">
                                 <div class="owner">
                                     <img src="../../assets/image/user/user2.jpg" alt="Chủ trọ">
@@ -273,7 +304,8 @@
                                 <span><i class="fas fa-expand"></i> 25m²</span>
                                 <span><i class="fas fa-map-marker-alt"></i> Đường NVC, Cần Thơ</span>
                             </div>
-                            <p class="room-description">Phòng trọ mới xây, đầy đủ nội thất, có ban công, cửa sổ thoáng mát...</p>
+                            <p class="room-description">Phòng trọ mới xây, đầy đủ nội thất, có ban công, cửa sổ thoáng
+                                mát...</p>
                             <div class="room-footer">
                                 <div class="owner">
                                     <img src="../../assets/image/user/user2.jpg" alt="Chủ trọ">
@@ -302,7 +334,8 @@
                                 <span><i class="fas fa-expand"></i> 25m²</span>
                                 <span><i class="fas fa-map-marker-alt"></i> Đường 3/2, Cần Thơ</span>
                             </div>
-                            <p class="room-description">Mini house mới xây, đầy đủ nội thất, có ban công, cửa sổ thoáng mát...</p>
+                            <p class="room-description">Mini house mới xây, đầy đủ nội thất, có ban công, cửa sổ thoáng
+                                mát...</p>
                             <div class="room-footer">
                                 <div class="owner">
                                     <img src="../../assets/image/user/user2.jpg" alt="Chủ trọ">
@@ -331,7 +364,8 @@
                                 <span><i class="fas fa-expand"></i> 25m²</span>
                                 <span><i class="fas fa-map-marker-alt"></i> Đường 3/2, Cần Thơ</span>
                             </div>
-                            <p class="room-description">Phòng trọ mới xây, đầy đủ nội thất, có ban công, cửa sổ thoáng mát...</p>
+                            <p class="room-description">Phòng trọ mới xây, đầy đủ nội thất, có ban công, cửa sổ thoáng
+                                mát...</p>
                             <div class="room-footer">
                                 <div class="owner">
                                     <img src="../../assets/image/user/user2.jpg" alt="Chủ trọ">
@@ -360,7 +394,8 @@
                                 <span><i class="fas fa-expand"></i> 25m²</span>
                                 <span><i class="fas fa-map-marker-alt"></i> Đường NVC, Cần Thơ</span>
                             </div>
-                            <p class="room-description">Phòng trọ mới xây, đầy đủ nội thất, có ban công, cửa sổ thoáng mát...</p>
+                            <p class="room-description">Phòng trọ mới xây, đầy đủ nội thất, có ban công, cửa sổ thoáng
+                                mát...</p>
                             <div class="room-footer">
                                 <div class="owner">
                                     <img src="../../assets/image/user/user2.jpg" alt="Chủ trọ">
@@ -371,7 +406,7 @@
                         </div>
                     </div>
 
-                    
+
                 </div>
 
                 <!-- Pagination -->
@@ -393,7 +428,8 @@
             <div class="footer-content">
                 <div class="footer-section">
                     <h3>Về Nhà Trọ Kết Nối</h3>
-                    <p>Trang web tìm kiếm phòng trọ uy tín, kết nối người thuê và chủ trọ một cách nhanh chóng, hiệu quả.</p>
+                    <p>Trang web tìm kiếm phòng trọ uy tín, kết nối người thuê và chủ trọ một cách nhanh chóng, hiệu
+                        quả.</p>
                 </div>
                 <div class="footer-section">
                     <h3>Liên kết nhanh</h3>
@@ -428,6 +464,15 @@
         </div>
     </footer>
 
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-storage-compat.js"></script>
+
     <script src="../../assets/js/main.js"></script>
+    <script src="../../assets/js/notification.js"></script>
+    <script src="../../assets/js/phong.js"></script>
 </body>
+
 </html>

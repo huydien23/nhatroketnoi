@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,7 +11,9 @@
     <link rel="stylesheet" href="../../../assets/css/pages/motaphong.css">
     <link rel="stylesheet" href="../../../assets/css/pages/auth.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
+
 <body>
     <!-- Header/Navbar -->
     <nav class="navbar">
@@ -26,7 +29,8 @@
                 <li><a href="../../tintuc.html">Tin tức</a></li>
                 <li><a href="../../thongtin.html">Về chúng tôi</a></li>
                 <li><a href="../../auth/dangnhap.html" class="login-btn" id="loginBtn">Đăng nhập</a></li>
-                <li><a href="../../dangtin.html" class="btn-dangtin" id="btnDangTin" style="display: none;">Đăng Tin</a></li>
+                <li><a href="../../dangtin.html" class="btn-dangtin" id="btnDangTin" style="display: none;">
+                        <i class="fas fa-plus-circle"></i>Đăng Tin</a></li>
                 <li class="user-profile-container">
                     <div class="user-profile" style="display: none;">
                         <div class="user-avatar">
@@ -83,7 +87,8 @@
             <!-- Image Gallery -->
             <div class="room-gallery">
                 <div class="main-image">
-                    <img id="mainImage" src="../../../assets/image/danhsachphong/nhatro1/nha-tro-anh-dien.jpg" alt="Phòng trọ">
+                    <img id="mainImage" src="../../../assets/image/danhsachphong/nhatro1/nha-tro-anh-dien.jpg"
+                        alt="Phòng trọ">
                 </div>
                 <div class="thumbnails" id="thumbnailContainer">
                     <div class="thumbnail" data-index="0">
@@ -216,13 +221,9 @@
                 <div class="map-section">
                     <h2>Vị trí phòng trọ</h2>
                     <div class="map-container">
-                        <iframe 
+                        <iframe
                             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d62860.41593375341!2d105.72005182167967!3d10.034724899999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31a0629f6de3edb7%3A0x527f09dbfb20b659!2zxJDhuqFpIGjhu41jIE5hbSBD4bqnbiBUaMah!5e0!3m2!1svi!2s!4v1681999999999!5m2!1svi!2s"
-                            width="100%" 
-                            height="450" 
-                            style="border:0;" 
-                            allowfullscreen="" 
-                            loading="lazy" 
+                            width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"
                             referrerpolicy="no-referrer-when-downgrade">
                         </iframe>
                     </div>
@@ -288,7 +289,7 @@
                     </div>
                 </div>
             </div>
-        </div>    
+        </div>
     </main>
 
     <footer class="footer">
@@ -296,7 +297,8 @@
             <div class="footer-content">
                 <div class="footer-section">
                     <h3>Về Nhà Trọ Kết Nối</h3>
-                    <p>Trang web tìm kiếm phòng trọ uy tín, kết nối người thuê và chủ trọ một cách nhanh chóng, hiệu quả.
+                    <p>Trang web tìm kiếm phòng trọ uy tín, kết nối người thuê và chủ trọ một cách nhanh chóng, hiệu
+                        quả.
                     </p>
                 </div>
                 <div class="footer-section">
@@ -332,7 +334,30 @@
         </div>
     </footer>
 
-    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
+
+    <script>
+        // Cấu hình Firebase
+        const firebaseConfig = {
+            apiKey: "AIzaSyCe63NDqYR2A-hUOu22S5Kr1g6vclkIcGw",
+            authDomain: "nhatroketnoi-9390a.firebaseapp.com",
+            databaseURL: "https://nhatroketnoi-9390a-default-rtdb.firebaseio.com",
+            projectId: "nhatroketnoi-9390a",
+            storageBucket: "nhatroketnoi-9390a.appspot.com",
+            messagingSenderId: "249753111607",
+            appId: "1:249753111607:web:3f6d0ddaa27e34fc6683b2",
+            measurementId: "G-219LR643DB"
+        };
+
+        // Khởi tạo Firebase
+        firebase.initializeApp(firebaseConfig);
+    </script>
+
+    <script src="../../../assets/js/auth.js"></script>
     <script src="../../../assets/js/motaphong.js"></script>
 </body>
+
 </html>

@@ -1,16 +1,19 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tin tức - Nhà Trọ Kết Nối</title>
     <link rel="shortcut icon" href="../assets/image/favicon.svg" type="image/x-icon">
     <link rel="stylesheet" href="../assets/css/layouts/main.css">
-    <link rel="stylesheet" href="../assets/css/user-dropdown.css">
     <link rel="stylesheet" href="../assets/css/pages/tintuc.css">
-    <script src="../assets/js/auth.js"></script>
+    <link rel="stylesheet" href="../assets/css/user-dropdown.css">
+    <link rel="stylesheet" href="../assets/css/components/notification.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
+
 <body>
     <nav class="navbar">
         <div class="navbar-container">
@@ -25,8 +28,9 @@
                 <li><a href="./tintuc.html">Tin tức</a></li>
                 <li><a href="./thongtin.html">Về chúng tôi</a></li>
                 <li><a href="./auth/dangnhap.html" class="login-btn" id="loginBtn">Đăng nhập</a></li>
-                <li><a href="./dangtin.html" class="btn-dangtin"id="btnDangTin" style="display: none;">
-                    <i class="fas fa-plus-circle"></i>Đăng Tin</a></li>
+                <li><a href="./dangtin.html" class="btn-dangtin" id="btnDangTin" style="display: none;">
+                        <i class="fas fa-plus-circle"></i>Đăng Tin
+                    </a></li>
                 <li class="user-profile-container" style="margin-right: 0; padding-right: 0;">
                     <div class="user-profile" style="display: none; position: relative;">
                         <div class="user-avatar">
@@ -42,13 +46,13 @@
                                     <small id="userEmail"></small>
                                 </div>
                             </div>
-                            <a href="../pages/user/profile.html" class="dropdown-item">
+                            <a href="./user/profile.html" class="dropdown-item">
                                 <i class="fas fa-user"></i> Tài khoản của tôi
                             </a>
-                            <a href="../pages/user/posts.html" class="dropdown-item">
+                            <a href="./user/posts.html" class="dropdown-item">
                                 <i class="fas fa-list"></i> Bài đăng của tôi
                             </a>
-                            <a href="../pages/user/saved.html" class="dropdown-item">
+                            <a href="./user/saved.html" class="dropdown-item">
                                 <i class="fas fa-bookmark"></i> Phòng đã lưu
                             </a>
                             <div class="dropdown-divider"></div>
@@ -106,7 +110,8 @@
                             <span><i class="far fa-comment"></i> 18</span>
                         </div>
                         <h2>Xu Hướng Thiết Kế Phòng Trọ 2025: Tối Giản và Thông Minh</h2>
-                        <p>Khám phá những xu hướng thiết kế phòng trọ mới nhất năm 2025, từ nội thất thông minh đến không gian sống xanh.</p>
+                        <p>Khám phá những xu hướng thiết kế phòng trọ mới nhất năm 2025, từ nội thất thông minh đến
+                            không gian sống xanh.</p>
                         <a href="#" class="read-more">Đọc tiếp <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
@@ -132,7 +137,7 @@
 
             <div class="news-item">
                 <div class="news-image">
-                    <img src="../assets/image/news/news2.jpg" alt="Tin tức">
+                    <img src="../assets/image/news/thitruong/gia-thue-nha.jpg" alt="Tin tức">
                     <div class="news-category">Thị trường</div>
                 </div>
                 <div class="news-content">
@@ -141,7 +146,8 @@
                         <span><i class="far fa-eye"></i> 956</span>
                     </div>
                     <h3>Thị Trường Phòng Trọ Quý 2/2025</h3>
-                    <p>Phân tích chi tiết về tình hình thị trường và dự báo xu hướng giá phòng trọ trong thời gian tới.</p>
+                    <p>Phân tích chi tiết về tình hình thị trường và dự báo xu hướng giá phòng trọ trong thời gian tới.
+                    </p>
                     <a href="#" class="read-more">Đọc tiếp <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
@@ -195,7 +201,8 @@
             <div class="footer-content">
                 <div class="footer-section">
                     <h3>Về Nhà Trọ Kết Nối</h3>
-                    <p>Trang web tìm kiếm phòng trọ uy tín, kết nối người thuê và chủ trọ một cách nhanh chóng, hiệu quả.</p>
+                    <p>Trang web tìm kiếm phòng trọ uy tín, kết nối người thuê và chủ trọ một cách nhanh chóng, hiệu
+                        quả.</p>
                 </div>
                 <div class="footer-section">
                     <h3>Liên kết nhanh</h3>
@@ -235,8 +242,15 @@
         <i class="fas fa-arrow-up"></i>
     </button>
 
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-storage-compat.js"></script>
+
     <script src="../assets/js/main.js"></script>
-    <script src="../assets/js/auth.js"></script>
+    <script src="../assets/js/notification.js"></script>
     <script src="../assets/js/tintuc-loc.js"></script>
 </body>
+
 </html>

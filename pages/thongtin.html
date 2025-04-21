@@ -1,16 +1,19 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Về chúng tôi - Nhà Trọ Kết Nối</title>
     <link rel="shortcut icon" href="../assets/image/favicon.svg" type="image/x-icon">
     <link rel="stylesheet" href="../assets/css/layouts/main.css">
-    <link rel="stylesheet" href="../assets/css/user-dropdown.css">
     <link rel="stylesheet" href="../assets/css/pages/thongtin.css">
-    <script src="../assets/js/auth.js"></script>
+    <link rel="stylesheet" href="../assets/css/user-dropdown.css">
+    <link rel="stylesheet" href="../assets/css/components/notification.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
+
 <body>
     <nav class="navbar">
         <div class="navbar-container">
@@ -25,8 +28,9 @@
                 <li><a href="./tintuc.html">Tin tức</a></li>
                 <li><a href="./thongtin.html">Về chúng tôi</a></li>
                 <li><a href="./auth/dangnhap.html" class="login-btn" id="loginBtn">Đăng nhập</a></li>
-                <li><a href="./pages/dangtin.html" class="btn-dangtin" id="btnDangTin" style="display: none;">
-                    <i class="fas fa-plus-circle"></i>Đăng Tin</a></li>
+                <li><a href="./dangtin.html" class="btn-dangtin" id="btnDangTin" style="display: none;">
+                        <i class="fas fa-plus-circle"></i>Đăng Tin
+                    </a></li>
                 <li class="user-profile-container" style="margin-right: 0; padding-right: 0;">
                     <div class="user-profile" style="display: none; position: relative;">
                         <div class="user-avatar">
@@ -42,13 +46,13 @@
                                     <small id="userEmail"></small>
                                 </div>
                             </div>
-                            <a href="../pages/user/profile.html" class="dropdown-item">
+                            <a href="./user/profile.html" class="dropdown-item">
                                 <i class="fas fa-user"></i> Tài khoản của tôi
                             </a>
-                            <a href="../pages/user/posts.html" class="dropdown-item">
+                            <a href="./user/posts.html" class="dropdown-item">
                                 <i class="fas fa-list"></i> Bài đăng của tôi
                             </a>
-                            <a href="../pages/user/saved.html" class="dropdown-item">
+                            <a href="./user/saved.html" class="dropdown-item">
                                 <i class="fas fa-bookmark"></i> Phòng đã lưu
                             </a>
                             <div class="dropdown-divider"></div>
@@ -78,7 +82,9 @@
             <div class="about-story">
                 <div class="story-content">
                     <h2>Câu Chuyện Của Chúng Tôi</h2>
-                    <p>Nhà Trọ Kết Nối ra đời với sứ mệnh đơn giản nhưng đầy ý nghĩa: Tạo ra một nền tảng kết nối tin cậy giữa người thuê trọ và chủ nhà. Chúng tôi hiểu rằng việc tìm kiếm một nơi ở phù hợp không chỉ đơn thuần là giao dịch, mà còn là hành trình tìm kiếm một mái ấm thứ hai.</p>
+                    <p>Nhà Trọ Kết Nối ra đời với sứ mệnh đơn giản nhưng đầy ý nghĩa: Tạo ra một nền tảng kết nối tin
+                        cậy giữa người thuê trọ và chủ nhà. Chúng tôi hiểu rằng việc tìm kiếm một nơi ở phù hợp không
+                        chỉ đơn thuần là giao dịch, mà còn là hành trình tìm kiếm một mái ấm thứ hai.</p>
                 </div>
                 <div class="story-image">
                     <img src="../assets/image/about/about-story.jpg" alt="Câu chuyện của chúng tôi">
@@ -119,7 +125,8 @@
                     <div class="mission-item">
                         <i class="fas fa-eye"></i>
                         <h3>Tầm Nhìn</h3>
-                        <p>Trở thành nền tảng kết nối phòng trọ hàng đầu tại Việt Nam, mang đến trải nghiệm tìm trọ hiện đại và tin cậy.</p>
+                        <p>Trở thành nền tảng kết nối phòng trọ hàng đầu tại Việt Nam, mang đến trải nghiệm tìm trọ hiện
+                            đại và tin cậy.</p>
                     </div>
                     <div class="mission-item">
                         <i class="fas fa-heart"></i>
@@ -138,7 +145,8 @@
                         </div>
                         <div class="feature-content">
                             <h3>Tìm Kiếm Thông Minh</h3>
-                            <p>Hệ thống tìm kiếm thông minh với nhiều tiêu chí: khu vực, giá cả, diện tích, tiện ích.</p>
+                            <p>Hệ thống tìm kiếm thông minh với nhiều tiêu chí: khu vực, giá cả, diện tích, tiện ích.
+                            </p>
                         </div>
                     </div>
 
@@ -201,7 +209,8 @@
             <div class="footer-content">
                 <div class="footer-section">
                     <h3>Về Nhà Trọ Kết Nối</h3>
-                    <p>Trang web tìm kiếm phòng trọ uy tín, kết nối người thuê và chủ trọ một cách nhanh chóng, hiệu quả.</p>
+                    <p>Trang web tìm kiếm phòng trọ uy tín, kết nối người thuê và chủ trọ một cách nhanh chóng, hiệu
+                        quả.</p>
                 </div>
                 <div class="footer-section">
                     <h3>Liên kết nhanh</h3>
@@ -241,7 +250,15 @@
         <i class="fas fa-arrow-up"></i>
     </button>
 
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-storage-compat.js"></script>
+
     <script src="../assets/js/main.js"></script>
-    <script src="../assets/js/auth.js"></script>    
+    <script src="../assets/js/auth.js"></script>
+    <script src="../assets/js/notification.js"></script>
 </body>
+
 </html>

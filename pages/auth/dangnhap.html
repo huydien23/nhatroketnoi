@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,24 +9,59 @@
     <link rel="stylesheet" href="../../assets/css/layouts/main.css">
     <link rel="stylesheet" href="../../assets/css/pages/auth.css">
     <link rel="stylesheet" href="../../assets/css/user-dropdown.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="../../assets/css/components/notification.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
+
 <body>
     <nav class="navbar">
         <div class="navbar-container">
             <div class="logo">
                 <a href="../../index.html">
                     <img src="../../assets/image/logo.svg" alt="logo">
-                </a> 
+                </a>
             </div>
             <ul class="nav-links">
                 <li><a href="../../index.html">Trang chủ</a></li>
                 <li><a href="../phong/phong.html">Danh sách phòng</a></li>
                 <li><a href="../tintuc.html">Tin tức</a></li>
                 <li><a href="../thongtin.html">Về chúng tôi</a></li>
-                <li><a href="../auth/dangnhap.html" class="login-btn" id="loginBtn">Đăng nhập</a></li>
-                
+                <li><a href="./dangnhap.html" class="login-btn" id="loginBtn">Đăng nhập</a></li>
+                <li><a href="../dangtin.html" class="btn-dangtin" id="btnDangTin" style="display: none;">
+                        <i class="fas fa-plus-circle"></i>Đăng Tin
+                    </a></li>
+                <li class="user-profile-container" style="margin-right: 0; padding-right: 0;">
+                    <div class="user-profile" style="display: none; position: relative;">
+                        <div class="user-avatar">
+                            <img id="userAvatar" src="../../assets/image/user/user2.jpg" alt="User Avatar">
+                            <span id="userShortName"></span>
+                            <i class="fas fa-caret-down"></i>
+                        </div>
+                        <div class="dropdown-menu">
+                            <div class="dropdown-item user-info-header">
+                                <img src="../../assets/image/user/user2.jpg" alt="User Avatar">
+                                <div>
+                                    <span id="userFullname"></span>
+                                    <small id="userEmail"></small>
+                                </div>
+                            </div>
+                            <a href="../user/profile.html" class="dropdown-item">
+                                <i class="fas fa-user"></i> Tài khoản của tôi
+                            </a>
+                            <a href="../user/posts.html" class="dropdown-item">
+                                <i class="fas fa-list"></i> Bài đăng của tôi
+                            </a>
+                            <a href="../user/saved.html" class="dropdown-item">
+                                <i class="fas fa-bookmark"></i> Phòng đã lưu
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a href="#" class="dropdown-item" onclick="logout()">
+                                <i class="fas fa-sign-out-alt"></i> Đăng xuất
+                            </a>
+                        </div>
+                    </div>
+                </li>
             </ul>
             <div class="burger">
                 <div></div>
@@ -48,16 +84,17 @@
             <h2>Đăng nhập</h2>
             <form id="loginForm" onsubmit="return login()">
                 <div class="form-group">
-                    <label for="username">Tên đăng nhập</label>
-                    <input type="text" id="username" name="username" placeholder="Nhập tên đăng nhập" required>
+                    <label for="username">Email</label>
+                    <input type="email" id="username" name="username" placeholder="Nhập email" required>
                 </div>
                 <div class="form-group">
                     <label for="password">Mật khẩu</label>
                     <input type="password" id="password" name="password" placeholder="Nhập mật khẩu" required>
                 </div>
-                <button type="submit" class="btn-primary">Đăng nhập</button>
+                <button type="submit" class="btn-primary" id="loginButton">Đăng nhập</button>
             </form>
             <p class="auth-link">Chưa có tài khoản? <a href="dangky.html">Đăng ký ngay</a></p>
+            <p id="errorMessage" style="color: red; display: none;"></p>
         </div>
     </div>
 
@@ -66,8 +103,9 @@
             <div class="footer-content">
                 <div class="footer-section">
                     <h3>Về Nhà Trọ Kết Nối</h3>
-                    <p>Website Nhà Trọ Kết Nối là một nơi để kết kết nối tất cả nhà trọ lại với nhau. Để giúp khách hàng có thể tìm trọ một
-                    cách nhanh nhất và dễ dàng.</p>
+                    <p>Website Nhà Trọ Kết Nối là một nơi để kết kết nối tất cả nhà trọ lại với nhau. Để giúp khách hàng
+                        có thể tìm trọ một
+                        cách nhanh nhất và dễ dàng.</p>
                 </div>
                 <div class="footer-section">
                     <h3>Liên Kết Nhanh</h3>
@@ -113,7 +151,171 @@
         <i class="fas fa-arrow-up"></i>
     </button>
 
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-storage-compat.js"></script>
+
+    <script>
+        // Cấu hình Firebase
+        const firebaseConfig = {
+            apiKey: "AIzaSyCe63NDqYR2A-hUOu22S5Kr1g6vclkIcGw",
+            authDomain: "nhatroketnoi-9390a.firebaseapp.com",
+            databaseURL: "https://nhatroketnoi-9390a-default-rtdb.firebaseio.com",
+            projectId: "nhatroketnoi-9390a",
+            storageBucket: "nhatroketnoi-9390a.appspot.com",
+            messagingSenderId: "249753111607",
+            appId: "1:249753111607:web:3f6d0ddaa27e34fc6683b2",
+            measurementId: "G-219LR643DB"
+        };
+
+        // Khởi tạo Firebase
+        if (!firebase.apps.length) {
+            firebase.initializeApp(firebaseConfig);
+        }
+
+        // Định nghĩa trực tiếp hàm firebaseSignIn trong trang
+        window.firebaseSignIn = async (email, password) => {
+            try {
+                if (!firebase.auth) {
+                    throw new Error("Firebase Auth chưa được khởi tạo");
+                }
+
+                console.log("Đang đăng nhập với email:", email);
+
+                const userCredential = await firebase.auth().signInWithEmailAndPassword(email, password);
+                const user = userCredential.user;
+
+                console.log("Đăng nhập thành công:", user.uid);
+
+                // Cập nhật thời gian đăng nhập cuối
+                await firebase.database().ref(`users/${user.uid}`).update({
+                    lastLogin: Date.now()
+                });
+
+                return {
+                    success: true,
+                    user: user
+                };
+            } catch (error) {
+                console.error("Lỗi đăng nhập:", error);
+                return {
+                    success: false,
+                    error: error.code,
+                    message: error.message
+                };
+            }
+        };
+
+        // Hàm hiển thị loading
+        function showLoading(buttonId) {
+            const button = document.getElementById(buttonId);
+            if (button) {
+                button.textContent = "Đang xử lý...";
+                button.disabled = true;
+            }
+        }
+
+        // Hàm ẩn loading
+        function hideLoading(buttonId) {
+            const button = document.getElementById(buttonId);
+            if (button) {
+                button.textContent = "Đăng nhập";
+                button.disabled = false;
+            }
+        }
+
+        // Hàm hiển thị thông báo lỗi
+        function showError(message) {
+            const errorElement = document.getElementById("errorMessage");
+            if (errorElement) {
+                errorElement.textContent = message;
+                errorElement.style.display = "block";
+            } else {
+                alert(message);
+            }
+        }
+
+        // Hàm đăng nhập trực tiếp
+        async function login(event) {
+            // Ngăn chặn hành vi mặc định của form
+            if (event) {
+                event.preventDefault();
+            }
+
+            // Kiểm tra form
+            const email = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+
+            if (!email || !password) {
+                showError("Vui lòng điền đầy đủ thông tin đăng nhập!");
+                return false;
+            }
+
+            // Hiển thị loading
+            showLoading("loginButton");
+
+            try {
+                console.log("Bắt đầu đăng nhập với:", email);
+
+                // Gọi hàm đăng nhập từ Firebase
+                const result = await window.firebaseSignIn(email, password);
+                console.log("Kết quả đăng nhập:", result);
+
+                if (result.success) {
+                    // Lưu trạng thái đăng nhập vào localStorage
+                    localStorage.setItem("isLoggedIn", "true");
+
+                    // Hiển thị thông báo thành công
+                    alert("Đăng nhập thành công! Chuyển hướng đến trang chủ...");
+
+                    // Chuyển hướng sau 1.5 giây
+                    setTimeout(() => {
+                        window.location.href = "../../index.html";
+                    }, 1500);
+                } else {
+                    // Xử lý lỗi cụ thể
+                    let errorMessage = "Đăng nhập thất bại. Vui lòng thử lại!";
+
+                    if (result.error === "auth/invalid-login-credentials" ||
+                        result.error === "auth/invalid-credential") {
+                        errorMessage = "Email hoặc mật khẩu không chính xác!";
+                    } else if (result.error === "auth/user-not-found") {
+                        errorMessage = "Không tìm thấy tài khoản với email này!";
+                    } else if (result.error === "auth/wrong-password") {
+                        errorMessage = "Mật khẩu không chính xác!";
+                    } else if (result.error === "auth/too-many-requests") {
+                        errorMessage = "Đã đăng nhập thất bại nhiều lần. Vui lòng thử lại sau!";
+                    } else if (result.message) {
+                        errorMessage = result.message;
+                    }
+
+                    // Hiển thị lỗi
+                    showError(errorMessage);
+                    hideLoading("loginButton");
+                }
+            } catch (error) {
+                console.error("Lỗi khi xử lý đăng nhập:", error);
+                showError("Đã xảy ra lỗi trong quá trình đăng nhập. Vui lòng thử lại sau.");
+                hideLoading("loginButton");
+            }
+
+            return false;
+        }
+
+        // Gắn sự kiện cho form đăng nhập
+        document.addEventListener("DOMContentLoaded", function () {
+            const loginForm = document.getElementById("loginForm");
+            if (loginForm) {
+                loginForm.addEventListener("submit", login);
+            }
+        });
+    </script>
+
     <script src="../../assets/js/main.js"></script>
+    <script src="../../assets/js/notification.js"></script>
     <script src="../../assets/js/auth.js"></script>
 </body>
-</html> 
+
+</html>

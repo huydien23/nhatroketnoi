@@ -1,272 +1,364 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard - Nhà Trọ Kết Nối</title>
+    <title>Đăng tin phòng trọ - Nhà Trọ Kết Nối</title>
     <link rel="shortcut icon" href="../assets/image/favicon.svg" type="image/x-icon">
     <link rel="stylesheet" href="../assets/css/layouts/main.css">
     <link rel="stylesheet" href="../assets/css/pages/dashboard.css">
+    <link rel="stylesheet" href="../assets/css/user-dropdown.css">
+    <link rel="stylesheet" href="../assets/css/components/notification.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        .form-container {
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-title {
+            color: #333;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #444;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+        }
+
+        .input-group {
+            display: flex;
+            gap: 15px;
+        }
+
+        .input-group .form-group {
+            flex: 1;
+        }
+
+        .facilities-group {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .facility-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .facility-item input {
+            width: 18px;
+            height: 18px;
+        }
+
+        .btn-submit {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            margin-top: 20px;
+        }
+
+        .btn-submit:hover {
+            background-color: var(--primary-color-dark);
+        }
+
+        .image-preview {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .preview-item {
+            position: relative;
+            width: 100px;
+            height: 100px;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .preview-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .remove-image {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background-color: rgba(255, 0, 0, 0.7);
+            color: white;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .remove-image:hover {
+            background-color: red;
+        }
+    </style>
 </head>
+
 <body>
-    <div class="dashboard-container">
-        <!-- Sidebar -->
-        <aside class="sidebar">
-            <div class="sidebar-header">
-                <a href="../index.html" class="logo">
-                    <img src="../assets/image/logo.svg" alt="Nhà Trọ Kết Nối">
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="logo">
+                <a href="../index.html">
+                    <img src="../assets/image/logo.svg" alt="logo">
                 </a>
-                <button class="close-sidebar" id="closeSidebar">
-                    <i class="fas fa-times"></i>
-                </button>
             </div>
-
-            <!-- Menu chính -->
-            <nav class="sidebar-nav">
-                <ul>
-                    <li class="active">
-                        <a href="#dashboard">
-                            <i class="fas fa-tachometer-alt"></i>
-                            <span>Tổng quan</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="../dangtin.html">
-                            <i class="fas fa-plus-circle"></i>
-                            <span>Đăng tin mới</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#my-posts">
-                            <i class="fas fa-list-alt"></i>
-                            <span>Danh sách tin đăng</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#deposit">
-                            <i class="fas fa-wallet"></i>
-                            <span>Nạp tiền vào tài khoản</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#deposit-history">
-                            <i class="fas fa-history"></i>
-                            <span>Lịch sử nạp tiền</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#payment-history">
-                            <i class="fas fa-file-invoice-dollar"></i>
-                            <span>Lịch sử thanh toán</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#pricing">
-                            <i class="fas fa-tags"></i>
-                            <span>Bảng giá dịch vụ</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#account">
-                            <i class="fas fa-user-cog"></i>
-                            <span>Quản lý tài khoản</span>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-
-            <!-- Nhân viên hỗ trợ -->
-            <div class="support-staff">
-                <h3>Nhân viên hỗ trợ</h3>
-                <div class="staff-item">
-                    <i class="fas fa-headset"></i>
-                    <div class="staff-info">
-                        <h4>Đoàn Vĩnh Hưng</h4>
-                        <p>0123.456.789</p>
+            <ul class="nav-links">
+                <li><a href="../index.html">Trang chủ</a></li>
+                <li><a href="./phong/phong.html">Danh sách phòng</a></li>
+                <li><a href="./tintuc.html">Tin tức</a></li>
+                <li><a href="./thongtin.html">Về chúng tôi</a></li>
+                <li><a href="./auth/dangnhap.html" class="login-btn" id="loginBtn">Đăng nhập</a></li>
+                <li><a href="./dangtin.html" class="btn-dangtin" id="btnDangTin" style="display: none;">
+                        <i class="fas fa-plus-circle"></i>Đăng Tin
+                    </a></li>
+                <li class="user-profile-container" style="margin-right: 0; padding-right: 0;">
+                    <div class="user-profile" style="display: none; position: relative;">
+                        <div class="user-avatar">
+                            <img id="userAvatar" src="../assets/image/user/user2.jpg" alt="User Avatar">
+                            <span id="userShortName"></span>
+                            <i class="fas fa-caret-down"></i>
+                        </div>
+                        <div class="dropdown-menu">
+                            <div class="dropdown-item user-info-header">
+                                <img src="../assets/image/user/user2.jpg" alt="User Avatar">
+                                <div>
+                                    <span id="userFullname"></span>
+                                    <small id="userEmail"></small>
+                                </div>
+                            </div>
+                            <a href="./user/profile.html" class="dropdown-item">
+                                <i class="fas fa-user"></i> Tài khoản của tôi
+                            </a>
+                            <a href="./user/posts.html" class="dropdown-item">
+                                <i class="fas fa-list"></i> Bài đăng của tôi
+                            </a>
+                            <a href="./user/saved.html" class="dropdown-item">
+                                <i class="fas fa-bookmark"></i> Phòng đã lưu
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a href="#" class="dropdown-item" onclick="logout()">
+                                <i class="fas fa-sign-out-alt"></i> Đăng xuất
+                            </a>
+                        </div>
                     </div>
-                </div>
+                </li>
+            </ul>
+            <div class="burger">
+                <div></div>
+                <div></div>
+                <div></div>
             </div>
+        </div>
+    </nav>
 
-            <!-- Nút đăng xuất -->
-            <button class="logout-btn" onclick="logout()">
-                <i class="fas fa-sign-out-alt"></i>
-                <span>Đăng xuất</span>
-            </button>
-        </aside>
-
-        <!-- Nội dung chính -->
-        <main class="main-content">
-            <!-- Header -->
-            <header class="dashboard-header">
-                <div class="hamburger-menu" id="toggleSidebar">
-                    <i class="fas fa-bars"></i>
-                </div>
-
-                <div class="page-title">
-                    <h1>Tổng quan tài khoản</h1>
-                </div>
-
-                <div class="user-profile">
-                    <div class="account-balance">
-                        <span class="balance-label">Số dư:</span>
-                        <span class="balance-amount">5.000.000 VNĐ</span>
-                    </div>
-                    <div class="account-info">
-                        <span class="account-id">ID: #12345</span>
-                    </div>
-                    <div class="user-info">
-                        <span class="user-name">Huy Điền</span>
-                        <span class="user-phone">0912.345.678</span>
-                    </div>
-                    <div class="user-avatar">
-                        <img src="../assets/image/user/user2.jpg" alt="Avatar">
-                    </div>
-                </div>
-            </header>
-
-            <!-- Nội dung trang -->
-            <div class="dashboard-content">
-                <!-- Thống kê tổng quan -->
-                <div class="stats-overview">
-                    <div class="stat-card">
-                        <div class="stat-icon">
-                            <i class="fas fa-bullhorn"></i>
-                        </div>
-                        <div class="stat-details">
-                            <h3>5</h3>
-                            <p>Tin đang đăng</p>
-                        </div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-icon">
-                            <i class="fas fa-eye"></i>
-                        </div>
-                        <div class="stat-details">
-                            <h3>1,234</h3>
-                            <p>Lượt xem</p>
-                        </div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-icon">
-                            <i class="fas fa-phone"></i>
-                        </div>
-                        <div class="stat-details">
-                            <h3>56</h3>
-                            <p>Lượt liên hệ</p>
-                        </div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-icon">
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <div class="stat-details">
-                            <h3>4.8</h3>
-                            <p>Đánh giá</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Tin đăng gần đây -->
-                <div class="recent-posts">
-                    <div class="section-header">
-                        <h2>Tin đăng gần đây</h2>
-                        <a href="#my-posts" class="view-all">Xem tất cả <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                    <div class="posts-table">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Tiêu đề</th>
-                                    <th>Ngày đăng</th>
-                                    <th>Trạng thái</th>
-                                    <th>Lượt xem</th>
-                                    <th>Hành động</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Phòng trọ đẹp, gần trung tâm</td>
-                                    <td>10/04/2025</td>
-                                    <td><span class="status active">Đang hiển thị</span></td>
-                                    <td>523</td>
-                                    <td class="actions">
-                                        <button class="btn-edit"><i class="fas fa-edit"></i></button>
-                                        <button class="btn-delete"><i class="fas fa-trash"></i></button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Nhà trọ giá rẻ quận Ninh Kiều</td>
-                                    <td>08/04/2025</td>
-                                    <td><span class="status active">Đang hiển thị</span></td>
-                                    <td>321</td>
-                                    <td class="actions">
-                                        <button class="btn-edit"><i class="fas fa-edit"></i></button>
-                                        <button class="btn-delete"><i class="fas fa-trash"></i></button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Phòng cho thuê đầy đủ tiện nghi</td>
-                                    <td>05/04/2025</td>
-                                    <td><span class="status expired">Hết hạn</span></td>
-                                    <td>198</td>
-                                    <td class="actions">
-                                        <button class="btn-renew"><i class="fas fa-sync-alt"></i></button>
-                                        <button class="btn-delete"><i class="fas fa-trash"></i></button>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-
-                <!-- Lịch sử giao dịch gần đây -->
-                <div class="recent-transactions">
-                    <div class="section-header">
-                        <h2>Giao dịch gần đây</h2>
-                        <a href="#payment-history" class="view-all">Xem tất cả <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                    <div class="transactions-table">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Mã giao dịch</th>
-                                    <th>Ngày</th>
-                                    <th>Loại</th>
-                                    <th>Số tiền</th>
-                                    <th>Trạng thái</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>#TRX12345</td>
-                                    <td>09/04/2025</td>
-                                    <td>Nạp tiền</td>
-                                    <td class="amount deposit">+200.000 VNĐ</td>
-                                    <td><span class="status success">Thành công</span></td>
-                                </tr>
-                                <tr>
-                                    <td>#TRX12344</td>
-                                    <td>08/04/2025</td>
-                                    <td>Đăng tin</td>
-                                    <td class="amount payment">-50.000 VNĐ</td>
-                                    <td><span class="status success">Thành công</span></td>
-                                </tr>
-                                <tr>
-                                    <td>#TRX12343</td>
-                                    <td>05/04/2025</td>
-                                    <td>Nạp tiền</td>
-                                    <td class="amount deposit">+500.000 VNĐ</td>
-                                    <td><span class="status success">Thành công</span></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </main>
+    <div class="breadcrumb">
+        <div class="container">
+            <a href="../index.html">Trang chủ</a>
+            <span class="separator">/</span>
+            <span class="current">Đăng tin</span>
+        </div>
     </div>
 
-    <script src="../assets/js/dashboard.js"></script>
+    <div class="form-container">
+        <h1 class="form-title">Đăng tin phòng trọ</h1>
+        <form id="room-form">
+            <div class="form-group">
+                <label for="room-title" class="form-label">Tiêu đề:</label>
+                <input type="text" id="room-title" class="form-control" required placeholder="Nhập tiêu đề tin đăng">
+            </div>
+
+            <div class="input-group">
+                <div class="form-group">
+                    <label for="room-price" class="form-label">Giá thuê (VND/tháng):</label>
+                    <input type="number" id="room-price" class="form-control" required placeholder="Nhập giá thuê">
+                </div>
+                <div class="form-group">
+                    <label for="room-area" class="form-label">Diện tích (m²):</label>
+                    <input type="number" id="room-area" class="form-control" required placeholder="Nhập diện tích">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="room-description" class="form-label">Mô tả chi tiết:</label>
+                <textarea id="room-description" class="form-control" required
+                    placeholder="Mô tả chi tiết về phòng trọ: số phòng ngủ, điều kiện, quy định, v.v."></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="address" class="form-label">Địa chỉ chi tiết:</label>
+                <input type="text" id="address" class="form-control" required placeholder="Số nhà, đường, phường/xã">
+            </div>
+
+            <div class="input-group">
+                <div class="form-group">
+                    <label for="city" class="form-label">Tỉnh/Thành phố:</label>
+                    <select id="city" class="form-control" required>
+                        <option value="">Chọn tỉnh/thành phố</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="district" class="form-label">Quận/Huyện:</label>
+                    <select id="district" class="form-control" required disabled>
+                        <option value="">Chọn quận/huyện</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Tiện nghi:</label>
+                <div class="facilities-group">
+                    <div class="facility-item">
+                        <input type="checkbox" id="wifi" name="facilities" value="wifi">
+                        <label for="wifi">WiFi</label>
+                    </div>
+                    <div class="facility-item">
+                        <input type="checkbox" id="ac" name="facilities" value="điều hòa">
+                        <label for="ac">Điều hòa</label>
+                    </div>
+                    <div class="facility-item">
+                        <input type="checkbox" id="fridge" name="facilities" value="tủ lạnh">
+                        <label for="fridge">Tủ lạnh</label>
+                    </div>
+                    <div class="facility-item">
+                        <input type="checkbox" id="wm" name="facilities" value="máy giặt">
+                        <label for="wm">Máy giặt</label>
+                    </div>
+                    <div class="facility-item">
+                        <input type="checkbox" id="parking" name="facilities" value="chỗ để xe">
+                        <label for="parking">Chỗ để xe</label>
+                    </div>
+                    <div class="facility-item">
+                        <input type="checkbox" id="security" name="facilities" value="bảo vệ">
+                        <label for="security">Bảo vệ</label>
+                    </div>
+                    <div class="facility-item">
+                        <input type="checkbox" id="private-bathroom" name="facilities" value="wc riêng">
+                        <label for="private-bathroom">WC riêng</label>
+                    </div>
+                    <div class="facility-item">
+                        <input type="checkbox" id="kitchen" name="facilities" value="nhà bếp">
+                        <label for="kitchen">Nhà bếp</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="room-images" class="form-label">Hình ảnh:</label>
+                <input type="file" id="room-images" class="form-control" multiple accept="image/*">
+                <div id="image-preview" class="image-preview"></div>
+            </div>
+
+            <button type="submit" id="submit-button" class="btn-submit">Đăng tin</button>
+        </form>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Về Nhà Trọ Kết Nối</h3>
+                    <p>Website Nhà Trọ Kết Nối là một nơi để kết nối tất cả nhà trọ lại với nhau. Để giúp khách hàng có
+                        thể tìm trọ một
+                        cách nhanh nhất và dễ dàng.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Liên Kết Nhanh</h3>
+                    <ul>
+                        <li><a href="../index.html">Trang chủ</a></li>
+                        <li><a href="./phong/phong.html">Danh sách phòng</a></li>
+                        <li><a href="./tintuc.html">Tin tức</a></li>
+                        <li><a href="./thongtin.html">Về chúng tôi</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Liên Hệ</h3>
+                    <p><i class="fas fa-phone"></i> 0123.456.789</p>
+                    <p><i class="fas fa-envelope"></i> huydien23@nhatroketnoi.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Toàn nhà khu I Đại học Nam Cần Thơ</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Đối Tác</h3>
+                    <div class="partners-grid">
+                        <a href="https://nctu.edu.vn/" target="_blank" class="partner-item">
+                            <i class="fas fa-university"></i>
+                            <span>Trường Đại học Nam Cần Thơ</span>
+                        </a>
+                        <a href="https://batdongsan.com.vn/" target="_blank" class="partner-item">
+                            <i class="fas fa-building"></i>
+                            <span>Batdongsan.com.vn</span>
+                        </a>
+                        <a href="https://www.chotot.com/" target="_blank" class="partner-item">
+                            <i class="fas fa-home"></i>
+                            <span>Chotot.com</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Nhà Trọ Kết Nối.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Nút cuộn lên đầu trang -->
+    <button id="scrollTopBtn" class="scroll-top-btn">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-storage-compat.js"></script>
+
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/notification.js"></script>
+    <script src="../assets/js/dangtin.js"></script>
 </body>
+
 </html>

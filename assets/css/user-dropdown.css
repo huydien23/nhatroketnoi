@@ -1,4 +1,8 @@
 /* Kiểu dáng menu thả xuống người dùng */
+.user-profile-container {
+    position: relative;
+}
+
 .user-profile {
     position: relative;
     cursor: pointer;
@@ -16,6 +20,7 @@
     border-radius: 20px;
     transition: background-color 0.3s ease;
     height: 100%;
+    cursor: pointer;
 }
 
 .user-avatar:hover {
@@ -41,29 +46,16 @@
     position: absolute;
     top: 100%;
     right: 0;
-    padding-left: 15px;
     width: 250px;
     background-color: white;
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     display: none;
-    z-index: 1000;
+    z-index: 1500; /* Tăng z-index để hiển thị trên các phần khác */
     overflow: hidden;
     margin-top: 10px;
     animation: fadeIn 0.2s ease;
-}
-
-/* Thiết lập media query cho các màn hình lớn */
-@media screen and (min-width: 769px) {
-    .user-profile {
-        position: relative;
-    }
-    
-    .dropdown-menu {
-        position: absolute;
-        right: 0;
-        left: auto;
-    }
+    padding: 0;
 }
 
 @keyframes fadeIn {
@@ -78,7 +70,7 @@
 }
 
 .user-profile.active .dropdown-menu {
-    display: block;
+    display: block !important;
 }
 
 .dropdown-item {
@@ -96,7 +88,7 @@
 }
 
 .dropdown-item i {
-    margin-right: 5px;
+    margin-right: 10px;
     width: 20px;
     text-align: center;
     color: #666;
@@ -140,7 +132,12 @@
     font-size: 0.8rem;
 }
 
+/* Điều chỉnh cho menu responsive */
 @media screen and (max-width: 768px) {
+    .user-profile-container {
+        width: 100%;
+    }
+    
     .dropdown-menu {
         width: 100%;
         position: static;
@@ -151,5 +148,20 @@
     
     .user-avatar {
         justify-content: center;
+        width: 100%;
     }
-} 
+}
+
+/* Thiết lập phù hợp cho màn hình lớn */
+@media screen and (min-width: 769px) {
+    .user-profile-container {
+        position: relative;
+    }
+    
+    .dropdown-menu {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        left: auto;
+    }
+}
