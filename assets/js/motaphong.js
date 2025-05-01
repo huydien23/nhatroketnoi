@@ -105,19 +105,103 @@ function sendBookingEmail(event) {
         }</p>
     `;
 
-  // Gửi email sử dụng SMTP.js
-  Email.send({
-    SecureToken: "",
-    To: "huydien23@nhatroketnoi.com",
-    From: "booking@nhatroketnoi.com",
-    Subject: `Đặt lịch xem phòng: ${roomTitle}`,
-    Body: emailBody,
-  }).then(function (response) {
-    if (response === "OK") {
-      alert("Đặt lịch thành công! Chúng tôi sẽ liên hệ với bạn sớm nhất.");
-      form.reset();
-    } else {
-      alert("Có lỗi xảy ra. Vui lòng thử lại sau.");
+    // Hàm xử lý gửi email đặt lịch xem phòng
+  function sendBookingEmail(event) {
+    event.preventDefault();
+    
+    // Lấy thông tin từ form
+    const name = document.getElementById('name').value;
+    const phone = document.getElementById('phone').value;
+    const email = document.getElementById('email').value;
+    const date = document.getElementById('date').value;
+    const time = document.getElementById('time').value;
+    const message = document.getElementById('message').value || "Không có ghi chú";
+    
+    // Hiển thị trạng thái đang gửi
+    const submitBtn = document.querySelector('.submit-btn');
+    const originalText = submitBtn.textContent;
+    submitBtn.textContent = "Đang gửi...";
+    submitBtn.disabled = true;
+    
+    // Lấy thông tin phòng từ trang hiện tại
+    const roomTitle = document.querySelector('.room-title h1').textContent;
+    const roomLocation = document.querySelector('.location').textContent;
+    const roomPrice = document.querySelector('.price-tag').textContent;
+  
+    // Tạo đối tượng chứa thông tin cần gửi
+    const templateParams = {
+      name: name,
+      phone: phone,
+      email: email,
+      date: formatDate(date),
+      time: time,
+      message: message,
+      room_title: roomTitle,
+      room_location: roomLocation,
+      room_price: roomPrice
+    };
+    
+    // Thay thế các giá trị này bằng ID thực từ EmailJS
+    const serviceID = "service_n8idwof"; // service_xxxxxxx
+    const templateID = "template_a9zcxvj"; // template_xxxxxxx
+    
+    // Gửi email
+    emailjs.send(serviceID, templateID, templateParams)
+      .then(function(response) {
+        console.log('SUCCESS!', response.status, response.text);
+        alert('Đặt lịch xem phòng thành công! Chúng tôi sẽ liên hệ với bạn sớm.');
+        document.getElementById('bookingForm').reset();
+        
+        // Lưu thông tin đặt lịch vào Firebase nếu đã đăng nhập
+        saveBookingToFirebase(templateParams);
+      })
+      .catch(function(error) {
+        console.log('FAILED...', error);
+        alert('Có lỗi xảy ra khi đặt lịch. Vui lòng thử lại sau!');
+      })
+      .finally(function() {
+        submitBtn.textContent = originalText;
+        submitBtn.disabled = false;
+      });
+  }
+  
+  // Hàm định dạng ngày tháng
+  function formatDate(dateString) {
+    const date = new Date(dateString);
+    return date.toLocaleDateString('vi-VN', {
+      day: '2-digit', 
+      month: '2-digit', 
+      year: 'numeric'
+    });
+  }
+  
+  // Hàm lưu thông tin đặt lịch vào Firebase
+  function saveBookingToFirebase(bookingData) {
+    try {
+      // Kiểm tra xem firebase đã được khởi tạo chưa
+      if (window.firebase && firebase.database) {
+        // Tạo tham chiếu đến node "bookings" trong database
+        const bookingRef = firebase.database().ref('bookings').push();
+        
+        // Thêm thời gian tạo và trạng thái
+        bookingData.createdAt = new Date().toISOString();
+        bookingData.status = 'pending'; // trạng thái: đang chờ
+        
+        // Lưu dữ liệu
+        bookingRef.set(bookingData)
+          .then(() => console.log('Đã lưu thông tin đặt lịch vào Firebase'))
+          .catch(error => console.error('Lỗi khi lưu vào Firebase:', error));
+      }
+    } catch (error) {
+      console.error('Lỗi khi lưu thông tin đặt lịch:', error);
+    }
+  }
+  
+  // Gắn sự kiện submit cho form khi trang đã tải xong
+  document.addEventListener('DOMContentLoaded', function() {
+    const bookingForm = document.getElementById('bookingForm');
+    if (bookingForm) {
+      bookingForm.addEventListener('submit', sendBookingEmail);
     }
   });
 }
