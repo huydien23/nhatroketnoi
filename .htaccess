@@ -1,0 +1,82 @@
+# Thiết lập trang 404 tùy chỉnh
+ErrorDocument 404 /404.html
+
+# Bật mod rewrite
+RewriteEngine On
+
+# Điều hướng từ HTTP sang HTTPS (khi đã cấu hình SSL)
+# RewriteCond %{HTTPS} off
+# RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Cấu hình URL SEO-friendly
+# Chuyển URL /phong/123 thành /pages/phong/danhsach/motaphong.html?id=123
+RewriteRule ^phong/([0-9]+)$ /pages/phong/danhsach/motaphong.html?id=$1 [L,QSA]
+
+# Chuyển URL /khu-vuc/ten-khu-vuc thành /pages/phong/phong.html?khuvuc=ten-khu-vuc
+RewriteRule ^khu-vuc/([^/]+)$ /pages/phong/phong.html?khuvuc=$1 [L,QSA]
+
+# Chuyển URL /tin-tuc/bai-viet/slug-bai-viet thành /pages/tintuc/bai-viet.html?slug=slug-bai-viet
+RewriteRule ^tin-tuc/bai-viet/([^/]+)$ /pages/tintuc/bai-viet.html?slug=$1 [L,QSA]
+
+# Chuyển URL /tin-tuc/danh-muc/ten-danh-muc thành /pages/tintuc/[ten-danh-muc].html
+RewriteRule ^tin-tuc/danh-muc/kinh-nghiem$ /pages/tintuc/tintuc-kinhnghiem.html [L]
+RewriteRule ^tin-tuc/danh-muc/thi-truong$ /pages/tintuc/tintuc-thitruong.html [L]
+RewriteRule ^tin-tuc/danh-muc/xu-huong$ /pages/tintuc/tintuc-xuhuong.html [L]
+RewriteRule ^tin-tuc/danh-muc/cong-dong$ /pages/tintuc/tintuc-congdong.html [L]
+
+# Giảm kích thước HTTP Header
+<IfModule mod_deflate.c>
+  # Nén HTML, CSS, JavaScript, Text, XML và các fonts
+  AddOutputFilterByType DEFLATE application/javascript
+  AddOutputFilterByType DEFLATE application/rss+xml
+  AddOutputFilterByType DEFLATE application/vnd.ms-fontobject
+  AddOutputFilterByType DEFLATE application/x-font
+  AddOutputFilterByType DEFLATE application/x-font-opentype
+  AddOutputFilterByType DEFLATE application/x-font-otf
+  AddOutputFilterByType DEFLATE application/x-font-truetype
+  AddOutputFilterByType DEFLATE application/x-font-ttf
+  AddOutputFilterByType DEFLATE application/x-javascript
+  AddOutputFilterByType DEFLATE application/xhtml+xml
+  AddOutputFilterByType DEFLATE application/xml
+  AddOutputFilterByType DEFLATE font/opentype
+  AddOutputFilterByType DEFLATE font/otf
+  AddOutputFilterByType DEFLATE font/ttf
+  AddOutputFilterByType DEFLATE image/svg+xml
+  AddOutputFilterByType DEFLATE image/x-icon
+  AddOutputFilterByType DEFLATE text/css
+  AddOutputFilterByType DEFLATE text/html
+  AddOutputFilterByType DEFLATE text/javascript
+  AddOutputFilterByType DEFLATE text/plain
+  AddOutputFilterByType DEFLATE text/xml
+</IfModule>
+
+# Cache-Control
+<IfModule mod_headers.c>
+  # Cache hình ảnh, CSS, JS trong 1 tháng
+  <FilesMatch "\.(ico|gif|jpg|jpeg|png|webp|svg|css|js|woff2)$">
+    Header set Cache-Control "max-age=2592000, public"
+  </FilesMatch>
+  
+  # Cache HTML và XML trong 2 giờ
+  <FilesMatch "\.(html|htm|xml)$">
+    Header set Cache-Control "max-age=7200, must-revalidate"
+  </FilesMatch>
+</IfModule>
+
+# Ngăn chặn truy cập vào thư mục cấu hình
+<FilesMatch "^\.">
+  Order allow,deny
+  Deny from all
+</FilesMatch>
+
+# Bảo vệ file config
+<Files "config.js">
+  Order allow,deny
+  Deny from all
+</Files>
+
+# Bảo vệ file cấu hình Firebase 
+<Files "firebase/config.js">
+  Order allow,deny
+  Deny from all
+</Files>

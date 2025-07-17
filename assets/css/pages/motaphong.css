@@ -677,3 +677,58 @@
         padding: 0.8rem 1.5rem;
     }
 }
+
+/* Social Share */
+.social-share {
+    margin: 30px 0;
+    padding: 15px 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+}
+
+.social-share h4 {
+    font-size: 16px;
+    margin-bottom: 12px;
+    color: #444;
+}
+
+.share-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.share-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    color: white;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.share-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.facebook {
+    background-color: #3b5998;
+}
+
+.twitter {
+    background-color: #1da1f2;
+}
+
+.zalo {
+    background-color: #0068ff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.copy-link {
+    background-color: #6c757d;
+}

@@ -10,8 +10,11 @@ const firebaseConfig = {
   measurementId: "G-219LR643DB",
 };
 
-// Khởi tạo Firebase khi script được tải
+// Tối ưu JS để cải thiện hiệu suất tải trang
 document.addEventListener("DOMContentLoaded", function () {
+  // Kiểm tra hỗ trợ WebP
+  checkWebpSupport();
+
   // Kiểm tra xem Firebase đã được khởi tạo chưa
   if (!window.firebase) {
     console.error(
@@ -43,9 +46,219 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
+  // Phần xử lý Menu Navigation
+  const burger = document.querySelector(".burger");
+  const nav = document.querySelector(".nav-links");
+  const navLinks = document.querySelectorAll(".nav-links li");
+
+  burger.addEventListener("click", () => {
+    // Toggle Nav
+    nav.classList.toggle("nav-active");
+
+    // Animate Links
+    navLinks.forEach((link, index) => {
+      if (link.style.animation) {
+        link.style.animation = "";
+      } else {
+        link.style.animation = `navLinkFade 0.5s ease forwards ${
+          index / 7 + 0.3
+        }s`;
+      }
+    });
+
+    // Burger Animation
+    burger.classList.toggle("toggle");
+  });
+
+  // Hiển thị nút scroll to top khi cuộn xuống
+  const scrollTopBtn = document.createElement("button");
+  scrollTopBtn.classList.add("scroll-top-btn");
+  scrollTopBtn.innerHTML = '<i class="fas fa-arrow-up"></i>';
+  document.body.appendChild(scrollTopBtn);
+
+  window.addEventListener("scroll", function () {
+    if (window.pageYOffset > 300) {
+      scrollTopBtn.classList.add("visible");
+    } else {
+      scrollTopBtn.classList.remove("visible");
+    }
+  });
+
+  scrollTopBtn.addEventListener("click", function () {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  });
+
+  // Xử lý chatbot toggle
+  const chatbotToggle = document.querySelector(".chatbot-toggle");
+  const chatbotContainer = document.querySelector(".chatbot-container");
+  const closeChatbot = document.querySelector(".close-chatbot");
+
+  if (chatbotToggle && chatbotContainer && closeChatbot) {
+    chatbotToggle.addEventListener("click", function () {
+      chatbotContainer.classList.add("active");
+    });
+
+    closeChatbot.addEventListener("click", function () {
+      chatbotContainer.classList.remove("active");
+    });
+  }
+
+  // Lazy load cho hình ảnh
+  if ("loading" in HTMLImageElement.prototype) {
+    // Trình duyệt hỗ trợ loading="lazy" tự động
+    const lazyImages = document.querySelectorAll("img[data-src]");
+    lazyImages.forEach((img) => {
+      img.src = img.dataset.src;
+    });
+  } else {
+    // Thêm lazy loading thủ công cho các trình duyệt cũ
+    // Sử dụng Intersection Observer API
+    const lazyImageObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const lazyImage = entry.target;
+          lazyImage.src = lazyImage.dataset.src;
+          observer.unobserve(lazyImage);
+        }
+      });
+    });
+
+    const lazyImages = document.querySelectorAll("img[data-src]");
+    lazyImages.forEach((img) => {
+      lazyImageObserver.observe(img);
+    });
+  }
+
   // Các hàm khởi tạo khác ở đây...
   initializeUIComponents();
+
+  // Xử lý tìm kiếm
+  initSearchFunction();
+
+  // Xử lý chức năng tìm kiếm phòng trọ
+  const searchForm = document.querySelector('.search-box');
+  if (searchForm) {
+    searchForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      // Lấy giá trị tìm kiếm
+      const keywordInput = searchForm.querySelector('input[type="text"]');
+      const priceSelect = searchForm.querySelector('select:nth-of-type(1)');
+      const areaSelect = searchForm.querySelector('select:nth-of-type(2)');
+      
+      // Tạo URL tìm kiếm với các tham số
+      let searchUrl = './pages/phong/phong.html?';
+      
+      // Thêm từ khóa tìm kiếm
+      if (keywordInput && keywordInput.value.trim()) {
+        searchUrl += 'keyword=' + encodeURIComponent(keywordInput.value.trim()) + '&';
+        
+        // Lưu tìm kiếm gần đây nếu người dùng đã đăng nhập
+        const user = firebase.auth().currentUser;
+        if (user && window.roomSearchService) {
+          window.roomSearchService.saveRecentSearch(user.uid, keywordInput.value.trim())
+            .catch(error => console.error('Lỗi khi lưu tìm kiếm gần đây:', error));
+        }
+      }
+      
+      // Thêm khoảng giá
+      if (priceSelect && priceSelect.value) {
+        const priceRange = priceSelect.value.split('-');
+        if (priceRange.length === 2) {
+          searchUrl += `giaTu=${priceRange[0]}&giaDen=${priceRange[1]}&`;
+        } else if (priceRange[0] === '0') {
+          searchUrl += `giaDen=1&`;
+        } else if (priceRange[0] === '3+') {
+          searchUrl += `giaTu=3&`;
+        }
+      }
+      
+      // Thêm khoảng diện tích
+      if (areaSelect && areaSelect.value) {
+        const areaRange = areaSelect.value.split('-');
+        if (areaRange.length === 2) {
+          searchUrl += `dienTichTu=${areaRange[0]}&dienTichDen=${areaRange[1]}&`;
+        } else if (areaRange[0] === '0') {
+          searchUrl += `dienTichDen=20&`;
+        } else if (areaRange[0] === '40+') {
+          searchUrl += `dienTichTu=40&`;
+        }
+      }
+      
+      // Xóa dấu & ở cuối URL nếu có
+      if (searchUrl.endsWith('&')) {
+        searchUrl = searchUrl.slice(0, -1);
+      }
+      
+      // Chuyển hướng đến trang kết quả tìm kiếm
+      window.location.href = searchUrl;
+    });
+    
+    // Biến form thành form submit khi nhấn nút tìm kiếm
+    const searchButton = searchForm.querySelector('.search-button');
+    if (searchButton) {
+      searchButton.addEventListener('click', function() {
+        searchForm.dispatchEvent(new Event('submit'));
+      });
+    }
+  }
 });
+
+// Kiểm tra xem trình duyệt có hỗ trợ WebP không và lưu kết quả vào localStorage
+function checkWebpSupport() {
+  // Kiểm tra xem đã lưu kết quả trong localStorage chưa
+  if (localStorage.getItem('webpSupport') === null) {
+    const webP = new Image();
+    webP.onload = function() {
+      const isSupported = (webP.width > 0) && (webP.height > 0);
+      localStorage.setItem('webpSupport', isSupported ? 'true' : 'false');
+      console.log('WebP support:', isSupported);
+      updateImageSources();
+    };
+    webP.onerror = function() {
+      localStorage.setItem('webpSupport', 'false');
+      console.log('WebP support: false');
+    };
+    webP.src = 'data:image/webp;base64,UklGRhoAAABXRUJQVlA4TA0AAAAvAAAAEAcQERGIiP4HAA==';
+  } else {
+    if (localStorage.getItem('webpSupport') === 'true') {
+      updateImageSources();
+    }
+  }
+}
+
+// Cập nhật tất cả các src hình ảnh sang WebP nếu có thể
+function updateImageSources() {
+  const images = document.querySelectorAll('img:not([data-no-webp])');
+  images.forEach(img => {
+    const currentSrc = img.getAttribute('src');
+    // Nếu là jpg, jpeg, hoặc png thì thay thành webp
+    if (currentSrc && /\.(jpe?g|png)$/i.test(currentSrc)) {
+      const webpSrc = currentSrc.replace(/\.(jpe?g|png)$/i, '.webp');
+      // Thử tải WebP và fallback nếu không tồn tại
+      const testImg = new Image();
+      testImg.onload = function() {
+        img.src = webpSrc;
+      };
+      testImg.onerror = function() {
+        // Giữ nguyên src hiện tại nếu không tìm thấy file WebP
+        console.log('WebP not found:', webpSrc);
+      };
+      testImg.src = webpSrc;
+    }
+  });
+}
+
+// Utility function để tự động chuyển đổi đường dẫn hình ảnh sang WebP khi cần
+window.getOptimizedImagePath = function(imagePath) {
+  if (localStorage.getItem('webpSupport') === 'true' && /\.(jpe?g|png)$/i.test(imagePath)) {
+    return imagePath.replace(/\.(jpe?g|png)$/i, '.webp');
+  }
+  return imagePath;
+};
 
 // Khởi tạo giao diện người dùng dựa trên trạng thái đăng nhập
 function initializeUserInterface(isLoggedIn, user = null) {
@@ -206,9 +419,90 @@ function initializeUIComponents() {
       card.style.transform = "translateY(-10px)";
     });
     card.addEventListener("mouseleave", () => {
-      card.style.transform = "translateY(0)";
+      card.style.transform = "translateY(0)");
     });
   });
+
+  // Khởi tạo chức năng tìm kiếm
+  initializeSearchFunctionality();
+}
+
+// Xử lý chức năng tìm kiếm
+function initSearchFunction() {
+  const searchForm = document.querySelector('.search-box');
+  const searchInput = document.querySelector('.search-input input');
+  const priceSelect = document.querySelector('.search-filters select:first-child');
+  const areaSelect = document.querySelector('.search-filters select:last-child');
+  const searchButton = document.querySelector('.search-button');
+
+  if (searchButton) {
+    searchButton.addEventListener('click', function() {
+      performSearch();
+    });
+
+    // Cho phép nhấn Enter để tìm kiếm
+    if (searchInput) {
+      searchInput.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          performSearch();
+        }
+      });
+    }
+  }
+
+  // Hàm thực hiện tìm kiếm
+  function performSearch() {
+    const location = searchInput ? searchInput.value.trim() : '';
+    const price = priceSelect ? priceSelect.value : '';
+    const area = areaSelect ? areaSelect.value : '';
+    
+    // Xây dựng URL tìm kiếm
+    let searchUrl = '/pages/phong/phong.html?';
+    const params = [];
+    
+    if (location) {
+      params.push('location=' + encodeURIComponent(location));
+    }
+    
+    if (price) {
+      params.push('price=' + encodeURIComponent(price));
+    }
+    
+    if (area) {
+      params.push('area=' + encodeURIComponent(area));
+    }
+    
+    searchUrl += params.join('&');
+    
+    // Chuyển hướng đến trang kết quả tìm kiếm
+    window.location.href = searchUrl;
+  }
+
+  // Kiểm tra nếu có tham số tìm kiếm trong URL hiện tại
+  if (window.location.href.includes('/pages/phong/phong.html')) {
+    const urlParams = new URLSearchParams(window.location.search);
+    
+    // Điền lại các tham số tìm kiếm nếu có
+    const searchInputs = {
+      location: urlParams.get('location'),
+      price: urlParams.get('price'),
+      area: urlParams.get('area')
+    };
+    
+    // Điền các giá trị từ URL vào form tìm kiếm (nếu có)
+    if (searchInput && searchInputs.location) {
+      searchInput.value = searchInputs.location;
+    }
+    
+    if (priceSelect && searchInputs.price) {
+      priceSelect.value = searchInputs.price;
+    }
+    
+    if (areaSelect && searchInputs.area) {
+      areaSelect.value = searchInputs.area;
+    }
+  }
 }
 
 // Hàm lấy tên ngắn gọn từ họ tên đầy đủ
@@ -469,3 +763,16 @@ window.firebaseDB = {
     }
   },
 };
+
+// Đăng ký Service Worker cho PWA
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js')
+      .then(registration => {
+        console.log('Service Worker đăng ký thành công:', registration.scope);
+      })
+      .catch(error => {
+        console.log('Đăng ký Service Worker thất bại:', error);
+      });
+  });
+}

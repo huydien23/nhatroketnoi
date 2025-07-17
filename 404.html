@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, follow">
+    <title>Trang không tìm thấy - Nhà Trọ Kết Nối</title>
+    <link rel="shortcut icon" href="/assets/image/favicon.svg" type="image/x-icon">
+    <link rel="stylesheet" href="/assets/css/layouts/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .error-container {
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .error-code {
+            font-size: 8rem;
+            font-weight: bold;
+            color: #5698bd;
+            margin-bottom: 1rem;
+            line-height: 1;
+        }
+
+        .error-title {
+            font-size: 2rem;
+            color: #333;
+            margin-bottom: 1.5rem;
+        }
+
+        .error-description {
+            font-size: 1.1rem;
+            color: #666;
+            max-width: 600px;
+            margin-bottom: 2rem;
+        }
+
+        .home-button {
+            display: inline-block;
+            background-color: #5698bd;
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        .home-button:hover {
+            background-color: #4a90e2;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 10px rgba(74, 144, 226, 0.3);
+        }
+
+        .suggestions {
+            margin-top: 3rem;
+            max-width: 600px;
+            width: 100%;
+        }
+
+        .suggestions h3 {
+            color: #333;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .suggestion-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .suggestion-link {
+            background-color: #f5f5f5;
+            color: #333;
+            padding: 0.6rem 1.2rem;
+            border-radius: 30px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .suggestion-link:hover {
+            background-color: #e0e0e0;
+        }
+
+        .error-image {
+            max-width: 300px;
+            margin-bottom: 2rem;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="logo">
+                <a href="/index.html">
+                    <img src="/assets/image/logo.svg" alt="logo">
+                </a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/index.html">Trang chủ</a></li>
+                <li><a href="/pages/phong/phong.html">Danh sách phòng</a></li>
+                <li><a href="/pages/tintuc.html">Tin tức</a></li>
+                <li><a href="/pages/thongtin.html">Về chúng tôi</a></li>
+                <li><a href="/pages/auth/dangnhap.html" class="login-btn" id="loginBtn">Đăng nhập</a></li>
+            </ul>
+            <div class="burger">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="error-container">
+        <img src="/assets/image/404-illustration.svg" alt="Trang không tìm thấy" class="error-image">
+        <div class="error-code">404</div>
+        <h1 class="error-title">Trang không tìm thấy</h1>
+        <p class="error-description">Xin lỗi, chúng tôi không thể tìm thấy trang bạn đang tìm kiếm. Trang này có thể đã
+            bị xóa hoặc di chuyển đến địa chỉ khác.</p>
+        <a href="/index.html" class="home-button">Quay về trang chủ <i class="fas fa-home"></i></a>
+
+        <div class="suggestions">
+            <h3>Hoặc xem các trang phổ biến:</h3>
+            <div class="suggestion-links">
+                <a href="/pages/phong/phong.html?khuvuc=dhct" class="suggestion-link">Phòng trọ gần ĐHCT</a>
+                <a href="/pages/phong/phong.html?gia=duoi-1-trieu" class="suggestion-link">Phòng trọ dưới 1 triệu</a>
+                <a href="/pages/tintuc/tintuc-kinhnghiem.html" class="suggestion-link">Kinh nghiệm thuê trọ</a>
+                <a href="/pages/dangtin.html" class="suggestion-link">Đăng tin cho thuê</a>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Về Nhà Trọ Kết Nối</h3>
+                    <p>Trang web tìm kiếm phòng trọ uy tín, kết nối người thuê và chủ trọ một cách nhanh chóng, hiệu
+                        quả.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Liên kết nhanh</h3>
+                    <ul>
+                        <li><a href="/index.html">Trang chủ</a></li>
+                        <li><a href="/pages/phong/phong.html">Danh sách phòng</a></li>
+                        <li><a href="/pages/tintuc.html">Tin tức</a></li>
+                        <li><a href="/pages/thongtin.html">Về chúng tôi</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Liên hệ</h3>
+                    <ul>
+                        <li><i class="fas fa-phone"></i> 0123 456 789</li>
+                        <li><i class="fas fa-envelope"></i> huydien23@nhatroketnoi.id.vn</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Cần Thơ</li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Theo dõi chúng tôi</h3>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Nhà Trọ Kết Nối. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/assets/js/main.js"></script>
+</body>
+
+</html>

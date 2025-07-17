@@ -1355,3 +1355,36 @@ section {
 .btn-dangtin:hover {
     background-color: #2980b9;
 } */
+
+/* Popular Searches Section */
+.popular-searches {
+    background-color: #f9f9f9;
+    padding: 60px 0;
+}
+
+.search-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 30px;
+}
+
+.search-tags a {
+    display: inline-block;
+    background-color: #fff;
+    color: #444;
+    padding: 8px 16px;
+    border-radius: 30px;
+    font-size: 14px;
+    text-decoration: none;
+    border: 1px solid #e0e0e0;
+    transition: all 0.3s ease;
+}
+
+.search-tags a:hover {
+    background-color: #2A8AFF;
+    color: white;
+    border-color: #2A8AFF;
+    box-shadow: 0 4px 10px rgba(42, 138, 255, 0.2);
+    transform: translateY(-2px);
+}

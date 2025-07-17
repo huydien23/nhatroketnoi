@@ -1,64 +1,93 @@
-# NhaTroKetNoi - Nền Tảng Kết Nối Nhà Trọ
+# Nhà Trọ Kết Nối
 
-## Tổng Quan
-NhaTroKetNoi là một ứng dụng web được thiết kế để kết nối chủ nhà với người thuê tiềm năng, giúp việc tìm kiếm và đăng tin cho thuê nhà trở nên dễ dàng hơn. Nền tảng này nhằm mục đích đơn giản hóa quá trình thuê nhà, cung cấp giao diện thân thiện với người dùng cho cả chủ nhà và người thuê.
+Website tìm kiếm phòng trọ sinh viên dành cho thị trường Cần Thơ. Kết nối nhanh chóng giữa người thuê trọ và chủ nhà trọ, cung cấp thông tin chi tiết về các phòng trọ gần các trường đại học lớn tại Cần Thơ.
 
-## Tính Năng
-- Hiển thị danh sách nhà trọ với thông tin chi tiết và hình ảnh
-- Chức năng tìm kiếm và lọc theo vị trí, giá cả, diện tích
-- Giao diện hiển thị thông tin chi tiết về từng nhà trọ
-- Giao diện đăng tin cho người cho thuê
-- Trang thông tin liên hệ và hỗ trợ
-- Thiết kế đáp ứng cho mọi thiết bị (desktop, tablet, mobile)
+![Logo Nhà Trọ Kết Nối](./assets/image/logo.svg)
 
-## Công Nghệ Sử Dụng
-- **HTML5**: Cấu trúc trang web và nội dung
-- **CSS3**: Tạo kiểu và định dạng giao diện người dùng
-  - Flexbox và Grid cho bố cục
-  - Animations và Transitions cho hiệu ứng
-  - Media queries cho thiết kế đáp ứng
-- **JavaScript**: Xử lý tương tác người dùng và logic
-  - DOM Manipulation
-  - Event Handling
-  - Local Storage để lưu trữ dữ liệu tạm thời
-  - Fetch API để mô phỏng tải dữ liệu
+## 📋 Tính năng chính
 
-## Cài Đặt và Chạy Dự Án
-1. Clone repository:
-```
-git clone https://github.com/huydien23/nhatroketnoi.git
-```
+- **Tìm kiếm phòng trọ**: Tìm kiếm theo khu vực, giá cả, diện tích và các tiện ích
+- **Đăng tin cho thuê**: Chủ trọ có thể đăng tin phòng trọ với đầy đủ thông tin và hình ảnh
+- **Hệ thống đánh giá**: Người dùng có thể đánh giá và xem đánh giá về phòng trọ
+- **Bản đồ tương tác**: Xem vị trí phòng trọ trên bản đồ và tính khoảng cách đến trường học
+- **Chatbot hỗ trợ**: Trả lời tự động các câu hỏi thường gặp của người dùng
+- **Bài viết tin tức**: Chia sẻ kinh nghiệm thuê trọ, thông tin thị trường và cộng đồng
 
-2. Mở dự án:  
-```
-cd NhaTroKetNoi
-```
+## 🛠️ Công nghệ sử dụng
 
-3. Chạy trang web:
-   - Sử dụng Live Server extension trong VS Code
-   - Hoặc mở file index.html trực tiếp trong trình duyệt
-## Hướng Dẫn Sử Dụng
-- **Trang chủ**: Hiển thị danh sách nhà trọ nổi bật và công cụ tìm kiếm
-- **Tìm kiếm**: Lọc nhà trọ theo tiêu chí như vị trí, giá cả, diện tích
-- **Trang chi tiết**: Xem thông tin chi tiết về nhà trọ bao gồm hình ảnh, mô tả, tiện ích
-- **Đăng tin**: Giao diện cho phép người dùng nhập thông tin và hình ảnh nhà trọ muốn đăng
+- **Frontend**: HTML5, CSS3, JavaScript (ES6+), jQuery
+- **Backend**: Firebase (Authentication, Realtime Database, Storage)
+- **Responsive Design**: Mobile-first approach
+- **APIs**: Google Maps API, Firebase API
 
-## Tính Năng Phát Triển Trong Tương Lai
-- Tích hợp bản đồ để hiển thị vị trí nhà trọ
-- Hệ thống đánh giá và bình luận
-- Đăng ký và đăng nhập người dùng
-- Tích hợp API bên thứ ba để mở rộng chức năng
+## 🚀 Cài đặt và chạy dự án
 
-## Đóng Góp
-1. Fork repository
-2. Tạo nhánh tính năng của bạn (`git checkout -b feature/tinh-nang-moi`)
-3. Commit các thay đổi của bạn (`git commit -m 'Thêm tính năng mới'`)
-4. Push lên nhánh (`git push origin feature/tinh-nang-moi`)
-5. Mở Pull Request
+### Yêu cầu hệ thống
+- Node.js (v14.0.0 trở lên)
+- NPM (v6.0.0 trở lên)
+- Firebase CLI (tùy chọn, nếu muốn triển khai)
 
-## Giấy Phép
-Dự án này được cấp phép theo Giấy phép MIT - xem file LICENSE để biết chi tiết.
+### Các bước cài đặt
 
-## Liên Hệ
-- Liên kết dự án: [https://github.com/huydien23/nhatroketnoi.git]
-- Email: nhdiendnc.dev@gmail.com
+1. **Clone dự án từ GitHub**
+   ```bash
+   git clone https://github.com/yourusername/nhatroketnoi.git
+   cd nhatroketnoi
+   ```
+
+2. **Cài đặt các dependencies (nếu cần)**
+   ```bash
+   cd backend
+   npm install
+   ```
+
+3. **Cấu hình Firebase**
+   - Tạo project Firebase tại [console.firebase.google.com](https://console.firebase.google.com)
+   - Kích hoạt Authentication, Realtime Database và Storage
+   - Cập nhật cấu hình Firebase trong file `assets/js/main.js`
+
+4. **Khởi chạy dự án**
+   - Để chạy dự án ở môi trường phát triển, bạn có thể sử dụng Live Server của VS Code hoặc bất kỳ server tĩnh nào khác
+   - Truy cập http://localhost:5500 (hoặc địa chỉ được cấu hình) trong trình duyệt
+
+## 📱 Tương thích
+
+- Google Chrome (phiên bản mới nhất)
+- Mozilla Firefox (phiên bản mới nhất)
+- Microsoft Edge (phiên bản mới nhất)
+- Safari (phiên bản mới nhất)
+- Responsive trên tất cả các thiết bị di động
+
+## 🔒 Bảo mật
+
+- Xác thực người dùng qua Firebase Authentication
+- Mã hóa dữ liệu người dùng
+- An toàn thông tin cá nhân và tính riêng tư
+
+## 📜 SEO và Tối ưu hóa
+
+- Meta tags tối ưu
+- Schema.org markup
+- Sitemap.xml và robots.txt
+- Mobile-friendly
+- Tối ưu hóa tốc độ trang
+
+## 🤝 Đóng góp
+
+Mọi đóng góp đều được hoan nghênh! Nếu bạn muốn đóng góp vào dự án, vui lòng:
+
+1. Fork dự án
+2. Tạo branch tính năng (`git checkout -b feature/amazing-feature`)
+3. Commit thay đổi của bạn (`git commit -m 'Add some amazing feature'`)
+4. Push lên branch (`git push origin feature/amazing-feature`)
+5. Tạo một Pull Request
+
+## 📄 Giấy phép
+
+Dự án này được phân phối dưới Giấy phép MIT. Xem file `LICENSE` để biết thêm thông tin.
+
+## 📞 Liên hệ
+
+Huỳnh Điền - huydien23@nhatroketnoi.id.vn
+
+Website: [https://nhatroketnoi.id.vn](https://nhatroketnoi.id.vn)
