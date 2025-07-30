@@ -1,4 +1,4 @@
-// Hàm kiểm tra định dạng form
+// Form validation
 function validateForm(formId) {
   const form = document.getElementById(formId);
   if (!form) return false;
@@ -18,7 +18,7 @@ function validateForm(formId) {
   return isValid;
 }
 
-// Hàm hiển thị loading
+// Loading states
 function showLoading(buttonId) {
   const button = document.getElementById(buttonId);
   if (button) {
@@ -27,7 +27,6 @@ function showLoading(buttonId) {
   }
 }
 
-// Hàm ẩn loading
 function hideLoading(buttonId) {
   const button = document.getElementById(buttonId);
   if (button) {
@@ -36,7 +35,7 @@ function hideLoading(buttonId) {
   }
 }
 
-// Hàm hiển thị thông báo lỗi
+// Error handling
 function showError(message) {
   const errorElement = document.getElementById("errorMessage");
   if (errorElement) {
@@ -49,59 +48,44 @@ function showError(message) {
 
 // Hàm đăng nhập bằng Firebase
 async function login(event) {
-  // Prevent default form submission
   if (event) {
     event.preventDefault();
   }
 
-  // Kiểm tra định dạng form
   if (!validateForm("loginForm")) {
     showError("Vui lòng điền đầy đủ thông tin đăng nhập!");
     return false;
   }
 
-  // Hiển thị loading
   showLoading("loginButton");
 
   try {
     const email = $("#username").val();
     const password = $("#password").val();
 
-    // Kiểm tra xem window.firebaseSignIn có tồn tại không
     if (typeof window.firebaseSignIn !== "function") {
-      console.error("Hàm firebaseSignIn không tồn tại!");
-      showError(
-        "Chức năng đăng nhập chưa được khởi tạo. Vui lòng tải lại trang."
-      );
+      console.error("firebaseSignIn function not found!");
+      showError("Chức năng đăng nhập chưa được khởi tạo. Vui lòng tải lại trang.");
       hideLoading("loginButton");
       return false;
     }
 
-    // Gọi hàm đăng nhập từ Firebase
     const result = await window.firebaseSignIn(email, password);
-    console.log("Login result:", result); // Add debug log
+    console.log("Login result:", result);
 
     if (result.success) {
-      // Lưu trạng thái đăng nhập vào localStorage để sử dụng sau này
       localStorage.setItem("isLoggedIn", "true");
 
-      // Kiểm tra xem window.notifications có tồn tại không
       if (window.notifications) {
-        // Hiển thị thông báo thành công với animation
-        window.notifications.success(
-          "Đăng nhập thành công! Chuyển hướng đến trang chủ..."
-        );
+        window.notifications.success("Đăng nhập thành công! Chuyển hướng đến trang chủ...");
       } else {
-        // Fallback khi không có hệ thống thông báo
         alert("Đăng nhập thành công!");
       }
 
-      // Delay để người dùng thấy thông báo trước khi chuyển hướng
       setTimeout(() => {
         window.location.href = "../../index.html";
       }, 1500);
     } else {
-      // Xử lý lỗi cụ thể
       let errorMessage = "Đăng nhập thất bại. Vui lòng thử lại!";
 
       if (
@@ -116,13 +100,11 @@ async function login(event) {
       } else if (result.error === "auth/too-many-requests") {
         errorMessage = "Đã đăng nhập thất bại nhiều lần. Vui lòng thử lại sau!";
       } else if (result.message) {
-        // Sử dụng thông báo lỗi trực tiếp từ Firebase nếu có
         errorMessage = result.message;
       }
 
-      console.error("Login error:", result.error); // Add error logging
+      console.error("Login error:", result.error);
 
-      // Hiển thị lỗi
       if (window.notifications) {
         window.notifications.error(errorMessage);
       } else {
@@ -132,16 +114,12 @@ async function login(event) {
       hideLoading("loginButton");
     }
   } catch (error) {
-    console.error("Lỗi khi xử lý đăng nhập:", error);
+    console.error("Login error:", error);
 
     if (window.notifications) {
-      window.notifications.error(
-        "Đã xảy ra lỗi trong quá trình đăng nhập. Vui lòng thử lại sau."
-      );
+      window.notifications.error("Đã xảy ra lỗi trong quá trình đăng nhập. Vui lòng thử lại sau.");
     } else {
-      showError(
-        "Đã xảy ra lỗi trong quá trình đăng nhập. Vui lòng thử lại sau."
-      );
+      showError("Đã xảy ra lỗi trong quá trình đăng nhập. Vui lòng thử lại sau.");
     }
 
     hideLoading("loginButton");
@@ -288,11 +266,9 @@ function logout() {
 function initializeUserProfile() {
   const userProfile = document.querySelector(".user-profile");
   const loginBtn = document.getElementById("loginBtn");
-  const btnDangTin = document.getElementById("btnDangTin");
 
   console.log("Initializing user profile...");
   console.log("Login button:", loginBtn);
-  console.log("Đăng Tin button:", btnDangTin);
 
   // Sử dụng Firebase Auth để kiểm tra trạng thái đăng nhập
   if (typeof firebase !== "undefined" && firebase.auth) {
@@ -302,9 +278,8 @@ function initializeUserProfile() {
         console.log("Người dùng đã đăng nhập:", user.displayName);
         localStorage.setItem("isLoggedIn", "true");
 
-        // Hiển thị nút "Đăng Tin" và thông tin người dùng
+        // Hiển thị thông tin người dùng
         if (loginBtn) loginBtn.style.display = "none";
-        if (btnDangTin) btnDangTin.style.display = "block";
         if (userProfile) userProfile.style.display = "flex";
 
         // Cập nhật thông tin người dùng
@@ -339,9 +314,8 @@ function initializeUserProfile() {
         console.log("Chưa đăng nhập");
         localStorage.removeItem("isLoggedIn");
 
-        // Ẩn nút "Đăng Tin" và thông tin người dùng
+        // Ẩn thông tin người dùng
         if (loginBtn) loginBtn.style.display = "block";
-        if (btnDangTin) btnDangTin.style.display = "none";
         if (userProfile) userProfile.style.display = "none";
       }
     });
@@ -353,12 +327,10 @@ function initializeUserProfile() {
     if (isLoggedIn) {
       // Giả lập đã đăng nhập
       if (loginBtn) loginBtn.style.display = "none";
-      if (btnDangTin) btnDangTin.style.display = "block";
       if (userProfile) userProfile.style.display = "flex";
     } else {
       // Giả lập chưa đăng nhập
       if (loginBtn) loginBtn.style.display = "block";
-      if (btnDangTin) btnDangTin.style.display = "none";
       if (userProfile) userProfile.style.display = "none";
     }
   }
@@ -461,17 +433,7 @@ document.addEventListener("DOMContentLoaded", function () {
   initializeUserProfile();
   initializeScrollTopButton();
 
-  // Xử lý nút Đăng Tin
-  const btnDangTin = document.getElementById("btnDangTin");
-  if (btnDangTin) {
-    btnDangTin.addEventListener("click", function (event) {
-      if (!localStorage.getItem("isLoggedIn")) {
-        event.preventDefault();
-        alert("Vui lòng đăng nhập để sử dụng tính năng đăng tin!");
-        window.location.href = "../../pages/auth/dangnhap.html";
-      }
-    });
-  }
+
 
   const registerForm = document.getElementById("registerForm");
   if (registerForm) {
@@ -511,7 +473,7 @@ if (!firebase.apps.length) {
     storageBucket: "nhatroketnoi-9390a",
     messagingSenderId: "249753111607",
     appId: "1:249753111607:web:3f6d0ddaa27e34fc6683b2",
-    measurementId: "G-219LR643DB",
+
   });
 }
 

@@ -18,7 +18,7 @@ Website tìm kiếm phòng trọ sinh viên dành cho thị trường Cần Thơ
 - **Frontend**: HTML5, CSS3, JavaScript (ES6+), jQuery
 - **Backend**: Firebase (Authentication, Realtime Database, Storage)
 - **Responsive Design**: Mobile-first approach
-- **APIs**: Google Maps API, Firebase API
+- **APIs**: Firebase API
 
 ## 🚀 Cài đặt và chạy dự án
 
@@ -64,13 +64,7 @@ Website tìm kiếm phòng trọ sinh viên dành cho thị trường Cần Thơ
 - Mã hóa dữ liệu người dùng
 - An toàn thông tin cá nhân và tính riêng tư
 
-## 📜 SEO và Tối ưu hóa
 
-- Meta tags tối ưu
-- Schema.org markup
-- Sitemap.xml và robots.txt
-- Mobile-friendly
-- Tối ưu hóa tốc độ trang
 
 ## 🤝 Đóng góp
 

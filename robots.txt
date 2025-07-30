@@ -1,7 +1,0 @@
-User-agent: *
-Allow: /
-Disallow: /assets/css/
-Disallow: /assets/js/
-Disallow: /assets/backend/
-
-Sitemap: https://nhatroketnoi.id.vn/sitemap.xml

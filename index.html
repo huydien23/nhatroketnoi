@@ -4,40 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Content Security Policy -->
-    <meta http-equiv="Content-Security-Policy"
-        content="default-src 'self'; script-src 'self' https://www.gstatic.com https://code.jquery.com https://cdnjs.cloudflare.com 'unsafe-inline'; style-src 'self' https://cdnjs.cloudflare.com 'unsafe-inline'; img-src 'self' data: blob: https://firebasestorage.googleapis.com; font-src 'self' https://cdnjs.cloudflare.com; connect-src 'self' https://*.googleapis.com https://*.firebaseio.com wss://*.firebaseio.com https://nhatroketnoi-9390a-default-rtdb.firebaseio.com; frame-src 'self' https://*.firebaseapp.com; object-src 'none';">
-
-    <!-- Thẻ PWA -->
     <meta name="theme-color" content="#5698bd">
     <link rel="manifest" href="/manifest.json">
     <link rel="apple-touch-icon" href="/assets/image/icons/icon-192x192.png">
-
-    <meta name="description"
-        content="Nhà Trọ Kết Nối - Nền tảng tìm kiếm phòng trọ uy tín hàng đầu tại Cần Thơ. Kết nối nhanh chóng giữa sinh viên và chủ trọ với hàng ngàn phòng trọ giá rẻ gần ĐHCT, ĐH Y Dược, ĐH Nam Cần Thơ.">
-    <meta name="keywords"
-        content="nhà trọ Cần Thơ, phòng trọ sinh viên Cần Thơ, phòng trọ giá rẻ, thuê phòng gần đại học Cần Thơ, phòng trọ Ninh Kiều, nhà trọ gần ĐH Y Dược, phòng trọ gần ĐH Nam Cần Thơ">
-    <meta name="author" content="Nhà Trọ Kết Nối">
-    <meta name="robots" content="index, follow">
-
-    <!-- Open Graph tags cho mạng xã hội -->
-    <meta property="og:title" content="Nhà Trọ Kết Nối - Tìm Phòng Trọ Sinh Viên Giá Rẻ Tại Cần Thơ">
-    <meta property="og:description"
-        content="Kết nối bạn với những căn phòng trọ sinh viên lý tưởng gần các trường đại học Cần Thơ. Tìm phòng trọ giá rẻ, an toàn và uy tín.">
-    <meta property="og:image" content="https://nhatroketnoi.id.vn/assets/image/logo.svg">
-    <meta property="og:url" content="https://nhatroketnoi.id.vn">
-    <meta property="og:type" content="website">
-    <meta property="og:locale" content="vi_VN">
-
-    <!-- Twitter Card data -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Nhà Trọ Kết Nối - Tìm Phòng Trọ Sinh Viên Giá Rẻ Tại Cần Thơ">
-    <meta name="twitter:description"
-        content="Kết nối bạn với những căn phòng trọ sinh viên lý tưởng gần các trường đại học Cần Thơ.">
-    <meta name="twitter:image" content="https://nhatroketnoi.id.vn/assets/image/logo.svg">
-
     <title>Nhà Trọ Kết Nối - Tìm Phòng Trọ Sinh Viên Giá Rẻ Tại Cần Thơ</title>
-    <link rel="canonical" href="https://nhatroketnoi.id.vn">
+
     <link rel="shortcut icon" href="/assets/image/favicon.svg" type="image/x-icon">
     <link rel="stylesheet" href="assets/css/layouts/main.css">
     <link rel="stylesheet" href="assets/css/pages/index.css">
@@ -57,19 +28,15 @@
                 </a>
             </div>
             <ul class="nav-links">
-                <li><a href="index.html" title="Trang chủ Nhà Trọ Kết Nối">Trang chủ</a></li>
-                <li><a href="./pages/phong/phong.html" title="Danh sách phòng trọ sinh viên Cần Thơ">Danh sách phòng</a>
+                <li><a href="index.html">Trang chủ</a></li>
+                <li><a href="./pages/phong/phong.html">Danh sách phòng</a>
                 </li>
-                <li><a href="./pages/tintuc.html" title="Tin tức về nhà trọ và kinh nghiệm thuê phòng">Tin tức</a></li>
-                <li><a href="./pages/thongtin.html" title="Thông tin về dịch vụ Nhà Trọ Kết Nối">Về chúng tôi</a></li>
-                <li><a href="./pages/auth/dangnhap.html" class="login-btn" id="loginBtn"
-                        title="Đăng nhập vào tài khoản của bạn">Đăng nhập</a></li>
-                <li><a href="./pages/dangtin.html" class="btn-dangtin" id="btnDangTin" style="display: none;"
-                        title="Đăng tin phòng trọ của bạn">
-                        <i class="fas fa-plus-circle"></i>Đăng Tin
-                    </a></li>
-                <li class="user-profile-container" style="margin-right: 0; padding-right: 0;">
-                    <div class="user-profile" style="display: none; position: relative;">
+                <li><a href="./pages/tintuc.html">Tin tức</a></li>
+                <li><a href="./pages/thongtin.html">Về chúng tôi</a></li>
+                <li><a href="./pages/auth/dangnhap.html" class="login-btn" id="loginBtn">Đăng nhập</a></li>
+
+                <li class="user-profile-container">
+                    <div class="user-profile">
                         <div class="user-avatar">
                             <img id="userAvatar" src="assets/image/user/user2.jpg" alt="User Avatar">
                             <span id="userShortName"></span>
@@ -86,9 +53,7 @@
                             <a href="./pages/user/profile.html" class="dropdown-item">
                                 <i class="fas fa-user"></i> Tài khoản của tôi
                             </a>
-                            <a href="./pages/user/posts.html" class="dropdown-item">
-                                <i class="fas fa-list"></i> Bài đăng của tôi
-                            </a>
+
                             <a href="./pages/user/saved.html" class="dropdown-item">
                                 <i class="fas fa-bookmark"></i> Phòng đã lưu
                             </a>
@@ -101,7 +66,7 @@
                 </li>
             </ul>
             <!-- Menu 3 gạch -->
-            <div class="burger" role="button" aria-label="Toggle menu" tabindex="0">
+            <div class="burger" role="button" tabindex="0">
                 <div></div>
                 <div></div>
                 <div></div>
@@ -117,18 +82,17 @@
             <div class="search-box">
                 <div class="search-input">
                     <i class="fas fa-search"></i>
-                    <input type="text" placeholder="Nhập địa điểm, khu vực bạn muốn tìm..."
-                        aria-label="Tìm kiếm địa điểm">
+                    <input type="text" placeholder="Nhập địa điểm, khu vực bạn muốn tìm...">
                 </div>
                 <div class="search-filters">
-                    <select aria-label="Chọn mức giá">
+                    <select>
                         <option value="">Giá tiền</option>
                         <option value="0-1">Dưới 1 triệu</option>
                         <option value="1-2">1 - 2 triệu</option>
                         <option value="2-3">2 - 3 triệu</option>
                         <option value="3+">Trên 3 triệu</option>
                     </select>
-                    <select aria-label="Chọn diện tích">
+                    <select>
                         <option value="">Diện tích</option>
                         <option value="0-20">Dưới 20m²</option>
                         <option value="20-30">20 - 30m²</option>
@@ -136,7 +100,7 @@
                         <option value="40+">Trên 40m²</option>
                     </select>
                 </div>
-                <button class="search-button" aria-label="Tìm kiếm phòng trọ">Tìm Kiếm</button>
+                <button class="search-button">Tìm Kiếm</button>
             </div>
         </div>
     </div>
@@ -278,15 +242,7 @@
         </div>
     </section>
 
-    <section class="cta-section">
-        <div class="container">
-            <div class="cta-content">
-                <h2>Bạn có phòng trọ cần cho thuê?</h2>
-                <p>Đăng tin ngay để tiếp cận hàng ngàn người đang tìm phòng trọ mỗi ngày</p>
-                <a href="./pages/dangtin.html" class="cta-button">Đăng Tin Ngay <i class="fas fa-arrow-right"></i></a>
-            </div>
-        </div>
-    </section>
+
 
     <!-- Thêm phần tìm kiếm phổ biến -->
     <section class="popular-searches">
@@ -296,21 +252,21 @@
                 <p>Khám phá các tùy chọn phòng trọ phổ biến tại Cần Thơ</p>
             </div>
             <div class="search-tags">
-                <a href="./pages/phong/phong.html?gia=duoi-1-trieu" title="Tìm phòng trọ giá dưới 1 triệu đồng">Phòng
+                <a href="./pages/phong/phong.html?gia=duoi-1-trieu">Phòng
                     trọ dưới 1 triệu</a>
-                <a href="./pages/phong/phong.html?tienich=gac-lung" title="Phòng trọ có gác lửng tại Cần Thơ">Phòng trọ
+                <a href="./pages/phong/phong.html?tienich=gac-lung">Phòng trọ
                     có gác lửng</a>
-                <a href="./pages/phong/phong.html?tienich=may-lanh" title="Phòng trọ có máy lạnh tại Cần Thơ">Phòng trọ
+                <a href="./pages/phong/phong.html?tienich=may-lanh">Phòng trọ
                     máy lạnh</a>
-                <a href="./pages/phong/phong.html?loai=o-ghep" title="Tìm người ở ghép phòng trọ tại Cần Thơ">Tìm người
+                <a href="./pages/phong/phong.html?loai=o-ghep">Tìm người
                     ở ghép</a>
-                <a href="./pages/phong/phong.html?khuvuc=ninh-kieu" title="Phòng trọ tại quận Ninh Kiều">Phòng trọ Ninh
+                <a href="./pages/phong/phong.html?khuvuc=ninh-kieu">Phòng trọ Ninh
                     Kiều</a>
-                <a href="./pages/phong/phong.html?khuvuc=dhct" title="Phòng trọ gần Đại học Cần Thơ">Phòng trọ gần
+                <a href="./pages/phong/phong.html?khuvuc=dhct">Phòng trọ gần
                     ĐHCT</a>
-                <a href="./pages/phong/phong.html?khuvuc=dhyd" title="Phòng trọ gần Đại học Y Dược Cần Thơ">Phòng trọ
+                <a href="./pages/phong/phong.html?khuvuc=dhyd">Phòng trọ
                     gần ĐH Y Dược</a>
-                <a href="./pages/phong/phong.html?doituong=nu" title="Phòng trọ dành cho nữ sinh viên">Phòng trọ cho
+                <a href="./pages/phong/phong.html?doituong=nu">Phòng trọ cho
                     nữ</a>
             </div>
         </div>
@@ -478,92 +434,16 @@
         <i class="fas fa-comments"></i>
     </button>
 
-    <!-- Structured Data for SEO -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "RealEstateAgent",
-      "name": "Nhà Trọ Kết Nối",
-      "description": "Nền tảng tìm kiếm phòng trọ sinh viên uy tín hàng đầu tại Cần Thơ, kết nối nhanh chóng giữa người thuê và chủ trọ.",
-      "url": "https://nhatroketnoi.id.vn",
-      "logo": "https://nhatroketnoi.id.vn/assets/image/logo.svg",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Ninh Kiều",
-        "addressRegion": "Cần Thơ",
-        "addressCountry": "VN"
-      },
-      "telephone": "0123 456 789",
-      "email": "huydien23@nhatroketnoi.id.vn",
-      "areaServed": {
-        "@type": "City",
-        "name": "Cần Thơ"
-      },
-      "potentialAction": {
-        "@type": "SearchAction",
-        "target": "https://nhatroketnoi.id.vn/pages/phong/phong.html?search={search_term_string}",
-        "query-input": "required name=search_term_string"
-      }
-    }
-    </script>
 
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": [{
-        "@type": "Question",
-        "name": "Làm thế nào để tìm phòng trọ gần Đại học Cần Thơ?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Bạn có thể sử dụng thanh tìm kiếm trên trang chủ và nhập 'Đại học Cần Thơ' hoặc chọn trực tiếp khu vực này từ phần Khu Vực Nổi Bật."
-        }
-      }, {
-        "@type": "Question",
-        "name": "Cách đăng tin cho thuê phòng trọ trên Nhà Trọ Kết Nối?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Đăng ký tài khoản, đăng nhập và chọn 'Đăng Tin Ngay' trên trang chủ. Nhập đầy đủ thông tin phòng trọ, kèm hình ảnh chất lượng để tăng tỷ lệ thành công."
-        }
-      }, {
-        "@type": "Question",
-        "name": "Phí đăng tin phòng trọ là bao nhiêu?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Nhà Trọ Kết Nối miễn phí hoàn toàn cho việc đăng tin phòng trọ cơ bản. Tuy nhiên, có các gói dịch vụ đẩy tin cao cấp để hiển thị tin nổi bật hơn."
-        }
-      }]
-    }
-    </script>
-
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      "itemListElement": [{
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Trang chủ",
-        "item": "https://nhatroketnoi.id.vn"
-      }]
-    }
-    </script>
 
     <!-- Firebase SDK -->
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-storage-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-analytics-compat.js"></script>
 
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-219LR643DB"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-        gtag('config', 'G-219LR643DB');
-    </script>
+
+
 
     <script src="assets/js/ai-chat.js"></script>
     <script src="assets/js/main.js"></script>

@@ -1,4 +1,4 @@
-// Firebase initialization (Compat version)
+// Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyCe63NDqYR2A-hUOu22S5Kr1g6vclkIcGw",
   authDomain: "nhatroketnoi-9390a.firebaseapp.com",
@@ -6,56 +6,42 @@ const firebaseConfig = {
   projectId: "nhatroketnoi-9390a",
   storageBucket: "nhatroketnoi-9390a",
   messagingSenderId: "249753111607",
-  appId: "1:249753111607:web:3f6d0ddaa27e34fc6683b2",
-  measurementId: "G-219LR643DB",
+  appId: "1:249753111607:web:3f6d0ddaa27e34fc6683b2"
 };
 
-// Tối ưu JS để cải thiện hiệu suất tải trang
 document.addEventListener("DOMContentLoaded", function () {
-  // Kiểm tra hỗ trợ WebP
   checkWebpSupport();
 
-  // Kiểm tra xem Firebase đã được khởi tạo chưa
   if (!window.firebase) {
-    console.error(
-      "Firebase chưa được tải! Hãy đảm bảo các script Firebase đã được thêm vào trang."
-    );
+    console.error("Firebase not loaded!");
     return;
   }
 
-  // Khởi tạo Firebase nếu chưa được khởi tạo
   if (!firebase.apps.length) {
     firebase.initializeApp(firebaseConfig);
   }
 
-  // Khởi tạo các dịch vụ
   const auth = firebase.auth();
   const database = firebase.database();
   const storage = firebase.storage();
 
-  // Kiểm tra trạng thái đăng nhập
   auth.onAuthStateChanged((user) => {
     if (user) {
-      // Người dùng đã đăng nhập
-      console.log("Người dùng đã đăng nhập:", user.displayName);
+      console.log("User logged in:", user.displayName);
       initializeUserInterface(true, user);
     } else {
-      // Người dùng chưa đăng nhập
-      console.log("Chưa đăng nhập");
+      console.log("Not logged in");
       initializeUserInterface(false);
     }
   });
 
-  // Phần xử lý Menu Navigation
   const burger = document.querySelector(".burger");
   const nav = document.querySelector(".nav-links");
   const navLinks = document.querySelectorAll(".nav-links li");
 
   burger.addEventListener("click", () => {
-    // Toggle Nav
     nav.classList.toggle("nav-active");
 
-    // Animate Links
     navLinks.forEach((link, index) => {
       if (link.style.animation) {
         link.style.animation = "";
@@ -66,11 +52,9 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
 
-    // Burger Animation
     burger.classList.toggle("toggle");
   });
 
-  // Hiển thị nút scroll to top khi cuộn xuống
   const scrollTopBtn = document.createElement("button");
   scrollTopBtn.classList.add("scroll-top-btn");
   scrollTopBtn.innerHTML = '<i class="fas fa-arrow-up"></i>';
@@ -91,7 +75,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  // Xử lý chatbot toggle
   const chatbotToggle = document.querySelector(".chatbot-toggle");
   const chatbotContainer = document.querySelector(".chatbot-container");
   const closeChatbot = document.querySelector(".close-chatbot");
@@ -106,7 +89,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // Lazy load cho hình ảnh
+  if ("loading" in HTMLImageElement.prototype) {
   if ("loading" in HTMLImageElement.prototype) {
     // Trình duyệt hỗ trợ loading="lazy" tự động
     const lazyImages = document.querySelectorAll("img[data-src]");
@@ -114,8 +97,6 @@ document.addEventListener("DOMContentLoaded", function () {
       img.src = img.dataset.src;
     });
   } else {
-    // Thêm lazy loading thủ công cho các trình duyệt cũ
-    // Sử dụng Intersection Observer API
     const lazyImageObserver = new IntersectionObserver((entries, observer) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
@@ -132,39 +113,30 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // Các hàm khởi tạo khác ở đây...
   initializeUIComponents();
-
-  // Xử lý tìm kiếm
   initSearchFunction();
 
-  // Xử lý chức năng tìm kiếm phòng trọ
   const searchForm = document.querySelector('.search-box');
   if (searchForm) {
     searchForm.addEventListener('submit', function(e) {
       e.preventDefault();
       
-      // Lấy giá trị tìm kiếm
       const keywordInput = searchForm.querySelector('input[type="text"]');
       const priceSelect = searchForm.querySelector('select:nth-of-type(1)');
       const areaSelect = searchForm.querySelector('select:nth-of-type(2)');
       
-      // Tạo URL tìm kiếm với các tham số
       let searchUrl = './pages/phong/phong.html?';
       
-      // Thêm từ khóa tìm kiếm
       if (keywordInput && keywordInput.value.trim()) {
         searchUrl += 'keyword=' + encodeURIComponent(keywordInput.value.trim()) + '&';
         
-        // Lưu tìm kiếm gần đây nếu người dùng đã đăng nhập
         const user = firebase.auth().currentUser;
         if (user && window.roomSearchService) {
           window.roomSearchService.saveRecentSearch(user.uid, keywordInput.value.trim())
-            .catch(error => console.error('Lỗi khi lưu tìm kiếm gần đây:', error));
+            .catch(error => console.error('Error saving recent search:', error));
         }
       }
       
-      // Thêm khoảng giá
       if (priceSelect && priceSelect.value) {
         const priceRange = priceSelect.value.split('-');
         if (priceRange.length === 2) {
@@ -176,7 +148,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       }
       
-      // Thêm khoảng diện tích
       if (areaSelect && areaSelect.value) {
         const areaRange = areaSelect.value.split('-');
         if (areaRange.length === 2) {
@@ -188,16 +159,13 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       }
       
-      // Xóa dấu & ở cuối URL nếu có
       if (searchUrl.endsWith('&')) {
         searchUrl = searchUrl.slice(0, -1);
       }
       
-      // Chuyển hướng đến trang kết quả tìm kiếm
       window.location.href = searchUrl;
     });
     
-    // Biến form thành form submit khi nhấn nút tìm kiếm
     const searchButton = searchForm.querySelector('.search-button');
     if (searchButton) {
       searchButton.addEventListener('click', function() {
@@ -230,21 +198,17 @@ function checkWebpSupport() {
   }
 }
 
-// Cập nhật tất cả các src hình ảnh sang WebP nếu có thể
 function updateImageSources() {
   const images = document.querySelectorAll('img:not([data-no-webp])');
   images.forEach(img => {
     const currentSrc = img.getAttribute('src');
-    // Nếu là jpg, jpeg, hoặc png thì thay thành webp
     if (currentSrc && /\.(jpe?g|png)$/i.test(currentSrc)) {
       const webpSrc = currentSrc.replace(/\.(jpe?g|png)$/i, '.webp');
-      // Thử tải WebP và fallback nếu không tồn tại
       const testImg = new Image();
       testImg.onload = function() {
         img.src = webpSrc;
       };
       testImg.onerror = function() {
-        // Giữ nguyên src hiện tại nếu không tìm thấy file WebP
         console.log('WebP not found:', webpSrc);
       };
       testImg.src = webpSrc;
@@ -252,7 +216,6 @@ function updateImageSources() {
   });
 }
 
-// Utility function để tự động chuyển đổi đường dẫn hình ảnh sang WebP khi cần
 window.getOptimizedImagePath = function(imagePath) {
   if (localStorage.getItem('webpSupport') === 'true' && /\.(jpe?g|png)$/i.test(imagePath)) {
     return imagePath.replace(/\.(jpe?g|png)$/i, '.webp');
@@ -260,19 +223,16 @@ window.getOptimizedImagePath = function(imagePath) {
   return imagePath;
 };
 
-// Khởi tạo giao diện người dùng dựa trên trạng thái đăng nhập
 function initializeUserInterface(isLoggedIn, user = null) {
   const loginBtn = document.getElementById("loginBtn");
-  const btnDangTin = document.getElementById("btnDangTin");
   const userProfile = document.querySelector(".user-profile");
 
   if (isLoggedIn) {
     // Lưu trạng thái đăng nhập vào localStorage để dự phòng
     localStorage.setItem("isLoggedIn", "true");
 
-    // Hiển thị nút "Đăng Tin" và thông tin người dùng
+    // Hiển thị thông tin người dùng
     if (loginBtn) loginBtn.style.display = "none";
-    if (btnDangTin) btnDangTin.style.display = "block";
     if (userProfile) userProfile.style.display = "flex";
 
     // Cập nhật thông tin người dùng
@@ -295,14 +255,12 @@ function initializeUserInterface(isLoggedIn, user = null) {
     // Xóa trạng thái đăng nhập từ localStorage
     localStorage.removeItem("isLoggedIn");
 
-    // Ẩn nút "Đăng Tin" và thông tin người dùng
+    // Ẩn thông tin người dùng
     if (loginBtn) loginBtn.style.display = "block";
-    if (btnDangTin) btnDangTin.style.display = "none";
     if (userProfile) userProfile.style.display = "none";
   }
 }
 
-// Xử lý dropdown menu người dùng
 function initializeUserDropdown() {
   const userProfile = document.querySelector(".user-profile");
   const userAvatar = document.querySelector(".user-avatar");
@@ -310,26 +268,21 @@ function initializeUserDropdown() {
   if (userAvatar && userProfile) {
     console.log("Setting up user dropdown handlers");
 
-    // Đảm bảo xóa tất cả các event listener cũ
     const oldClone = userAvatar.cloneNode(true);
     userAvatar.parentNode.replaceChild(oldClone, userAvatar);
 
-    // Lấy tham chiếu mới sau khi clone
     const newUserAvatar = document.querySelector(".user-avatar");
 
-    // Thêm event listener với debug để theo dõi
     newUserAvatar.addEventListener("click", function (event) {
       event.preventDefault();
       event.stopPropagation();
 
       userProfile.classList.toggle("active");
 
-      // Hiển thị log để debug
       const isActive = userProfile.classList.contains("active");
       console.log("Menu toggle:", isActive ? "open" : "closed");
       console.log("User profile classes:", userProfile.className);
 
-      // Kiểm tra và điều chỉnh display nếu cần thiết
       const dropdownMenu = userProfile.querySelector(".dropdown-menu");
       if (dropdownMenu) {
         dropdownMenu.style.display = isActive ? "block" : "none";

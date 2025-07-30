@@ -1,4 +1,4 @@
-// Cấu hình chat bot
+// AI Chatbot configuration
 const AI_CONFIG = {
     apiEndpoint: 'https://api.openai.com/v1/chat/completions',
     apiKey: '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',
@@ -7,7 +7,7 @@ const AI_CONFIG = {
     temperature: 0.7
 };
 
-// Cấu hình ngữ cảnh cho AI
+// AI context configuration
 const AI_CONTEXT = `Bạn là trợ lý AI của website Nhà Trọ Kết Nối, một nền tảng kết nối người thuê với chủ nhà trọ uy tín tại Cần Thơ.
 Thông tin quan trọng:
 - Giá phòng trọ: 1.5 triệu - 5 triệu/tháng
@@ -17,7 +17,7 @@ Thông tin quan trọng:
 
 Hãy trả lời ngắn gọn, thân thiện và hữu ích.`;
 
-// Thêm tin nhắn vào giao diện chat
+// Get AI response
 async function getAIResponse(message) {
     const fallbackResponses = {
         greeting: ['Xin chào! Tôi có thể giúp gì cho bạn?', 'Chào bạn! Bạn cần tìm thông tin gì về nhà trọ?'],
@@ -28,7 +28,6 @@ async function getAIResponse(message) {
     };
 
     try {
-        // Kiểm tra các từ khóa trong tin nhắn
         const lowerMessage = message.toLowerCase();
         if (lowerMessage.includes('xin chào') || lowerMessage.includes('hello') || lowerMessage.includes('chào')) {
             return fallbackResponses.greeting[Math.floor(Math.random() * fallbackResponses.greeting.length)];
@@ -43,7 +42,6 @@ async function getAIResponse(message) {
             return fallbackResponses.contact[0];
         }
 
-        // Gọi API OpenAI để lấy phản hồi
         const response = await fetch(AI_CONFIG.apiEndpoint, {
             method: 'POST',
             headers: {
@@ -74,7 +72,7 @@ async function getAIResponse(message) {
     }
 }
 
-// Khởi tạo chatbot
+// Initialize chatbot
 document.addEventListener('DOMContentLoaded', function() {
     const chatbotContainer = document.querySelector('.chatbot-container');
     const chatbotToggle = document.querySelector('.chatbot-toggle');
@@ -83,7 +81,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const messageInput = document.querySelector('.chatbot-input input');
     const messagesContainer = document.querySelector('.chatbot-messages');
 
-    // Hiển thị/ẩn chatbot
     chatbotToggle.addEventListener('click', () => {
         chatbotContainer.style.display = 'flex';
     });
@@ -92,36 +89,28 @@ document.addEventListener('DOMContentLoaded', function() {
         chatbotContainer.style.display = 'none';
     });
 
-    // Gửi tin nhắn
     async function sendUserMessage() {
         const message = messageInput.value.trim();
         if (!message) return;
 
-        // Hiển thị tin nhắn của người dùng
         const userMessageDiv = document.createElement('div');
         userMessageDiv.className = 'message user-message';
         userMessageDiv.textContent = message;
         messagesContainer.appendChild(userMessageDiv);
 
-        // Xóa input
         messageInput.value = '';
 
-        // Hiển thị typing indicator
         const typingDiv = document.createElement('div');
         typingDiv.className = 'typing-indicator';
         typingDiv.innerHTML = '<span></span><span></span><span></span>';
         messagesContainer.appendChild(typingDiv);
 
-        // Cuộn xuống cuối
         messagesContainer.scrollTop = messagesContainer.scrollHeight;
 
-        // Lấy phản hồi từ AI
         const response = await getAIResponse(message);
 
-        // Xóa typing indicator
         typingDiv.remove();
 
-        // Hiển thị phản hồi của AI
         const botMessageDiv = document.createElement('div');
         botMessageDiv.className = 'message bot-message';
         botMessageDiv.textContent = response;

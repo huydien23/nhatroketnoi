@@ -24,20 +24,20 @@ const urlsToCache = [
   "/pages/thongtin.html",
 ];
 
-// Cài đặt Service Worker và cache các static assets
+// Install event - cache static assets
 self.addEventListener("install", (event) => {
   event.waitUntil(
     caches
       .open(CACHE_NAME)
       .then((cache) => {
-        console.log("Caching static assets");
+        console.log("Caching assets");
         return cache.addAll(urlsToCache);
       })
       .then(() => self.skipWaiting())
   );
 });
 
-// Xóa bỏ cache cũ khi có phiên bản mới của Service Worker
+// Activate event - clean old caches
 self.addEventListener("activate", (event) => {
   const cacheWhitelist = [CACHE_NAME];
   event.waitUntil(
@@ -47,7 +47,7 @@ self.addEventListener("activate", (event) => {
         return Promise.all(
           cacheNames.map((cacheName) => {
             if (cacheWhitelist.indexOf(cacheName) === -1) {
-              console.log("Xóa cache cũ:", cacheName);
+              console.log("Deleting old cache:", cacheName);
               return caches.delete(cacheName);
             }
           })
@@ -57,23 +57,20 @@ self.addEventListener("activate", (event) => {
   );
 });
 
-// Xử lý các request network
+// Fetch event - handle network requests
 self.addEventListener("fetch", (event) => {
-  // Bỏ qua các request không phải HTTP/HTTPS
+  // Skip non-HTTP requests
   if (!event.request.url.startsWith("http")) return;
 
-  // Chiến lược Cache First, sau đó Network
+  // Cache First strategy
   event.respondWith(
     caches.match(event.request).then((cachedResponse) => {
-      // Trả về từ cache nếu có
       if (cachedResponse) {
         return cachedResponse;
       }
 
-      // Nếu không có trong cache, fetch từ network
       return fetch(event.request)
         .then((response) => {
-          // Kiểm tra response hợp lệ
           if (
             !response ||
             response.status !== 200 ||
@@ -82,10 +79,8 @@ self.addEventListener("fetch", (event) => {
             return response;
           }
 
-          // Clone response để cache
           const responseToCache = response.clone();
 
-          // Chỉ cache tài nguyên static và các trang HTML
           if (
             event.request.method === "GET" &&
             (event.request.url.endsWith(".html") ||
@@ -101,12 +96,11 @@ self.addEventListener("fetch", (event) => {
           return response;
         })
         .catch((error) => {
-          // Nếu không có internet và là trang HTML, chuyển về trang offline
           if (event.request.headers.get("accept").includes("text/html")) {
             return caches.match("/offline.html");
           }
 
-          console.error("Fetch thất bại:", error);
+          console.error("Fetch failed:", error);
         });
     })
   );

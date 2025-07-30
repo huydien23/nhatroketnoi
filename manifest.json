@@ -1,7 +1,7 @@
 {
   "name": "Nhà Trọ Kết Nối",
   "short_name": "NhaTroKetNoi",
-  "description": "Nền tảng tìm kiếm phòng trọ uy tín tại Cần Thơ",
+  "description": "Tìm kiếm phòng trọ sinh viên tại Cần Thơ",
   "start_url": "/index.html",
   "display": "standalone",
   "background_color": "#ffffff",

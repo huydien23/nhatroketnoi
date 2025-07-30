@@ -1,4 +1,4 @@
-/* Kiểu dáng menu thả xuống người dùng */
+/* User dropdown menu */
 .user-profile-container {
     position: relative;
 }
@@ -9,8 +9,6 @@
     display: flex;
     align-items: center;
     height: 100%;
-    margin-right: 0;
-    padding-right: 0;
 }
 
 .user-avatar {
@@ -34,7 +32,7 @@
     object-fit: cover;
     margin-right: 8px;
     border: 2px solid #3498db;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .user-avatar span {
@@ -51,7 +49,8 @@
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     display: none;
-    z-index: 1500; /* Tăng z-index để hiển thị trên các phần khác */
+    z-index: 1500;
+    /* Tăng z-index để hiển thị trên các phần khác */
     overflow: hidden;
     margin-top: 10px;
     animation: fadeIn 0.2s ease;
@@ -63,6 +62,7 @@
         opacity: 0;
         transform: translateY(-10px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -114,7 +114,7 @@
     object-fit: cover;
     margin-right: 12px;
     border: 2px solid #3498db;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
 }
 
 .user-info-header div {
@@ -137,7 +137,7 @@
     .user-profile-container {
         width: 100%;
     }
-    
+
     .dropdown-menu {
         width: 100%;
         position: static;
@@ -145,7 +145,7 @@
         margin-top: 0;
         border-top: 1px solid #e0e0e0;
     }
-    
+
     .user-avatar {
         justify-content: center;
         width: 100%;
@@ -157,7 +157,7 @@
     .user-profile-container {
         position: relative;
     }
-    
+
     .dropdown-menu {
         position: absolute;
         top: 100%;

@@ -41,44 +41,13 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  // Event listeners
-  // nextBtn.addEventListener("click", () => {
-  //   currentSlide = (currentSlide + 1) % cards.length;
-  //   updateSlider();
-  //   stopAutoSlide();
-  //   startAutoSlide();
-  // });
 
-  // prevBtn.addEventListener("click", () => {
-  //   currentSlide = (currentSlide - 1 + cards.length) % cards.length;
-  //   updateSlider();
-  //   stopAutoSlide();
-  //   startAutoSlide();
-  // });
-
-  // dots.forEach((dot, index) => {
-  //   dot.addEventListener("click", () => {
-  //     currentSlide = index;
-  //     updateSlider();
-  //     stopAutoSlide();
-  //     startAutoSlide();
-  //   });
-  // });
-
-  // // Pause auto-sliding when hovering over slider
-  // slider.addEventListener("mouseenter", stopAutoSlide);
-  // slider.addEventListener("mouseleave", startAutoSlide);
-
-  // // Initial setup
-  // updateSlider();
-  // startAutoSlide();
 
   const reviewForm = document.getElementById("reviewForm");
   const stars = document.querySelectorAll(".rating .fa-star");
   const submitButton = document.getElementById("submitReview");
   let selectedRating = 0;
 
-  // Kiểm tra đăng nhập và hiển thị form đánh giá
   function checkLoginAndShowForm() {
     const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
     if (isLoggedIn) {
@@ -88,7 +57,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  // Xử lý sự kiện hover và click cho rating stars
   stars.forEach((star) => {
     star.addEventListener("mouseover", function () {
       const rating = this.dataset.rating;

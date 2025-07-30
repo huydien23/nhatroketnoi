@@ -33,14 +33,12 @@ body {
     align-items: center;
     padding: 1rem 0;
     background-color: #fff;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     position: fixed;
     width: 100%;
     top: 0;
     z-index: 1000;
     max-width: 1920px;
-    left: 0;
-    right: 0;
     margin: 0 auto;
 }
 
@@ -123,36 +121,7 @@ body {
     color: #3498db;
 }
 
-/* CSS cho nút đăng tin - tăng độ ưu tiên */
-.nav-links .btn-dangtin {
-    min-width: 120px !important;
-    display: inline-flex !important;
-    background: #4aa1cd !important;
-    color: white !important;
-    padding: 8px 20px !important;
-    border-radius: 10px !important;
-    font-weight: 600 !important;
-    align-items: center !important;
-    text-decoration: none !important;
-    transition: background-color 0.3s ease !important;
-    
-}
 
-.nav-links .btn-dangtin i {
-    margin-right: 8px !important;
-    font-size: 16px !important;
-}
-
-.nav-links .btn-dangtin:hover {
-    background-color: #5690ad !important;
-    transform: translateY(-2px) !important;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1) !important;
-    color: #ffffff !important;
-}
-
-.nav-links .btn-dangtin::after {
-    display: none !important;
-}
 
 .login-btn {
     background-color: #3498db;
@@ -171,7 +140,7 @@ body {
 .login-btn:hover {
     background-color: #2980b9;
     transform: translateY(-2px);
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 footer {
@@ -221,7 +190,7 @@ footer {
 .footer-bottom {
     text-align: center;
     padding-top: 2rem;
-    border-top: 1px solid rgba(255,255,255,0.1);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .burger {
@@ -290,7 +259,7 @@ footer {
         margin: 1.5rem 0;
         height: auto;
     }
-    
+
     .nav-links a {
         padding: 0.5rem 1rem;
         justify-content: center;
@@ -301,7 +270,7 @@ footer {
         display: block;
         margin-left: auto;
     }
-    
+
     .navbar-container {
         padding: 0 15px;
     }
@@ -316,6 +285,7 @@ footer {
         opacity: 0;
         transform: translateX(50px);
     }
+
     to {
         opacity: 1;
         transform: translateX(0px);
@@ -366,7 +336,7 @@ html {
 
 .user-profile-container a:hover {
     color: inherit;
-} 
+}
 
 /* Pagination */
 .pagination {

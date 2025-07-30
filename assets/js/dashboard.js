@@ -46,10 +46,7 @@ function checkLoginStatus() {
         return;
     }
     
-    // Nếu người dùng đã đăng nhập và không ở trang Đăng Tin, chuyển hướng đến trang Đăng Tin
-    if (window.location.pathname !== '/pages/dangtin.html') {
-        window.location.href = '/pages/dangtin.html';
-    }
+
 }
 
 // Cập nhật thông tin người dùng
@@ -91,6 +88,6 @@ function logout() {
     localStorage.removeItem('userData');
     localStorage.removeItem('token');
     
-    // Chuyển về trang đăng nhập
-    window.location.href = '/pages/dangtin.html';
+    // Chuyển về trang chủ
+    window.location.href = '/index.html';
 }
